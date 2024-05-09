@@ -1,0 +1,5 @@
+<%= simple_form_for @general do |f| %>
+  <%= f.input :general_pres, as: :text, label: 'Texte de présentation général des Sentiers' %>
+  <%= f.input :home_img, label:'Image de couverture de la page daccueil' %>
+  <%= f.button :submit %>
+<% end %>

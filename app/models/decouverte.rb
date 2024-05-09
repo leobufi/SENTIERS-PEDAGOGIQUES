@@ -1,0 +1,2 @@
+class Decouverte < ApplicationRecord
+end

@@ -1,0 +1,7 @@
+<%= simple_form_for @decouverte do |f| %>
+  <%= f.input :circuit_acc_text, as: :text, label: 'Texte Circuits accompagnés' %>
+  <%= f.input :circuit_acc_img, label: 'Image Circuits accompagnés' %>
+  <%= f.input :anim_scol_text, label: 'Text Animation Scolaire' %>
+  <%= f.input :anim_scol_img, label: 'Image Animation Scolaire' %>
+  <%= f.button :submit %>
+<% end %>

@@ -1,0 +1,14 @@
+<%= simple_form_for @sentier do |f| %>
+  <%= f.input :title, label: false, placeholder: 'Titre du sentier' %>
+  <%= f.input :description, as: :text, label: false, placeholder: 'Description du sentier' %>
+  <%= f.input :difficulty, label: false, placeholder: 'Dénivelé du sentier' %>
+  <%= f.input :duration, as: :time, label: 'Durée', placeholder: 'Durée du sentier'%>
+  <%= f.input :starting_point_lat, label: false, placeholder: 'Latitude du point de départ du sentier' %>
+  <%= f.input :starting_point_long, label: false, placeholder: 'Longitude du point de départ du sentier' %>
+  <%= f.input :arrival_point_lat, label: false, placeholder: 'Latitude du point darrivée du sentier' %>
+  <%= f.input :arrival_point_long, label: false, placeholder: 'Longitude du point darrivée du sentier' %>
+  <%= f.input :points, as: :check_boxes, collection: Point.all, label: false, placeholder: 'Points dinterêt' %>
+  <%= f.input :is_theme, as: :boolean, boolean_style: :inline, label: 'Sentier Thématique ?' %>
+  <%= f.input :image, label: false, placeholder: 'Image principale du sentier' %>
+  <%= f.button :submit %>
+<% end %>

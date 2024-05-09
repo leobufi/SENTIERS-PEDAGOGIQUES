@@ -1,0 +1,15 @@
+class Sentier < ApplicationRecord
+
+  has_many :roads
+  has_many :points, through: :roads
+
+  validates :title, presence: true
+  validates :description, presence: true
+  validates :difficulty, presence: true
+  validates :duration, presence: true
+  validates :starting_point_lat, presence: true
+  validates :starting_point_long, presence: true
+  validates :arrival_point_lat, presence: true
+  validates :arrival_point_long, presence: true
+
+end

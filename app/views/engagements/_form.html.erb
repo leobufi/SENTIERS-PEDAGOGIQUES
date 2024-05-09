@@ -1,0 +1,8 @@
+<%= simple_form_for @engagement do |f| %>
+  <%= f.input :sensib, as: :text, label: 'Texte Sensibilisation' %>
+  <%= f.input :protec, as: :text, label: 'Texte Protection' %>
+  <%= f.input :rules, as: :text, label: 'Texte Règles' %>
+  <%= f.input :partner, as: :text, label: 'Texte Partenaires' %>
+  <%= f.input :engagements_img, label: 'Image' %>
+  <%= f.button :submit %>
+<% end %>

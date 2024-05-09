@@ -1,0 +1,7 @@
+<h2><%= @sentier.title %></h2>
+<p><%= @sentier.description %></p>
+<p><%= @sentier.duration %></p>
+<p><%= @sentier.difficulty %></p>
+<% @sentier.points.each do |point| %>
+  <p><%= point.title %></p>
+<% end %>
