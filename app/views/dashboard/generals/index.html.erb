@@ -1,0 +1,15 @@
+<ul>
+  <% @generals.each do |general| %>
+    <p><%= g.general_pres %></p>
+    <button>
+      <%= link_to 'Modifier', edit_general_path(general) %>
+    </button>
+    <button>
+      <%= link_to "Supprimer ", general_path(general), data: {turbo_method: :delete, turbo_confirm: "Êtes-vous sûr ?"}%>
+    </button>
+  <% end %>
+</ul>
+
+<button>
+  <%= link_to 'Créer', new_general_path %>
+</button>

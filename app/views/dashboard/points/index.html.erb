@@ -1,0 +1,15 @@
+<ul>
+  <% @points.each do |point| %>
+    <li><%= point.title %></li>
+    <button>
+      <%= link_to 'Modifier le point', edit_point_path(point) %>
+    </button>
+    <button>
+      <%= link_to "Supprimer le point", point_path(point), data: {turbo_method: :delete, turbo_confirm: "Êtes-vous sûr ?"}%>
+    </button>
+  <% end %>
+</ul>
+
+<button>
+  <%= link_to 'Créer un nouveau point', new_point_path %>
+</button>
