@@ -1,9 +1,32 @@
-<%= simple_form_for @point do |f| %>
-  <%= f.input :title, label: false, placeholder: 'Titre du point dinterêt' %>
-  <%= f.input :infos, as: :text, label: false, placeholder: 'Description du point dinterêt' %>
-  <%= f.input :lat, label: false, placeholder: 'Latitude du point dinterêt' %>
-  <%= f.input :long, label: false, placeholder: 'Longitude du point dinterêt'%>
-  <%= f.input :video, label: false, placeholder: 'Vidéo du point dinterêt' %>
-  <%= f.input :audio, label: false, placeholder: 'Audio du point dinterêt' %>
-  <%= f.button :submit %>
-<% end %>
+<div class="page-main">
+  <div class="page-padding">
+    <section class="dashboard">
+      <div class="dashboard-wrapper">
+        <h1 class="large">Créer/modifier un Point d'interêt</h1>
+        <div class="form-wrapper">
+          <div class="form">
+            <%= simple_form_for @point do |f| %>
+              <%= f.input :title, label: false, placeholder: 'Titre du point dinterêt' %>
+              <%= f.input :infos, as: :text, label: false, placeholder: 'Description du point dinterêt' %>
+              <span class="large poppins-semibold">Coordonnées :</span>
+              <div class="form-grid">
+                <%= f.input :lat, label: false, placeholder: 'Latitude du point dinterêt' %>
+                <%= f.input :long, label: false, placeholder: 'Longitude du point dinterêt'%>
+              </div>
+              <div class="form-bloc">
+                <span class="large poppins-semibold">
+                  Médias :
+                </span>
+                <%= f.input :video, label: false, placeholder: 'Vidéo du point dinterêt' %>
+                <%= f.input :audio, label: false, placeholder: 'Audio du point dinterêt' %>
+              </div>
+              <button>
+                <%= f.button :submit, "Créer le point d'interêt" %>
+              </button>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>

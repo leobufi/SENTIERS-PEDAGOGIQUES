@@ -1,6 +1,6 @@
 class PointsController < ApplicationController
-
   skip_before_action :authenticate_user!, only: [:index, :show]
+  before_action :require_admin, only: [:new, :create, :edit, :update, :destroy]
 
   def index
     @points = Point.all
@@ -42,4 +42,10 @@ class PointsController < ApplicationController
     params.require(:point).permit(:title, :infos, :lat, :long, :video, :audio )
   end
 
+  def require_admin
+    unless current_user && current_user.admin?
+      flash[:alert] = "Vous devez être administrateur pour effectuer cette action."
+      redirect_to root_path
+    end
+  end
 end

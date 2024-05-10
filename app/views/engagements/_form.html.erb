@@ -1,8 +1,48 @@
-<%= simple_form_for @engagement do |f| %>
-  <%= f.input :sensib, as: :text, label: 'Texte Sensibilisation' %>
-  <%= f.input :protec, as: :text, label: 'Texte Protection' %>
-  <%= f.input :rules, as: :text, label: 'Texte Règles' %>
-  <%= f.input :partner, as: :text, label: 'Texte Partenaires' %>
-  <%= f.input :engagements_img, label: 'Image' %>
-  <%= f.button :submit %>
-<% end %>
+<div class="page-main">
+  <div class="page-padding">
+    <section class="dashboard">
+      <div class="dashboard-wrapper">
+        <h1 class="large">Modifier la page engagements </h1>
+        <div class="form-wrapper">
+          <div class="form">
+            <%= simple_form_for @engagement do |f| %>
+              <div class="form-bloc">
+                <span class="large poppins-semibold">
+                  Texte Sensibilisation
+                </span>
+                <%= f.input :sensib, as: :text, label: false %>
+              </div>
+              <div class="form-bloc">
+                <span class="large poppins-semibold">
+                  Texte Protection
+                </span>
+                <%= f.input :protec, as: :text, label: false %>
+              </div>
+              <div class="form-bloc">
+                <span class="large poppins-semibold">
+                  Texte Règles
+                </span>
+                <%= f.input :rules, as: :text, label: false %>
+              </div>
+              <div class="form-bloc">
+                <span class="large poppins-semibold">
+                  Texte Partenaires
+                </span>
+                <%= f.input :partner, as: :text, label: false %>
+              </div>
+              <div class="form-bloc">
+                <span class="large poppins-semibold">
+                  Image de couverture
+                </span>
+              <%= f.input :engagements_img, label: false %>
+              </div>
+              <button>
+                <%= f.button :submit, "Créer/Modifier" %>
+              </button>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>

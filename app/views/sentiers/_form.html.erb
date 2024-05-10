@@ -1,14 +1,45 @@
-<%= simple_form_for @sentier do |f| %>
-  <%= f.input :title, label: false, placeholder: 'Titre du sentier' %>
-  <%= f.input :description, as: :text, label: false, placeholder: 'Description du sentier' %>
-  <%= f.input :difficulty, label: false, placeholder: 'Dénivelé du sentier' %>
-  <%= f.input :duration, as: :time, label: 'Durée', placeholder: 'Durée du sentier'%>
-  <%= f.input :starting_point_lat, label: false, placeholder: 'Latitude du point de départ du sentier' %>
-  <%= f.input :starting_point_long, label: false, placeholder: 'Longitude du point de départ du sentier' %>
-  <%= f.input :arrival_point_lat, label: false, placeholder: 'Latitude du point darrivée du sentier' %>
-  <%= f.input :arrival_point_long, label: false, placeholder: 'Longitude du point darrivée du sentier' %>
-  <%= f.input :points, as: :check_boxes, collection: Point.all, label: false, placeholder: 'Points dinterêt' %>
-  <%= f.input :is_theme, as: :boolean, boolean_style: :inline, label: 'Sentier Thématique ?' %>
-  <%= f.input :image, label: false, placeholder: 'Image principale du sentier' %>
-  <%= f.button :submit %>
-<% end %>
+<div class="page-main">
+  <div class="page-padding">
+    <section class="dashboard">
+      <div class="dashboard-wrapper">
+        <h1 class="large">Créer/modifier un sentier</h1>
+        <div class="form-wrapper">
+          <div class="form">
+            <%= simple_form_for @sentier do |f| %>
+              <%= f.input :title, label: false, placeholder: 'Titre du sentier' %>
+              <%= f.input :description, as: :text, label: false, placeholder: 'Description du sentier' %>
+              <%= f.input :difficulty, label: false, placeholder: 'Dénivelé du sentier' %>
+              <%= f.input :image, label: false, placeholder: 'Image principale du sentier' %>
+              <div class="form-bloc">
+                <span class="large poppins-semibold">Durée :</span>
+                <%= f.input :duration, as: :time, label: false %>
+              </div>
+              <span class="large poppins-semibold">Coordonnées :</span>
+              <div class="form-grid">
+                <%= f.input :starting_point_lat, label: false, placeholder: 'Latitude du point de départ du sentier' %>
+                <%= f.input :starting_point_long, label: false, placeholder: 'Longitude du point de départ du sentier' %>
+                <%= f.input :arrival_point_lat, label: false, placeholder: 'Latitude du point darrivée du sentier' %>
+                <%= f.input :arrival_point_long, label: false, placeholder: 'Longitude du point darrivée du sentier' %>
+              </div>
+              <div class="form-bloc">
+                <span class="large poppins-semibold">
+                  Points d'interêt du sentier
+                </span>
+                <%= f.association :points, collection: Point.all.order('title'), as: :check_boxes, label: false %>
+              </div>
+              <div class="form-bloc">
+                <span class="large poppins-semibold">
+                  Sentier Thématique ?
+                </span>
+                <%= f.input :is_theme, as: :radio_buttons, collection: [['Oui', true], ['Non', false]], label: false %>
+              </div>
+              <button>
+                <%= f.button :submit, "Créer le sentier" %>
+              </button>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>

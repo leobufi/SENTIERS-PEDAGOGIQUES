@@ -1,5 +1,6 @@
 class SentiersController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
+  before_action :require_admin, only: [:new, :create, :edit, :update, :destroy]
 
   def index
     @sentiers = Sentier.all
@@ -43,6 +44,13 @@ class SentiersController < ApplicationController
 
   def sentier_params
     params.require(:sentier).permit(:title, :description, :image, :duration, :difficulty, :is_theme, :starting_point_lat, :starting_point_long, :arrival_point_lat, :arrival_point_long )
+  end
+
+  def require_admin
+    unless current_user && current_user.admin?
+      flash[:alert] = "Vous devez être administrateur pour effectuer cette action."
+      redirect_to root_path
+    end
   end
 
 end

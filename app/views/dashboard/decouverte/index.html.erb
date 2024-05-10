@@ -1,18 +1,36 @@
-<ul>
-  <% @decouvertes.each do |decouverte| %>
-    <p><%= decouverte.circuit_acc_text %></p>
-    <p><%= decouverte.circuit_acc_img %></p>
-    <p><%= decouverte.anim_scol_text %></p>
-    <p><%= decouverte.anim_scol_img %></p>
-    <button>
-      <%= link_to 'Modifier', edit_decouverte_path(decouverte) %>
-    </button>
-    <button>
-      <%= link_to "Supprimer ", decouverte_path(decouverte), data: {turbo_method: :delete, turbo_confirm: "Êtes-vous sûr ?"}%>
-    </button>
-  <% end %>
-</ul>
-
-<button>
-  <%= link_to 'Créer', new_decouverte_path %>
-</button>
+<div class="page-main">
+  <div class="page-padding">
+    <section class="dashboard">
+      <div class="dashboard-wrapper">
+        <div class="title-wrapper">
+          <h1 class="large">Page Découverte</h1>
+          <button>
+            <%= link_to 'Créer', new_decouverte_path %>
+          </button>
+        </div>
+        <div class="content-wrapper">
+          <div class="content">
+            <% @decouvertes.each do |decouverte| %>
+              <div class="content-infos">
+                  <h4>Circuits accompagnés</h4>
+                  <p><%= sanitize("#{decouverte.circuit_acc_text}".truncate(250)) %></p>
+                  <p><%= decouverte.circuit_acc_img%></p>
+                  <h4>Animation Scolaire</h4>
+                  <p><%= sanitize("#{decouverte.anim_scol_text}".truncate(250)) %></p>
+                  <p><%= decouverte.anim_scol_img %></p>
+              </div>
+              <div class="content-links">
+                <button>
+                  <%= link_to 'Modifier les infos', edit_decouverte_path(decouverte) %>
+                </button>
+                <button>
+                  <%= link_to "Supprimer", decouverte_path(decouverte), data: {turbo_method: :delete, turbo_confirm: "Êtes-vous sûr ?"}%>
+                </button>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
