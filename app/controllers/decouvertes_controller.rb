@@ -1,4 +1,6 @@
 class DecouvertesController < ApplicationController
+  before_action :require_admin, only: [:new, :create, :edit, :update, :destroy]
+
   def new
     @decouverte = Decouverte.new
   end
@@ -29,5 +31,12 @@ class DecouvertesController < ApplicationController
 
   def decouverte_params
     params.require(:decouverte).permit(:circuit_acc_text, :circuit_acc_img, :anim_scol_text, :anim_scol_img )
+  end
+
+  def require_admin
+    unless current_user && current_user.admin?
+      flash[:alert] = "Vous devez être administrateur pour effectuer cette action."
+      redirect_to root_path
+    end
   end
 end

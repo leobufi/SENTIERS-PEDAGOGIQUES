@@ -10,3 +10,43 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+
+h1 {
+  font-size: 24px;
+}
+
+h1.large {
+  font-size: 48px;
+}
+
+.page-main  {
+  margin-left: 20rem;
+}
+
+.page-padding {
+  padding: 2rem;
+}
+
+button {
+  background-color: $black;
+  padding: 1rem;
+  border: 1px solid black;
+  border-radius: 25px;
+  text-decoration: none;
+}
+
+button:hover {
+  background-color: $blue;
+
+  a {
+    color: $black;
+  }
+}
+
+a {
+  text-decoration: none;
+}
+
+span.large {
+  font-size: 18px;
+}

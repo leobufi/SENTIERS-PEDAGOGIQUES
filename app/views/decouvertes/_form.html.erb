@@ -1,7 +1,42 @@
-<%= simple_form_for @decouverte do |f| %>
-  <%= f.input :circuit_acc_text, as: :text, label: 'Texte Circuits accompagnés' %>
-  <%= f.input :circuit_acc_img, label: 'Image Circuits accompagnés' %>
-  <%= f.input :anim_scol_text, label: 'Text Animation Scolaire' %>
-  <%= f.input :anim_scol_img, label: 'Image Animation Scolaire' %>
-  <%= f.button :submit %>
-<% end %>
+<div class="page-main">
+  <div class="page-padding">
+    <section class="dashboard">
+      <div class="dashboard-wrapper">
+        <h1 class="large">Modifier la page découverte</h1>
+        <div class="form-wrapper">
+          <div class="form">
+            <%= simple_form_for @decouverte do |f| %>
+              <div class="form-bloc">
+                <span class="large poppins-semibold">
+                  Texte Circuits accompagnés
+                </span>
+                <%= f.input :circuit_acc_text, as: :text, label: false %>
+              </div>
+              <div class="form-bloc">
+                <span class="large poppins-semibold">
+                  Image Circuits accompagnés
+                </span>
+                <%= f.input :circuit_acc_img, label: false %>
+              </div>
+              <div class="form-bloc">
+                <span class="large poppins-semibold">
+                  Text Animation Scolaire
+                </span>
+                <%= f.input :anim_scol_text, as: :text, label: false %>
+              </div>
+              <div class="form-bloc">
+                <span class="large poppins-semibold">
+                  Image Animation Scolaire
+                </span>
+                <%= f.input :anim_scol_img, label: false %>
+              </div>
+              <button>
+                <%= f.button :submit, "Créer/Modifier" %>
+              </button>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>

@@ -1,19 +1,40 @@
-<ul>
-  <% @engagements.each do |engagement| %>
-    <p><%= engagement.sensib %></p>
-    <p><%= engagement.protec %></p>
-    <p><%= engagement.rules %></p>
-    <p><%= engagement.partner %></p>
-    <p><%= engagement.engagements_img %></p>
-    <button>
-      <%= link_to 'Modifier', edit_engagement_path(engagement) %>
-    </button>
-    <button>
-      <%= link_to "Supprimer ", engagement_path(engagement), data: {turbo_method: :delete, turbo_confirm: "Êtes-vous sûr ?"}%>
-    </button>
-  <% end %>
-</ul>
-
-<button>
-  <%= link_to 'Créer', new_engagement_path %>
-</button>
+<div class="page-main">
+  <div class="page-padding">
+    <section class="dashboard">
+      <div class="dashboard-wrapper">
+        <div class="title-wrapper">
+          <h1 class="large">Page Engagements</h1>
+          <button>
+            <%= link_to 'Créer', new_engagement_path %>
+          </button>
+        </div>
+        <div class="content-wrapper">
+          <div class="content">
+            <% @engagements.each do |engagement| %>
+              <div class="content-infos">
+                  <h4>Sensibilisation</h4>
+                  <p><%= sanitize("#{engagement.sensib}".truncate(250)) %></p>
+                  <h4>Protection</h4>
+                  <p><%= sanitize("#{engagement.protec}".truncate(250)) %></p>
+                  <h4>Règles</h4>
+                  <p><%= sanitize("#{engagement.rules}".truncate(250)) %></p>
+                  <h4>Partenaires</h4>
+                  <p><%= sanitize("#{engagement.partner}".truncate(250)) %></p>
+                  <h4>Image de couverture</h4>
+                  <p><%= engagement.engagements_img %></p>
+              </div>
+              <div class="content-links">
+                <button>
+                  <%= link_to 'Modifier les infos', edit_engagement_path(engagement) %>
+                </button>
+                <button>
+                  <%= link_to "Supprimer", engagement_path(engagement), data: {turbo_method: :delete, turbo_confirm: "Êtes-vous sûr ?"}%>
+                </button>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>

@@ -1,5 +1,30 @@
-<%= simple_form_for @general do |f| %>
-  <%= f.input :general_pres, as: :text, label: 'Texte de présentation général des Sentiers' %>
-  <%= f.input :home_img, label:'Image de couverture de la page daccueil' %>
-  <%= f.button :submit %>
-<% end %>
+<div class="page-main">
+  <div class="page-padding">
+    <section class="dashboard">
+      <div class="dashboard-wrapper">
+        <h1 class="large">Modifier généralités </h1>
+        <div class="form-wrapper">
+          <div class="form">
+            <%= simple_form_for @general do |f| %>
+              <div class="form-bloc">
+                <span class="large poppins-semibold">
+                  Texte de présentation
+                </span>
+                <%= f.input :general_pres, as: :text, label: false %>
+              </div>
+              <div class="form-bloc">
+                <span class="large poppins-semibold">
+                  Image de couverture de la page daccueil
+                </span>
+                <%= f.input :home_img, label:false %>
+              </div>
+              <button>
+                <%= f.button :submit, "Créer/Modifier" %>
+              </button>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>

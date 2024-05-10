@@ -1,4 +1,6 @@
 class EngagementsController < ApplicationController
+  before_action :require_admin, only: [:new, :create, :edit, :update, :destroy]
+
   def new
     @engagement = Engagement.new
   end
@@ -29,5 +31,13 @@ class EngagementsController < ApplicationController
 
   def engagement_params
     params.require(:engagement).permit(:sensib, :protec, :rules, :partner, :engagements_img )
+  end
+
+
+  def require_admin
+    unless current_user && current_user.admin?
+      flash[:alert] = "Vous devez être administrateur pour effectuer cette action."
+      redirect_to root_path
+    end
   end
 end
