@@ -1,1 +1,40 @@
 // Specific CSS for your home-page
+.home-hero {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background-size: cover;
+}
+
+.home-hero_wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 100%;
+  padding: 0 10rem;
+
+  .home-title_wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    row-gap: 2rem;
+    box-shadow: -4px 3px 1px $blue;
+    background-color: $gray;
+    opacity: 0.9;
+    border-radius: 20px;
+    border: 1px solid black;
+    padding: 1.5rem;
+
+    img {
+      width: 30rem;
+    }
+
+    h1 {
+      color: $black;
+      // text-shadow: -4px 3px 1px $blue;
+    }
+  }
+}

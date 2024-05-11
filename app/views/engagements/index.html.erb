@@ -1,0 +1,31 @@
+<div class="page-main">
+  <div class="page-padding no-padding">
+    <section class="static-pages">
+      <div class="static-pages_wrapper">
+        <% @engagements.each  do |engagement| %>
+          <div class="static_wrapper">
+            <div class="static-image">
+              <%= cl_image_tag engagement.engagements_img.key, crop: :fit %>
+            </div>
+            <div class="static-infos">
+              <h4>Sensibilisation</h4>
+              <p><%= engagement.sensib %></p>
+            </div>
+            <div class="static-infos d-none">
+              <h4>Protection</h4>
+              <p><%= engagement.protec %></p>
+            </div>
+            <div class="static-infos d-none">
+              <h4>Réglementation</h4>
+              <p><%= engagement.rules %></p>
+            </div>
+            <div class="static-infos d-none">
+              <h4>Partenaires</h4>
+              <p><%= engagement.partner %></p>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </section>
+  </div>
+</div>
