@@ -3,19 +3,21 @@
   left: 0;
   top: 0;
   bottom: 0;
-  background: $blue;
+  background-color: $gray;
   color: $black;
   border-right: 1px solid black;
   width: 20rem;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  padding: unset;
 }
 
 .navbar-logo {
   width: 100%;
   padding: 1.5rem 1rem;
   border-bottom: 1px solid black;
+    background-color: $blue;
 }
 
 .navbar .navbar-logo img {
@@ -28,19 +30,76 @@
 
 .nav-link {
   border: none;
-  background-color: $gray;
+  background-color: $blue;
   color: $black;
-  padding: 1rem;
+  padding: 0.8rem 1rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid black;
+
+  &.gray {
+    background-color: $gray;
+
+    &:hover {
+      background-color: $gray;
+    }
+  }
 }
+
 
 .nav-link:hover {
   background-color: $black;
   color: $blue;
 }
+
+.nav-infos {
+  display: flex;
+  flex-direction: column;
+  row-gap: 2rem;
+  padding: 1rem;
+  width: 100%;
+  background-color: $gray;
+  overflow: auto;
+  padding-bottom: 1.5rem;
+
+  &.padding-top {
+    padding-top: 2.5rem;
+  }
+
+  &.no-gap {
+    row-gap: unset;
+  }
+
+  .sentier-infos {
+    display: flex;
+    justify-content: flex-start;
+    column-gap: 2rem;
+  }
+}
+
+.page-title {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  padding: 1rem;
+  background-color: $black;
+  color: $blue;
+
+  h5 {
+    margin-bottom: 0;
+  }
+}
+
+.nav-map {
+  width: 100%;
+  height: 20rem;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  background-color: coral;
+}
+
 
 .navbar-expand-sm .navbar-nav .nav-link {
   padding-right: 1rem;
@@ -58,4 +117,15 @@
 
 .navbar .navbar-collapse {
   flex-grow: 0;
+}
+
+.fa-solid.fa-arrow-right.rotated-down {
+  transform: rotate(90deg);
+}
+.fa-solid.fa-arrow-right.rotated-top-right {
+  transform: rotate(-45deg);
+}
+
+.fa-solid.fa-arrow-right.rotated-inversed {
+  transform: rotate(180deg);
 }

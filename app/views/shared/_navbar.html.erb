@@ -14,3 +14,10 @@
 <%= render "shared/navbar-dashboard" if params[:action] == 'edit' && params[:controller] == 'engagements' %>
 <%= render "shared/navbar-dashboard" if params[:action] == 'new' && params[:controller] == 'generals' %>
 <%= render "shared/navbar-dashboard" if params[:action] == 'edit' && params[:controller] == 'generals' %>
+<%= render "shared/navbar-main" if params[:action] == 'home' && params[:controller] == 'pages' %>
+<%= render "shared/navbar-main" if params[:action] == 'index' && params[:controller] == 'sentiers' %>
+<%= render "shared/navbar-main" if params[:action] == 'themes' && params[:controller] == 'sentiers' %>
+<%= render "shared/navbar-sentier" if params[:action] == 'show' && params[:controller] == 'sentiers' %>
+<%= render "shared/navbar-point" if params[:action] == 'show' && params[:controller] == 'points' %>
+<%= render "shared/navbar-decouverte" if params[:action] == 'decouverte' && params[:controller] == 'pages' %>
+<%= render "shared/navbar-engagements" if params[:action] == 'engagements' && params[:controller] == 'pages' %>

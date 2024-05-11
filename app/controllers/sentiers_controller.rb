@@ -4,10 +4,12 @@ class SentiersController < ApplicationController
 
   def index
     @sentiers = Sentier.all
+    @generals = General.all
   end
 
   def themes
     @themes = Sentier.where(is_theme: true)
+    @generals = General.all
   end
 
   def show

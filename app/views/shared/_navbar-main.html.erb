@@ -1,0 +1,42 @@
+<div class="navbar navbar-expand-sm">
+  <%= link_to root_path, class: "navbar-logo" do %>
+    <%= image_tag "logo.png" %>
+  <% end %>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <div class="nav-link gray">
+          <span>Menu</span>
+          <i class="fa-solid fa-arrow-right rotated-down"></i>
+        </div>
+      </li>
+      <li class="nav-item">
+        <%= link_to "Itinéraires", sentiers_path, class:"nav-link" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "Thèmes", themes_sentiers_path, class:"nav-link" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "Découverte", decouverte_path, class:"nav-link" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "Engagements", engagements_path, class:"nav-link" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "Contact", "#", class:"nav-link" %>
+      </li>
+      <li class="nav-item">
+        <% if user_signed_in? && current_user.admin?%>
+          <%= link_to "Tableau de bord", dashboard_path, class: "nav-link" %>
+        <% end %>
+      </li>
+    </ul>
+  </div>
+
+  <div class="nav-infos no-gap">
+      <% @generals.each do |g| %>
+        </p><%= g.general_pres %><p>
+      <% end %>
+  </div>
+</div>
