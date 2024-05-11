@@ -1,0 +1,28 @@
+<div class="page-main">
+  <div class="page-padding no-padding">
+    <section class="static-pages">
+      <div class="static-pages_wrapper">
+        <% @decouvertes.each  do |decouverte| %>
+          <div class="static_wrapper">
+            <div class="static-image">
+              <%= cl_image_tag decouverte.circuit_acc_img.key, crop: :fit %>
+            </div>
+            <div class="static-infos">
+              <h4>Circuits accompagnés</h4>
+              <p><%= decouverte.circuit_acc_text %></p>
+            </div>
+          </div>
+          <div class="static_wrapper">
+            <div class="static-image">
+              <%= cl_image_tag decouverte.anim_scol_img.key, crop: :fit %>
+            </div>
+            <div class="static-infos">
+              <h4>Animation scolaire</h4>
+              <p><%= decouverte.anim_scol_text %></p>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </section>
+  </div>
+</div>

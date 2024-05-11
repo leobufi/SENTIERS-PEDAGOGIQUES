@@ -25,6 +25,10 @@ h1.large {
 
 .page-padding {
   padding: 2rem;
+
+  &.no-padding {
+    padding: unset;
+  }
 }
 
 button {
