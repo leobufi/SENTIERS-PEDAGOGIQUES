@@ -1,0 +1,45 @@
+<div class="navbar navbar-expand-sm">
+  <%= link_to root_path, class: "navbar-logo" do %>
+    <%= image_tag "logo.png" %>
+  <% end %>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav">
+      <li class="nav-item dropright poppins-medium">
+        <a class="nav-link gray dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <span>Menu du site</span>
+          <i class="fa-solid fa-arrow-right"></i>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <%= link_to "Itinéraires", sentiers_path, class:"dropdown-item" %>
+          <%= link_to "Thèmes", themes_sentiers_path, class:"dropdown-item" %>
+          <%= link_to "Engagements", engagements_path, class:"dropdown-item" %>
+          <%= link_to "Découverte", decouverte_path, class:"dropdown-item" %>
+          <%= link_to "Contact", "#", class:"dropdown-item" %>
+          <% if user_signed_in? && current_user.admin?%>
+            <%= link_to "Tableau de bord", dashboard_path, class: "dropdown-item" %>
+          <% end %>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div class="nav-infos padding-top">
+    <h1><%= @point.title %></h1>
+    <span class="little">Thème du sentier</span>
+  </div>
+  <div class="nav-map">
+
+  </div>
+  <ul class="navbar-nav">
+    <li class="nav-item">
+      <%= link_to "#", class:"nav-link" do %>
+        <i class="fa-solid fa-arrow-right rotated-inversed"></i>
+        <span>Point d'interêt précédent</span>
+      <% end %>
+      <%= link_to "#", class:"nav-link" do %>
+        <span>Point d'interêt suivant</span>
+        <i class="fa-solid fa-arrow-right"></i>
+      <% end %>
+    </li>
+  </ul>
+</div>

@@ -1,0 +1,39 @@
+<div class="navbar navbar-expand-sm">
+  <%= link_to root_path, class: "navbar-logo" do %>
+    <%= image_tag "logo.png" %>
+  <% end %>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav">
+      <li class="nav-item dropright poppins-medium">
+        <a class="nav-link gray dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <span>Menu</span>
+          <%# <i class="fa-solid fa-arrow-right"></i> %>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <%= link_to "Itinéraires", sentiers_path, class:"dropdown-item" %>
+          <%= link_to "Thèmes", themes_sentiers_path, class:"dropdown-item" %>
+          <%= link_to "Engagements", engagements_path, class:"dropdown-item" %>
+          <%= link_to "Découverte", decouverte_path, class:"dropdown-item" %>
+          <%= link_to "Contact", "#", class:"dropdown-item" %>
+          <% if user_signed_in? && current_user.admin?%>
+            <%= link_to "Tableau de bord", dashboard_path, class: "dropdown-item" %>
+          <% end %>
+        </div>
+      </li>
+      <div class="page-title">
+        <h5>Découverte</h5>
+      </div>
+      <li class="nav-item">
+        <div class="nav-link">
+          <span>Circuits accompagnés</span>
+        </div>
+      </li>
+      <li class="nav-item">
+        <div class="nav-link">
+          <span>Animation scolaire</span>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
