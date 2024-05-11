@@ -13,11 +13,15 @@
             <% @decouvertes.each do |decouverte| %>
               <div class="content-infos">
                   <h4>Circuits accompagnés</h4>
-                  <p><%= sanitize("#{decouverte.circuit_acc_text}".truncate(250)) %></p>
-                  <p><%= decouverte.circuit_acc_img%></p>
+                  <div class="infos">
+                    <%= cl_image_tag decouverte.circuit_acc_img.key, height: 150, width: 200, crop: :fill %>
+                    <p><%= sanitize("#{decouverte.circuit_acc_text}".truncate(250)) %></p>
+                  </div>
                   <h4>Animation Scolaire</h4>
-                  <p><%= sanitize("#{decouverte.anim_scol_text}".truncate(250)) %></p>
-                  <p><%= decouverte.anim_scol_img %></p>
+                  <div class="infos">
+                    <%= cl_image_tag decouverte.anim_scol_img.key, height: 150, width: 200, crop: :fill %>
+                    <p><%= sanitize("#{decouverte.anim_scol_text}".truncate(250)) %></p>
+                  </div>
               </div>
               <div class="content-links">
                 <button>

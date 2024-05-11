@@ -15,7 +15,10 @@
                 <%= link_to point_path(point) do %>
                   <h4><%= point.title %></h4>
                 <% end %>
-                  <p><%= sanitize("#{point.infos}".truncate(150)) %></p>
+                <p><%= sanitize("#{point.infos}".truncate(150)) %></p>
+                <% if point.image_1.attached? %>
+                  <%= cl_image_tag point.image_1.key, height: 300, width: 400, crop: :fill %>
+                <% end %>
               </div>
               <div class="content-links">
                 <button>

@@ -40,12 +40,18 @@
 .content-infos {
   display: flex;
   flex-direction: column;
-  row-gap: 0.5rem;
+  row-gap: 1rem;
+
+  .infos {
+    display: flex;
+    column-gap: 2rem;
+  }
 }
 
 .content-links {
   display: flex;
   flex-direction: column;
+  align-items: flex-end;
   row-gap: 1rem;
   width: 35%;
 }

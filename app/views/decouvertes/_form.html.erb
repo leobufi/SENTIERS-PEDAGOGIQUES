@@ -5,7 +5,7 @@
         <h1 class="large">Modifier la page découverte</h1>
         <div class="form-wrapper">
           <div class="form">
-            <%= simple_form_for @decouverte do |f| %>
+            <%= simple_form_for(@decouverte) do |f| %>
               <div class="form-bloc">
                 <span class="large poppins-semibold">
                   Texte Circuits accompagnés
@@ -16,7 +16,7 @@
                 <span class="large poppins-semibold">
                   Image Circuits accompagnés
                 </span>
-                <%= f.input :circuit_acc_img, label: false %>
+                <%= f.input :circuit_acc_img, as: :file, label: false %>
               </div>
               <div class="form-bloc">
                 <span class="large poppins-semibold">
@@ -28,7 +28,7 @@
                 <span class="large poppins-semibold">
                   Image Animation Scolaire
                 </span>
-                <%= f.input :anim_scol_img, label: false %>
+                <%= f.input :anim_scol_img, as: :file, label: false %>
               </div>
               <button>
                 <%= f.button :submit, "Créer/Modifier" %>

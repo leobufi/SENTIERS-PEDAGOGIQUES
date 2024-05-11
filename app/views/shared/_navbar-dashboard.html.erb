@@ -6,7 +6,7 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav">
       <li class="nav-item dropright poppins-medium">
-        <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link gray dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <span>Menu du site</span>
           <%# <i class="fa-solid fa-arrow-right"></i> %>
         </a>
@@ -14,7 +14,7 @@
           <%= link_to "Itinéraires", sentiers_path, class:"dropdown-item" %>
           <%= link_to "Thèmes", themes_sentiers_path, class:"dropdown-item" %>
           <%= link_to "Engagements", engagements_path, class:"dropdown-item" %>
-          <%= link_to "Découverte", decouverte_path, class:"dropdown-item" %>
+          <%= link_to "Découverte", decouvertes_path, class:"dropdown-item" %>
           <%= link_to "Contact", "#", class:"dropdown-item" %>
           <% if user_signed_in? && current_user.admin?%>
             <%= link_to "Tableau de bord", dashboard_path, class: "dropdown-item" %>

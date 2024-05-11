@@ -5,11 +5,11 @@
         <h1 class="large">Créer/modifier un sentier</h1>
         <div class="form-wrapper">
           <div class="form">
-            <%= simple_form_for @sentier do |f| %>
+            <%= simple_form_for(@sentier) do |f| %>
               <%= f.input :title, label: false, placeholder: 'Titre du sentier' %>
               <%= f.input :description, as: :text, label: false, placeholder: 'Description du sentier' %>
               <%= f.input :difficulty, label: false, placeholder: 'Dénivelé du sentier' %>
-              <%= f.input :image, label: false, placeholder: 'Image principale du sentier' %>
+              <%= f.input :image, as: :file, label: false, placeholder: 'Image principale du sentier' %>
               <div class="form-bloc">
                 <span class="large poppins-semibold">Durée :</span>
                 <%= f.input :duration, as: :time, label: false %>

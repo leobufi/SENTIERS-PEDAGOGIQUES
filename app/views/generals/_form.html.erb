@@ -16,7 +16,7 @@
                 <span class="large poppins-semibold">
                   Image de couverture de la page daccueil
                 </span>
-                <%= f.input :home_img, label:false %>
+                <%= f.input :home_img, as: :file, label:false %>
               </div>
               <button>
                 <%= f.button :submit, "Créer/Modifier" %>

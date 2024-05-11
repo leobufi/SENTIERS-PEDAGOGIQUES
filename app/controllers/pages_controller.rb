@@ -5,12 +5,4 @@ class PagesController < ApplicationController
     @generals = General.all
   end
 
-  def decouverte
-    @decouverte = Decouverte.first
-  end
-
-  def engagements
-    @engagement = Engagement.first
-  end
-
 end

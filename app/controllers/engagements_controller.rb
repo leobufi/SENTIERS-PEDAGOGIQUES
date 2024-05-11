@@ -1,6 +1,10 @@
 class EngagementsController < ApplicationController
   before_action :require_admin, only: [:new, :create, :edit, :update, :destroy]
 
+  def index
+    @engagements = Engagement.all
+  end
+
   def new
     @engagement = Engagement.new
   end

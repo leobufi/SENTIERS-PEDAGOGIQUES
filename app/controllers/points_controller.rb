@@ -39,7 +39,34 @@ class PointsController < ApplicationController
   private
 
   def point_params
-    params.require(:point).permit(:title, :infos, :lat, :long, :video, :audio )
+    params.require(:point).permit(
+      :title,
+      :infos,
+      :lat,
+      :long,
+      :video,
+      :audio,
+      :image_1,
+      :image_1_commment,
+      :image_2,
+      :image_2_commment,
+      :image_3,
+      :image_3_commment,
+      :image_4,
+      :image_4_commment,
+      :image_5,
+      :image_5_commment,
+      :image_6,
+      :image_6_commment,
+      :image_7,
+      :image_7_commment,
+      :image_8,
+      :image_8_commment,
+      :image_9,
+      :image_9_commment,
+      :image_10,
+      :image_10_commment
+    )
   end
 
   def require_admin
