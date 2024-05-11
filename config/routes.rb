@@ -8,10 +8,8 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root "pages#home"
-  get "decouverte", to: "pages#decouverte"
-  get "engagements", to: "pages#engagements"
 
-  get 'dashboard', to: 'dashboard/dashboard#index', as: :dashboard
+  get 'dashboard/dashboard', to: 'dashboard/dashboard#index', as: :dashboard
   get 'dashboard/generals', to: 'dashboard/generals#index', as: :dashboard_generals
   get 'dashboard/sentiers', to: 'dashboard/sentiers#index', as: :dashboard_sentiers
   get 'dashboard/points', to: 'dashboard/points#index', as: :dashboard_points
@@ -25,8 +23,8 @@ Rails.application.routes.draw do
   end
 
   resources :points
-  resources :generals, only: [:new, :create, :edit, :update, :destroy]
-  resources :decouvertes, only: [:new, :create, :edit, :update, :destroy]
-  resources :engagements, only: [:new, :create, :edit, :update, :destroy]
+  resources :generals, except: [:show, :index]
+  resources :decouvertes, except: [:show]
+  resources :engagements, except: [:show]
 
 end

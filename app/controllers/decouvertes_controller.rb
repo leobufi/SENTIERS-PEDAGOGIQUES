@@ -1,14 +1,21 @@
 class DecouvertesController < ApplicationController
   before_action :require_admin, only: [:new, :create, :edit, :update, :destroy]
 
+  def index
+    @decouvertes = Decouverte.all
+  end
+
   def new
     @decouverte = Decouverte.new
   end
 
   def create
     @decouverte = Decouverte.new(decouverte_params)
-    @decouverte.save
-    redirect_to dashboard_path
+    if @decouverte.save(decouverte_params)
+      redirect_to dashboard_decouvertes_path
+    else
+      render :new
+    end
   end
 
   def edit
@@ -17,14 +24,18 @@ class DecouvertesController < ApplicationController
 
   def update
     @decouverte = Decouverte.find(params[:id])
-    @decouverte.update(decouverte_params)
-    redirect_to dashboard_path
+    if @decouverte.update(decouverte_params)
+      redirect_to dashboard_decouverte_path
+    else
+      flash[:alert] = "Échec de la modification."
+      redirect_to root_path
+    end
   end
 
   def destroy
     @decouverte = Decouverte.find(params[:id])
     @decouverte.destroy
-    redirect_to dashboard_path, status: :see_other
+    redirect_to dashboard_path
   end
 
   private

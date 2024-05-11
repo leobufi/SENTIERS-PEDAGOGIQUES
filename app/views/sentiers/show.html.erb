@@ -2,6 +2,7 @@
 <p><%= @sentier.description %></p>
 <p><%= @sentier.duration %></p>
 <p><%= @sentier.difficulty %></p>
+<%= cl_image_tag @sentier.image.key, height: 300, width: 400, crop: :fill %>
 <% @sentier.points.each do |point| %>
   <p><%= point.title %></p>
 <% end %>

@@ -5,7 +5,7 @@
         <h1 class="large">Modifier la page engagements </h1>
         <div class="form-wrapper">
           <div class="form">
-            <%= simple_form_for @engagement do |f| %>
+            <%= simple_form_for(@engagement) do |f| %>
               <div class="form-bloc">
                 <span class="large poppins-semibold">
                   Texte Sensibilisation
@@ -34,7 +34,7 @@
                 <span class="large poppins-semibold">
                   Image de couverture
                 </span>
-              <%= f.input :engagements_img, label: false %>
+              <%= f.input :engagements_img, as: :file, label: false %>
               </div>
               <button>
                 <%= f.button :submit, "Créer/Modifier" %>

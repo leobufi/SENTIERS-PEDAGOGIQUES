@@ -1,4 +1,5 @@
 class Sentier < ApplicationRecord
+  has_one_attached :image
 
   has_many :roads
   has_many :points, through: :roads
