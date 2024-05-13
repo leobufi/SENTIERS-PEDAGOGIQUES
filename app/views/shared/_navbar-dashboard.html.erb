@@ -3,40 +3,60 @@
     <%= image_tag "logo.png" %>
   <% end %>
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav">
-      <li class="nav-item dropright poppins-medium">
-        <a class="nav-link gray dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <span>Menu du site</span>
-          <%# <i class="fa-solid fa-arrow-right"></i> %>
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <%= link_to "Itinéraires", sentiers_path, class:"dropdown-item" %>
-          <%= link_to "Thèmes", themes_sentiers_path, class:"dropdown-item" %>
-          <%= link_to "Engagements", engagements_path, class:"dropdown-item" %>
-          <%= link_to "Découverte", decouvertes_path, class:"dropdown-item" %>
-          <%= link_to "Contact", "#", class:"dropdown-item" %>
+  <div class="collapse navbar-collapse">
+    <ul class="navbar-nav" data-controller="navbar">
+      <li class="nav-item poppins-medium" data-action="mouseleave->navbar#removeDropright">
+          <span class="nav-link gray" data-navbar-target="link" data-action="mouseover->navbar#dropright">
+            <i class="fa-solid fa-arrow-right"></i>
+            Menu du site
+          </span>
+        <div class="nav-dropright-menu" data-navbar-target="dropright">
+          <%= link_to "Itinéraires", sentiers_path, class:"nav-link" %>
+          <%= link_to "Thèmes", themes_sentiers_path, class:"nav-link" %>
+          <%= link_to "Engagements", engagements_path, class:"nav-link" %>
+          <%= link_to "Découverte", decouvertes_path, class:"nav-link" %>
+          <%= link_to "Contact", "#", class:"nav-link" %>
           <% if user_signed_in? && current_user.admin?%>
-            <%= link_to "Tableau de bord", dashboard_path, class: "dropdown-item" %>
+            <%= link_to "Tableau de bord", dashboard_path, class: "nav-link" %>
           <% else %>
-            <%= link_to "Login", new_user_session_path, class: "dropdown-item" %>
+            <%= link_to "Login", new_user_session_path, class: "nav-link" %>
           <% end %>
         </div>
       </li>
       <li class="nav-item">
-        <%= link_to "Mes Sentiers", dashboard_sentiers_path, class:"nav-link" %>
+        <%= link_to dashboard_sentiers_path do %>
+          <span class="nav-link" data-navbar-target="title" id="sentiers">
+            Mes sentiers
+          </span>
+        <% end %>
       </li>
       <li class="nav-item">
-        <%= link_to "Mes Points d'interêts", dashboard_points_path, class:"nav-link" %>
+        <%= link_to dashboard_points_path do %>
+          <span class="nav-link" data-navbar-target="title" id="points">
+            Mes Points d'interêt
+          </span>
+        <% end %>
       </li>
       <li class="nav-item">
-        <%= link_to "Page Découverte", dashboard_decouverte_path, class:"nav-link" %>
+        <%= link_to dashboard_decouverte_path do %>
+          <span class="nav-link" data-navbar-target="title" id="decouverte">
+            Page Découverte
+          </span>
+        <% end %>
       </li>
       <li class="nav-item">
-        <%= link_to "Page Engagements", dashboard_engagement_path, class:"nav-link" %>
+        <%= link_to dashboard_engagement_path do %>
+          <span class="nav-link" data-navbar-target="title" id="engagements">
+            Page Engagements
+          </span>
+        <% end %>
       </li>
       <li class="nav-item">
-        <%= link_to "Généralités", dashboard_generals_path, class:"nav-link" %>
+        <%= link_to dashboard_generals_path do %>
+          <span class="nav-link" data-navbar-target="title" id="generals">
+            Généralités
+          </span>
+        <% end %>
       </li>
     </ul>
   </div>

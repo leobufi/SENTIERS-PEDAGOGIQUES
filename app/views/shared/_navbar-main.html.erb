@@ -4,18 +4,26 @@
   <% end %>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav">
+    <ul class="navbar-nav" data-controller="navbar">
       <li class="nav-item">
-        <div class="nav-link gray">
-          <span>Menu</span>
+        <div class="nav-link active gray">
           <i class="fa-solid fa-arrow-right rotated-down"></i>
+          <span>Menu</span>
         </div>
       </li>
       <li class="nav-item">
-        <%= link_to "Itinéraires", sentiers_path, class:"nav-link" %>
+        <%= link_to sentiers_path do %>
+          <span class="nav-link" data-navbar-target="title" id="sentiers">
+            Itinéraires
+          </span>
+        <% end %>
       </li>
       <li class="nav-item">
-        <%= link_to "Thèmes", themes_sentiers_path, class:"nav-link" %>
+        <%= link_to themes_sentiers_path do %>
+          <span class="nav-link" data-navbar-target="title" id="themes">
+            Thèmes
+          </span>
+        <% end %>
       </li>
       <li class="nav-item">
         <%= link_to "Découverte", decouvertes_path, class:"nav-link" %>

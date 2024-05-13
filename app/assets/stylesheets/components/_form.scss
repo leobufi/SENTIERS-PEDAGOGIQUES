@@ -12,10 +12,50 @@
   border-radius: 20px;
 }
 
+
 .simple_form {
   display: flex;
   flex-direction: column;
-  row-gap: 2rem;
+  row-gap: 1.5rem;
+}
+
+.form-tabs_wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .form-tab {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.8rem;
+    background-color: $blue;
+    border: 1px solid black;
+    border-radius: 20px;
+    width: 8rem;
+    cursor: pointer;
+  }
+
+  .form-tab.active {
+    background-color: $black;
+    color: $blue;
+  }
+
+  .form-tab:hover {
+    background-color: $black;
+    color: $blue;
+  }
+}
+
+.form-bloc_wrapper {
+  display: none;
+
+  &.active {
+    display: flex;
+    flex-direction: column;
+    row-gap: 1.5rem;
+  }
+
 }
 
 input {

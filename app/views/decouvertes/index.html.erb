@@ -3,7 +3,7 @@
     <section class="static-pages">
       <div class="static-pages_wrapper">
         <% @decouvertes.each  do |decouverte| %>
-          <div class="static_wrapper">
+          <div class="static_wrapper active" data-tabs-target="panel" data-tab-name="circuits accompagnés">
             <div class="static-image">
               <%= cl_image_tag decouverte.circuit_acc_img.key, crop: :fit %>
             </div>
@@ -12,7 +12,7 @@
               <p><%= decouverte.circuit_acc_text %></p>
             </div>
           </div>
-          <div class="static_wrapper">
+          <div class="static_wrapper" data-tabs-target="panel" data-tab-name="animation scolaire">
             <div class="static-image">
               <%= cl_image_tag decouverte.anim_scol_img.key, crop: :fit %>
             </div>

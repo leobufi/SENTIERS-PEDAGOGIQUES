@@ -12,26 +12,30 @@
 }
 
 .static_wrapper {
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
+  display: none;
 
-  .static-image {
-    display: flex;
-    height: 25.18rem;
-    border-bottom: 1px solid black;
-
-    img {
-      width: 100%;
-      object-fit: cover;
-    }
-  }
-
-  .static-infos {
+  &.active {
     display: flex;
     flex-direction: column;
-    row-gap: 4rem;
-    padding: 4rem;
-    overflow: auto;
+    height: 100vh;
+
+    .static-image {
+      display: flex;
+      height: 25.18rem;
+      border-bottom: 1px solid black;
+
+      img {
+        width: 100%;
+        object-fit: cover;
+      }
+    }
+
+    .static-infos {
+      display: flex;
+      flex-direction: column;
+      row-gap: 4rem;
+      padding: 4rem;
+      overflow: auto;
+    }
   }
 }

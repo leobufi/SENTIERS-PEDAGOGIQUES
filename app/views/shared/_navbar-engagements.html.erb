@@ -4,20 +4,20 @@
   <% end %>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav">
-      <li class="nav-item dropright poppins-medium">
-        <a class="nav-link gray dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <span>Menu</span>
-          <%# <i class="fa-solid fa-arrow-right"></i> %>
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <%= link_to "Itinéraires", sentiers_path, class:"dropdown-item" %>
-          <%= link_to "Thèmes", themes_sentiers_path, class:"dropdown-item" %>
-          <%= link_to "Engagements", engagements_path, class:"dropdown-item" %>
-          <%= link_to "Découverte", decouvertes_path, class:"dropdown-item" %>
-          <%= link_to "Contact", "#", class:"dropdown-item" %>
+    <ul class="navbar-nav" data-controller="navbar">
+      <li class="nav-item poppins-medium" data-action="mouseleave->navbar#removeDropright">
+          <span class="nav-link gray" data-navbar-target="link" data-action="mouseover->navbar#dropright">
+            <i class="fa-solid fa-arrow-right"></i>
+            Menu du site
+          </span>
+        <div class="nav-dropright-menu" data-navbar-target="dropright">
+          <%= link_to "Itinéraires", sentiers_path, class:"nav-link" %>
+          <%= link_to "Thèmes", themes_sentiers_path, class:"nav-link" %>
+          <%= link_to "Engagements", engagements_path, class:"nav-link" %>
+          <%= link_to "Découverte", decouvertes_path, class:"nav-link" %>
+          <%= link_to "Contact", "#", class:"nav-link" %>
           <% if user_signed_in? && current_user.admin?%>
-            <%= link_to "Tableau de bord", dashboard_path, class: "dropdown-item" %>
+            <%= link_to "Tableau de bord", dashboard_path, class: "nav-link" %>
           <% end %>
         </div>
       </li>
@@ -25,24 +25,28 @@
         <h5>Engagements</h5>
       </div>
       <li class="nav-item">
-        <div class="nav-link">
-          <span>Sensibilisation</span>
-        </div>
+        <span class="nav-link active" data-tabs-target="tab" data-action="click->tabs#activate" data-tab-name="sensibilisation">
+          <i class="fa-solid fa-arrow-right"></i>
+          Sensibilisation
+        </span>
       </li>
       <li class="nav-item">
-        <div class="nav-link">
-          <span>Protection</span>
-        </div>
+        <span class="nav-link" data-tabs-target="tab" data-action="click->tabs#activate" data-tab-name="protection">
+          <i class="fa-solid fa-arrow-right"></i>
+          Protection
+        </span>
       </li>
       <li class="nav-item">
-        <div class="nav-link">
-          <span>Réglementation</span>
-        </div>
+        <span class="nav-link" data-tabs-target="tab" data-action="click->tabs#activate" data-tab-name="reglementation">
+          <i class="fa-solid fa-arrow-right"></i>
+          Réglementation
+        </span>
       </li>
       <li class="nav-item">
-        <div class="nav-link">
-          <span>Partenaires</span>
-        </div>
+        <span class="nav-link" data-tabs-target="tab" data-action="click->tabs#activate" data-tab-name="partenaires">
+          <i class="fa-solid fa-arrow-right"></i>
+          Partenaires
+        </span>
       </li>
     </ul>
   </div>

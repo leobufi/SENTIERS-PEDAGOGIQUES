@@ -10,28 +10,30 @@
         </div>
         <div class="content-wrapper">
           <div class="content">
-            <% @engagements.each do |engagement| %>
-              <div class="content-infos">
-                  <h4>Sensibilisation</h4>
-                  <p><%= sanitize("#{engagement.sensib}".truncate(250)) %></p>
-                  <h4>Protection</h4>
-                  <p><%= sanitize("#{engagement.protec}".truncate(250)) %></p>
-                  <h4>Règles</h4>
-                  <p><%= sanitize("#{engagement.rules}".truncate(250)) %></p>
-                  <h4>Partenaires</h4>
-                  <p><%= sanitize("#{engagement.partner}".truncate(250)) %></p>
-                  <h4>Image de couverture</h4>
-                  <%= cl_image_tag engagement.engagements_img.key, height: 150, width: 200, crop: :fill %>
-              </div>
-              <div class="content-links">
-                <button>
-                  <%= link_to 'Modifier les infos', edit_engagement_path(engagement) %>
-                </button>
-                <button>
-                  <%= link_to "Supprimer", engagement_path(engagement), data: {turbo_method: :delete, turbo_confirm: "Êtes-vous sûr ?"}%>
-                </button>
-              </div>
-            <% end %>
+            <div class="content-infos_wrapper active">
+              <% @engagements.each do |engagement| %>
+                <div class="content-infos">
+                    <h4>Sensibilisation</h4>
+                    <p><%= sanitize("#{engagement.sensib}".truncate(250)) %></p>
+                    <h4>Protection</h4>
+                    <p><%= sanitize("#{engagement.protec}".truncate(250)) %></p>
+                    <h4>Règles</h4>
+                    <p><%= sanitize("#{engagement.rules}".truncate(250)) %></p>
+                    <h4>Partenaires</h4>
+                    <p><%= sanitize("#{engagement.partner}".truncate(250)) %></p>
+                    <h4>Image de couverture</h4>
+                    <%= cl_image_tag engagement.engagements_img.key, height: 150, width: 200, crop: :fill %>
+                </div>
+                <div class="content-links">
+                  <button>
+                    <%= link_to 'Modifier les infos', edit_engagement_path(engagement) %>
+                  </button>
+                  <button>
+                    <%= link_to "Supprimer", engagement_path(engagement), data: {turbo_method: :delete, turbo_confirm: "Êtes-vous sûr ?"}%>
+                  </button>
+                </div>
+              <% end %>
+            </div>
           </div>
         </div>
       </div>

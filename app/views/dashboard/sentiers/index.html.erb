@@ -1,6 +1,6 @@
 <div class="page-main">
   <div class="page-padding">
-    <section class="dashboard">
+    <section class="dashboard" data-controller="tabs">
       <div class="dashboard-wrapper">
         <div class="title-wrapper">
           <h1 class="large">Mes Sentiers</h1>
@@ -9,23 +9,28 @@
           </button>
         </div>
         <div class="content-wrapper">
-          <% @sentiers.each do |sentier| %>
+          <% @sentiers.sort_by(&:title).each do |sentier| %>
             <div class="content">
-              <div class="content-infos">
-                <%= link_to sentier_path(sentier) do %>
-                  <h4><%= sentier.title %></h4>
-                <% end %>
+              <div class="content-title">
+                <h4 data-tabs-target="tab" data-action="click->tabs#activate" data-tab-name="<%= sentier.title %>"><%= sentier.title %></h4>
+              </div>
+              <div class="content-infos_wrapper" data-tabs-target="panel" data-tab-name="<%= sentier.title %>">
+                <div class="content-infos">
                   <p><%= sanitize("#{sentier.description}".truncate(150)) %></p>
                   <p>Durée : <%=sentier.duration.strftime("%H:%M")%></p>
                   <p>Dénivelé : <%=sentier.difficulty%></p>
-              </div>
-              <div class="content-links">
-                <button>
-                  <%= link_to 'Modifier le sentier', edit_sentier_path(sentier) %>
-                </button>
-                <button>
-                  <%= link_to "Supprimer le sentier", sentier_path(sentier), data: {turbo_method: :delete, turbo_confirm: "Êtes-vous sûr ?"}%>
-                </button>
+                </div>
+                <div class="content-links">
+                  <button>
+                    <%= link_to 'Voir le sentier', sentier_path(sentier) %>
+                  </button>
+                  <button>
+                    <%= link_to 'Modifier le sentier', edit_sentier_path(sentier) %>
+                  </button>
+                  <button>
+                    <%= link_to "Supprimer le sentier", sentier_path(sentier), data: {turbo_method: :delete, turbo_confirm: "Êtes-vous sûr ?"}%>
+                  </button>
+                  </div>
               </div>
             </div>
           <% end %>
