@@ -1,8 +1,50 @@
-<h2><%= @sentier.title %></h2>
-<p><%= @sentier.description %></p>
-<p><%= @sentier.duration %></p>
-<p><%= @sentier.difficulty %></p>
-<%= cl_image_tag @sentier.image.key, height: 300, width: 400, crop: :fill %>
-<% @sentier.points.each do |point| %>
-  <p><%= point.title %></p>
-<% end %>
+<div class="page-main">
+  <div class="page-padding no-padding">
+    <section class="dynamic-pages">
+      <div class="dynamic-pages_wrapper">
+        <div class="map-canva">
+
+        </div>
+        <div class="infos_wrapper">
+          <div class="info_bloc">
+            <div class="points_bloc">
+                <h5>Points d'interêt</h5>
+                <i class="fa-solid fa-arrow-right rotated-down"></i>
+            </div>
+            <ul class="points-list">
+              <% @sentier.points.each  do |point| %>
+                <li>
+                  <input type="checkbox" data-tabs-target="tab" data-action="click->tabs#activate" data-tab-name="<%= point.title %>"/>
+                  <label data-tabs-target="tab" data-action="click->tabs#activate" data-tab-name="<%= point.title %>"><%= point.title %></label>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+          <div class="info_bloc">
+            <% @sentier.points.each do |point| %>
+              <div class="point-infos" data-tabs-target="panel" data-tab-name="<%= point.title %>">
+                <h5><%= point.title %></h5>
+                <p><%= point.infos %></p>
+                <%= link_to point_path(point) do %>
+                  <h5>
+                    Découvrir <%= point.title %>
+                    <i class="fa-solid fa-arrow-right"></i>
+                  </h5>
+                <% end %>
+              </div>
+            <% end %>
+            </div>
+          <div class="info_bloc no-border">
+            <% @sentier.points.each do |point| %>
+              <div class="point-image" data-tabs-target="image" data-tab-name="<%= point.title %>">
+                <% if point.image_1.attached? %>
+                  <%= cl_image_tag point.image_1.key, crop: :fill %>
+                <% end %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>

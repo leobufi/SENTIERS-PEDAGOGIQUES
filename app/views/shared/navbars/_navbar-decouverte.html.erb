@@ -7,13 +7,13 @@
       <li class="nav-item poppins-medium" data-action="mouseleave->navbar#removeDropright">
           <span class="nav-link gray" data-navbar-target="link" data-action="mouseover->navbar#dropright">
             <i class="fa-solid fa-arrow-right"></i>
-            Menu du site
+            Menu
           </span>
         <div class="nav-dropright-menu" data-navbar-target="dropright">
           <%= link_to "Itinéraires", sentiers_path, class:"nav-link" %>
           <%= link_to "Thèmes", themes_sentiers_path, class:"nav-link" %>
-          <%= link_to "Engagements", engagements_path, class:"nav-link" %>
           <%= link_to "Découverte", decouvertes_path, class:"nav-link" %>
+          <%= link_to "Engagements", engagements_path, class:"nav-link" %>
           <%= link_to "Contact", "#", class:"nav-link" %>
           <% if user_signed_in? && current_user.admin?%>
             <%= link_to "Tableau de bord", dashboard_path, class: "nav-link" %>
