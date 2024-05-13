@@ -46,6 +46,10 @@
     border: 1px solid black;
     border-bottom: none;
   }
+
+  .nav-link {
+    font-weight: 400;
+  }
 }
 
 .nav-link {
@@ -82,11 +86,11 @@
 
   &.active-black {
     background-color: $black;
-      color: $blue;
+    color: $blue;
+    font-size: 1.25rem;
+    font-weight: 500;
+    line-height: 1.2
 
-    i {
-      display: block;
-    }
   }
 }
 
@@ -127,8 +131,8 @@
   align-items: center;
   width: 100%;
   padding: 1rem;
-    background-color: $black;
-    color: $blue;
+  background-color: $black;
+  color: $blue;
 
   h5 {
     margin-bottom: 0;

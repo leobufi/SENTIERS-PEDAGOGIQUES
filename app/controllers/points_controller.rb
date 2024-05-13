@@ -1,10 +1,6 @@
 class PointsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index, :show]
+  skip_before_action :authenticate_user!, only: [:show]
   before_action :require_admin, only: [:new, :create, :edit, :update, :destroy]
-
-  def index
-    @points = Point.all
-  end
 
   def show
     @point = Point.find(params[:id])

@@ -22,8 +22,15 @@ class SentiersController < ApplicationController
 
   def create
     @sentier = Sentier.new(sentier_params)
-    @sentier.save
+    points_params = params[:sentier][:point_ids]
+    points_params.delete("")
+    points = Point.find(points_params)
+    @sentier.points = points
+    if @sentier.save
     redirect_to sentier_path(@sentier)
+    else
+      redirect_to new_sentier_path, notice: "Le Sentier n'a pas pu être créé, réessayez ultérieurement"
+    end
   end
 
   def edit
@@ -32,8 +39,15 @@ class SentiersController < ApplicationController
 
   def update
     @sentier = Sentier.find(params[:id])
-    @sentier.update(sentier_params)
+    points_params = params[:sentier][:point_ids]
+    points_params.delete("")
+    points = Point.find(points_params)
+    @sentier.points = points
+    if @sentier.update(sentier_params)
     redirect_to sentier_path(@sentier)
+    else
+      redirect_to edt_sentier_path(@sentier), notice: "Le Sentier n'a pas pu être modifier, réessayez ultérieurement"
+    end
   end
 
   def destroy

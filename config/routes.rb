@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root "pages#home"
 
-  get 'dashboard/dashboard', to: 'dashboard/dashboard#index', as: :dashboard
+  get 'dashboard', to: 'dashboard/dashboard#index', as: :dashboard
   get 'dashboard/generals', to: 'dashboard/generals#index', as: :dashboard_generals
   get 'dashboard/sentiers', to: 'dashboard/sentiers#index', as: :dashboard_sentiers
   get 'dashboard/points', to: 'dashboard/points#index', as: :dashboard_points
@@ -20,7 +20,7 @@ Rails.application.routes.draw do
 
   resources :sentiers
 
-  resources :points
+  resources :points, except: [:index]
   resources :generals, except: [:show, :index]
   resources :decouvertes, except: [:show]
   resources :engagements, except: [:show]
