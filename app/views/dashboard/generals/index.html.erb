@@ -10,22 +10,24 @@
         </div>
         <div class="content-wrapper">
           <div class="content">
-            <% @generals.each do |general| %>
-              <div class="content-infos">
-                  <h4>Texte de présentation du projet</h4>
-                  <p><%= sanitize("#{general.general_pres}".truncate(250)) %></p>
-                  <h4>Image de de la page d'accueil</h4>
-                  <%= cl_image_tag general.home_img.key, height: 300, width: 400, crop: :fill %>
-              </div>
-              <div class="content-links">
-                <button>
-                  <%= link_to 'Modifier les infos', edit_general_path(general) %>
-                </button>
-                <button>
-                  <%= link_to "Supprimer", general_path(general), data: {turbo_method: :delete, turbo_confirm: "Êtes-vous sûr ?"}%>
-                </button>
-              </div>
-            <% end %>
+            <div class="content-infos_wrapper active">
+              <% @generals.each do |general| %>
+                <div class="content-infos">
+                    <h4>Texte de présentation du projet</h4>
+                    <p><%= sanitize("#{general.general_pres}".truncate(250)) %></p>
+                    <h4>Image de de la page d'accueil</h4>
+                    <%= cl_image_tag general.home_img.key, height: 200, width: 300, crop: :fill %>
+                </div>
+                <div class="content-links">
+                  <button>
+                    <%= link_to 'Modifier les infos', edit_general_path(general) %>
+                  </button>
+                  <button>
+                    <%= link_to "Supprimer", general_path(general), data: {turbo_method: :delete, turbo_confirm: "Êtes-vous sûr ?"}%>
+                  </button>
+                </div>
+              <% end %>
+            </div>
           </div>
         </div>
       </div>

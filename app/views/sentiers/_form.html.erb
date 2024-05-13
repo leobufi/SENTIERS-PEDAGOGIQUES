@@ -23,7 +23,7 @@
               </div>
               <div class="form-bloc">
                 <span class="large poppins-semibold">
-                  Points d'interêt du sentier
+                  Points d'interêt du sentier :
                 </span>
                 <%= f.association :points, collection: Point.all.order('title'), as: :check_boxes, label: false %>
               </div>

@@ -28,15 +28,36 @@
   width: 100%;
 }
 
+.navbar-nav {
+  display: block;
+  width: 100%;
+  position: relative;
+}
+
+.nav-dropright-menu {
+  display: none;
+
+  &.active {
+    display: block;
+    position: absolute;
+    right: -15rem;
+    top: -0.05rem;
+    width: 15rem;
+    border: 1px solid black;
+    border-bottom: none;
+  }
+}
+
 .nav-link {
   border: none;
   background-color: $blue;
   color: $black;
   padding: 0.8rem 1rem;
   display: flex;
-  justify-content: space-between;
+  column-gap: 2rem;
   align-items: center;
   border-bottom: 1px solid black;
+  cursor: pointer;
 
   &.gray {
     background-color: $gray;
@@ -45,12 +66,34 @@
       background-color: $gray;
     }
   }
+
+  i {
+    display: none;
+  }
+
+  &.active {
+    background-color: $gray;
+    color: $black;
+
+    i {
+      display: block;
+    }
+  }
+
+  &.active-black {
+    background-color: $black;
+      color: $blue;
+
+    i {
+      display: block;
+    }
+  }
 }
 
 
 .nav-link:hover {
-  background-color: $black;
-  color: $blue;
+  background-color: $gray;
+  color: $black;
 }
 
 .nav-infos {
@@ -84,8 +127,8 @@
   align-items: center;
   width: 100%;
   padding: 1rem;
-  background-color: $black;
-  color: $blue;
+    background-color: $black;
+    color: $blue;
 
   h5 {
     margin-bottom: 0;
@@ -104,11 +147,6 @@
 .navbar-expand-sm .navbar-nav .nav-link {
   padding-right: 1rem;
   padding-left: 1rem;
-}
-
-.navbar-nav {
-  display: block;
-  width: 100%;
 }
 
 .navbar-toggler-icon {

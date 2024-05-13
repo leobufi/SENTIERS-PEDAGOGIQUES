@@ -3,7 +3,7 @@
     <section class="static-pages">
       <div class="static-pages_wrapper">
         <% @engagements.each  do |engagement| %>
-          <div class="static_wrapper">
+          <div class="static_wrapper active" data-tabs-target="panel" data-tab-name="sensibilisation">
             <div class="static-image">
               <%= cl_image_tag engagement.engagements_img.key, crop: :fit %>
             </div>
@@ -11,15 +11,30 @@
               <h4>Sensibilisation</h4>
               <p><%= engagement.sensib %></p>
             </div>
-            <div class="static-infos d-none">
+          </div>
+          <div class="static_wrapper" data-tabs-target="panel" data-tab-name="protection">
+            <div class="static-image">
+              <%= cl_image_tag engagement.engagements_img.key, crop: :fit %>
+            </div>
+            <div class="static-infos">
               <h4>Protection</h4>
               <p><%= engagement.protec %></p>
             </div>
-            <div class="static-infos d-none">
+          </div>
+          <div class="static_wrapper" data-tabs-target="panel" data-tab-name="reglementation">
+            <div class="static-image">
+              <%= cl_image_tag engagement.engagements_img.key, crop: :fit %>
+            </div>
+            <div class="static-infos">
               <h4>Réglementation</h4>
               <p><%= engagement.rules %></p>
             </div>
-            <div class="static-infos d-none">
+          </div>
+          <div class="static_wrapper" data-tabs-target="panel" data-tab-name="partenaires">
+            <div class="static-image">
+              <%= cl_image_tag engagement.engagements_img.key, crop: :fit %>
+            </div>
+            <div class="static-infos">
               <h4>Partenaires</h4>
               <p><%= engagement.partner %></p>
             </div>

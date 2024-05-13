@@ -27,6 +27,7 @@
 
 .content {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   align-items: flex-start;
   column-gap: 3rem;
@@ -35,6 +36,25 @@
   background-color: white;
   border: 1px solid $blue;
   border-radius: 20px;
+}
+
+.content-title {
+  cursor: pointer;
+
+  h4:hover {
+    color: $blue;
+  }
+}
+
+.content-infos_wrapper {
+  display: none;
+
+  &.active {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    column-gap: 3rem;
+  }
 }
 
 .content-infos {

@@ -1,6 +1,6 @@
 <div class="page-main">
   <div class="page-padding">
-    <section class="dashboard">
+    <section class="dashboard" data-controller="tabs">
       <div class="dashboard-wrapper">
         <div class="title-wrapper">
           <h1 class="large">Mes Points d'interêt</h1>
@@ -9,24 +9,29 @@
           </button>
         </div>
         <div class="content-wrapper">
-          <% @points.sort.each do |point| %>
+          <% @points.sort_by(&:title).each do |point| %>
             <div class="content">
-              <div class="content-infos">
-                <%= link_to point_path(point) do %>
-                  <h4><%= point.title %></h4>
-                <% end %>
-                <p><%= sanitize("#{point.infos}".truncate(150)) %></p>
-                <% if point.image_1.attached? %>
-                  <%= cl_image_tag point.image_1.key, height: 300, width: 400, crop: :fill %>
-                <% end %>
+              <div class="content-title">
+                <h4 data-tabs-target="tab" data-action="click->tabs#activate" data-tab-name="<%= point.title %>"><%= point.title %></h4>
               </div>
-              <div class="content-links">
-                <button>
-                  <%= link_to 'Modifier le point', edit_point_path(point) %>
-                </button>
-                <button>
-                  <%= link_to "Supprimer le point", point_path(point), data: {turbo_method: :delete, turbo_confirm: "Êtes-vous sûr ?"}%>
-                </button>
+              <div class="content-infos_wrapper" data-tabs-target="panel" data-tab-name="<%= point.title %>">
+                <div class="content-infos">
+                  <p><%= sanitize("#{point.infos}".truncate(150)) %></p>
+                  <% if point.image_1.attached? %>
+                    <%= cl_image_tag point.image_1.key, height: 150, width: 200, crop: :fill %>
+                  <% end %>
+                </div>
+                <div class="content-links">
+                  <button>
+                    <%= link_to "Voir le point", point_path(point) %>
+                  </button>
+                  <button>
+                    <%= link_to 'Modifier le point', edit_point_path(point) %>
+                  </button>
+                  <button>
+                    <%= link_to "Supprimer le point", point_path(point), data: {turbo_method: :delete, turbo_confirm: "Êtes-vous sûr ?"}%>
+                  </button>
+                </div>
               </div>
             </div>
           <% end %>

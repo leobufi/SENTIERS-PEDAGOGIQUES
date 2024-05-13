@@ -16,11 +16,9 @@ Rails.application.routes.draw do
   get 'dashboard/decouverte', to: 'dashboard/decouverte#index', as: :dashboard_decouverte
   get 'dashboard/engagements', to: 'dashboard/engagement#index', as: :dashboard_engagement
 
-  resources :sentiers do
-    collection do
-      get :themes
-    end
-  end
+  get 'themes', to: 'sentiers#themes', as: :themes_sentiers
+
+  resources :sentiers
 
   resources :points
   resources :generals, except: [:show, :index]

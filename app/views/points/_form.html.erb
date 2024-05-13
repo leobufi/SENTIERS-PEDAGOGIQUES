@@ -1,82 +1,101 @@
 <div class="page-main">
   <div class="page-padding">
-    <section class="dashboard">
+    <section class="dashboard" data-controller="tabs">
       <div class="dashboard-wrapper">
         <h1 class="large">Créer/modifier un Point d'interêt</h1>
         <div class="form-wrapper">
           <div class="form">
             <%= simple_form_for(@point) do |f| %>
-              <%= f.input :title, label: false, placeholder: 'Titre du point dinterêt' %>
-              <%= f.input :infos, as: :text, label: false, placeholder: 'Description du point dinterêt' %>
-              <span class="large poppins-semibold">Coordonnées :</span>
-              <div class="form-grid">
-                <%= f.input :lat, label: false, placeholder: 'Latitude du point dinterêt' %>
-                <%= f.input :long, label: false, placeholder: 'Longitude du point dinterêt'%>
+              <div class="form-tabs_wrapper">
+                <span class="form-tab active" data-tabs-target="tab" data-action="click->tabs#activate" data-tab-name="infos">Infos</span>
+                <span class="form-tab" data-tabs-target="tab" data-action="click->tabs#activate" data-tab-name="images">Images</span>
+                <span class="form-tab" data-tabs-target="tab" data-action="click->tabs#activate" data-tab-name="video">Vidéo</span>
+                <span class="form-tab" data-tabs-target="tab" data-action="click->tabs#activate" data-tab-name="audio">Audio</span>
               </div>
               <hr>
-              <div class="form-bloc">
-                <h4 class="poppins-semibold">
-                  Médias :
-                </h4>
+              <div class="form-bloc_wrapper active" data-tabs-target="panel" data-tab-name="infos">
+                <%= f.input :title, label: false, placeholder: 'Titre du point dinterêt' %>
+                <%= f.input :infos, as: :text, label: false, placeholder: 'Description du point dinterêt' %>
+                <span class="large poppins-semibold">Coordonnées :</span>
+                <div class="form-grid">
+                  <%= f.input :lat, label: false, placeholder: 'Latitude du point dinterêt' %>
+                  <%= f.input :long, label: false, placeholder: 'Longitude du point dinterêt'%>
+                </div>
+              </div>
+              <div class="form-bloc_wrapper" data-tabs-target="panel" data-tab-name="images">
                 <span class="large poppins-semibold">
                   Image 1
                 </span>
                 <%= f.input :image_1, as: :file, label: false, placeholder: 'Image 1' %>
                 <%= f.input :image_1_commment, as: :text, label: false, placeholder: 'Commentaire Image 1' %>
+                <hr>
                 <span class="large poppins-semibold">
                   Image 2
                 </span>
                 <%= f.input :image_2, as: :file, label: false, placeholder: 'Image 2' %>
                 <%= f.input :image_2_commment, as: :text, label: false, placeholder: 'Commentaire Image 2' %>
+                <hr>
                 <span class="large poppins-semibold">
                   Image 3
                 </span>
                 <%= f.input :image_3, as: :file, label: false, placeholder: 'Image 3' %>
                 <%= f.input :image_3_commment, as: :text, label: false, placeholder: 'Commentaire Image 3' %>
+                <hr>
                 <span class="large poppins-semibold">
                   Image 4
                 </span>
                 <%= f.input :image_4, as: :file, label: false, placeholder: 'Image 4' %>
                 <%= f.input :image_4_commment, as: :text, label: false, placeholder: 'Commentaire Image 4' %>
+                <hr>
                 <span class="large poppins-semibold">
                   Image 5
                 </span>
                 <%= f.input :image_5, as: :file, label: false, placeholder: 'Image 5' %>
                 <%= f.input :image_5_commment, as: :text, label: false, placeholder: 'Commentaire Image 5' %>
+                <hr>
                 <span class="large poppins-semibold">
                   Image 6
                 </span>
                 <%= f.input :image_6, as: :file, label: false, placeholder: 'Image 6' %>
                 <%= f.input :image_6_commment, as: :text, label: false, placeholder: 'Commentaire Image 6' %>
+                <hr>
                 <span class="large poppins-semibold">
                   Image 7
                 </span>
                 <%= f.input :image_7, as: :file, label: false, placeholder: 'Image 7' %>
                 <%= f.input :image_7_commment, as: :text, label: false, placeholder: 'Commentaire Image 7' %>
+                <hr>
                 <span class="large poppins-semibold">
                   Image 8
                 </span>
                 <%= f.input :image_8, as: :file, label: false, placeholder: 'Image 8' %>
                 <%= f.input :image_8_commment, as: :text, label: false, placeholder: 'Commentaire Image 8' %>
+                <hr>
                 <span class="large poppins-semibold">
                   Image 9
                 </span>
                 <%= f.input :image_9, as: :file, label: false, placeholder: 'Image 9' %>
                 <%= f.input :image_9_commment, as: :text, label: false, placeholder: 'Commentaire Image 9' %>
+                <hr>
                 <span class="large poppins-semibold">
                   Image 10
                 </span>
                 <%= f.input :image_10, as: :file, label: false, placeholder: 'Image 10' %>
                 <%= f.input :image_10_commment, as: :text, label: false, placeholder: 'Commentaire Image 10' %>
+              </div>
+              <div class="form-bloc_wrapper" data-tabs-target="panel" data-tab-name="video">
                 <span class="large poppins-semibold">
                   Vidéo
                 </span>
                 <%= f.input :video, label: false, placeholder: 'Vidéo du point dinterêt' %>
+              </div>
+              <div class="form-bloc_wrapper" data-tabs-target="panel" data-tab-name="audio">
                 <span class="large poppins-semibold">
                   Audio
                 </span>
                 <%= f.input :audio, label: false, placeholder: 'Audio du point dinterêt' %>
               </div>
+              <hr>
               <button>
                 <%= f.button :submit, "Créer/modifier le point d'interêt" %>
               </button>

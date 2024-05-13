@@ -10,28 +10,30 @@
         </div>
         <div class="content-wrapper">
           <div class="content">
-            <% @decouvertes.each do |decouverte| %>
-              <div class="content-infos">
-                  <h4>Circuits accompagnés</h4>
-                  <div class="infos">
-                    <%= cl_image_tag decouverte.circuit_acc_img.key, height: 150, width: 200, crop: :fill %>
-                    <p><%= sanitize("#{decouverte.circuit_acc_text}".truncate(250)) %></p>
-                  </div>
-                  <h4>Animation Scolaire</h4>
-                  <div class="infos">
-                    <%= cl_image_tag decouverte.anim_scol_img.key, height: 150, width: 200, crop: :fill %>
-                    <p><%= sanitize("#{decouverte.anim_scol_text}".truncate(250)) %></p>
-                  </div>
-              </div>
-              <div class="content-links">
-                <button>
-                  <%= link_to 'Modifier les infos', edit_decouverte_path(decouverte) %>
-                </button>
-                <button>
-                  <%= link_to "Supprimer", decouverte_path(decouverte), data: {turbo_method: :delete, turbo_confirm: "Êtes-vous sûr ?"}%>
-                </button>
-              </div>
-            <% end %>
+            <div class="content-infos_wrapper active">
+              <% @decouvertes.each do |decouverte| %>
+                <div class="content-infos">
+                    <h4>Circuits accompagnés</h4>
+                    <div class="infos">
+                      <%= cl_image_tag decouverte.circuit_acc_img.key, height: 150, width: 200, crop: :fill %>
+                      <p><%= sanitize("#{decouverte.circuit_acc_text}".truncate(250)) %></p>
+                    </div>
+                    <h4>Animation Scolaire</h4>
+                    <div class="infos">
+                      <%= cl_image_tag decouverte.anim_scol_img.key, height: 150, width: 200, crop: :fill %>
+                      <p><%= sanitize("#{decouverte.anim_scol_text}".truncate(250)) %></p>
+                    </div>
+                </div>
+                <div class="content-links">
+                  <button>
+                    <%= link_to 'Modifier les infos', edit_decouverte_path(decouverte) %>
+                  </button>
+                  <button>
+                    <%= link_to "Supprimer", decouverte_path(decouverte), data: {turbo_method: :delete, turbo_confirm: "Êtes-vous sûr ?"}%>
+                  </button>
+                </div>
+              <% end %>
+            </div>
           </div>
         </div>
       </div>
