@@ -16,7 +16,7 @@ export default class extends Controller {
   dropright(event) {
     event.preventDefault()
     const link = event.target
-    console.log(link)
+    // console.log(link)
     this.linkTargets.forEach((linkTarget) => {
       linkTarget.classList.add("active")
     })
@@ -28,7 +28,7 @@ export default class extends Controller {
   removeDropright(event) {
     event.preventDefault()
     const link = event.target
-    console.log(link)
+    // console.log(link)
     this.linkTargets.forEach((linkTarget) => {
       linkTarget.classList.remove("active")
     })

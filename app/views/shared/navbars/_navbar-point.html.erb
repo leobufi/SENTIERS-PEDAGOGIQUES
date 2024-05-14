@@ -25,7 +25,11 @@
   </div>
   <div class="nav-infos padding-top">
     <h1><%= @point.title %></h1>
-    <span class="little">Thème du sentier</span>
+    <% @point.sentiers.each do |sentier| %>
+      <% if sentier.is_theme? %>
+        <span class="little">Thèmes : <%= sentier.title %></span>
+      <% end %>
+    <% end %>
   </div>
   <div class="nav-map">
 
