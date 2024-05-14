@@ -1,9 +1,153 @@
 <div class="page-main">
   <div class="page-padding no-padding">
-    <section class="dynamic-pages">
+    <section class="dynamic-pages" data-controller="swiper">
       <div class="dynamic-pages_wrapper">
-        <h2><%= @point.title %></h2>
-        <p><%= @point.infos %></p>
+        <div class="point-tabs_wrapper">
+          <span class="point-tab active" data-tabs-target="tab" data-action="click->tabs#activate" data-tab-name="infos">Informations</span>
+          <span class="point-tab" data-tabs-target="tab" data-action="click->tabs#activate" data-tab-name="images">Images</span>
+          <span class="point-tab" data-tabs-target="tab" data-action="click->tabs#activate" data-tab-name="video">Vidéo</span>
+          <span class="point-tab no-border" data-tabs-target="tab" data-action="click->tabs#activate" data-tab-name="audio">Audio</span>
+        </div>
+        <div class="point-content_wrapper active" data-tabs-target="panel" data-tab-name="infos">
+          <div class="point-image">
+            <%= cl_image_tag @point.image_1.key, crop: :fit %>
+          </div>
+          <div class="point-content">
+            <% if @point.title.empty? && @point.infos.empty? %>
+              <p>Il n'y a pas d'informations pour ce point d'interêt.</p>
+            <% else %>
+              <h2><%= @point.title %></h2>
+              <p><%= @point.infos %></p>
+            <% end %>
+          </div>
+        </div>
+        <div class="point-content_wrapper" data-tabs-target="panel" data-tab-name="images">
+          <div class="swiper">
+            <div class="swiper-wrapper">
+              <% if @point.image_1.attached? %>
+              <div class="swiper-slide">
+                <div class="point-image">
+                  <%= cl_image_tag @point.image_1.key, crop: :fit %>
+                </div>
+                <div class="point-content">
+                  <p><%= @point.image_1_commment %></p>
+                </div>
+              </div>
+              <% end %>
+              <% if @point.image_2.attached? %>
+              <div class="swiper-slide">
+                <div class="point-image">
+                  <%= cl_image_tag @point.image_2.key, crop: :fit %>
+                </div>
+                <div class="point-content">
+                  <p><%= @point.image_2_commment %></p>
+                </div>
+              </div>
+              <% end %>
+              <% if @point.image_3.attached? %>
+              <div class="swiper-slide">
+                <div class="point-image">
+                  <%= cl_image_tag @point.image_3.key, crop: :fit %>
+                </div>
+                <div class="point-content">
+                  <p><%= @point.image_3_commment %></p>
+                </div>
+              </div>
+              <% end %>
+              <% if @point.image_4.attached? %>
+              <div class="swiper-slide">
+                <div class="point-image">
+                  <%= cl_image_tag @point.image_4.key, crop: :fit %>
+                </div>
+                <div class="point-content">
+                  <p><%= @point.image_4_commment %></p>
+                </div>
+              </div>
+              <% end %>
+              <% if @point.image_5.attached? %>
+              <div class="swiper-slide">
+                <div class="point-image">
+                  <%= cl_image_tag @point.image_5.key, crop: :fit %>
+                </div>
+                <div class="point-content">
+                  <p><%= @point.image_5_commment %></p>
+                </div>
+              </div>
+              <% end %>
+              <% if @point.image_6.attached? %>
+              <div class="swiper-slide">
+                <div class="point-image">
+                  <%= cl_image_tag @point.image_6.key, crop: :fit %>
+                </div>
+                <div class="point-content">
+                  <p><%= @point.image_6_commment %></p>
+                </div>
+              </div>
+              <% end %>
+              <% if @point.image_7.attached? %>
+              <div class="swiper-slide">
+                <div class="point-image">
+                  <%= cl_image_tag @point.image_7.key, crop: :fit %>
+                </div>
+                <div class="point-content">
+                  <p><%= @point.image_7_commment %></p>
+                </div>
+              </div>
+              <% end %>
+              <% if @point.image_8.attached? %>
+              <div class="swiper-slide">
+                <div class="point-image">
+                  <%= cl_image_tag @point.image_8.key, crop: :fit %>
+                </div>
+                <div class="point-content">
+                  <p><%= @point.image_8_commment %></p>
+                </div>
+              </div>
+              <% end %>
+              <% if @point.image_9.attached? %>
+              <div class="swiper-slide">
+                <div class="point-image">
+                  <%= cl_image_tag @point.image_9.key, crop: :fit %>
+                </div>
+                <div class="point-content">
+                  <p><%= @point.image_9_commment %></p>
+                </div>
+              </div>
+              <% end %>
+              <% if @point.image_10.attached? %>
+              <div class="swiper-slide">
+                <div class="point-image">
+                  <%= cl_image_tag @point.image_10.key, crop: :fit %>
+                </div>
+                <div class="point-content">
+                  <p><%= @point.image_10_commment %></p>
+                </div>
+              </div>
+              <% end %>
+              <div class="swiper-pagination"></div>
+              <div class="swiper-button-prev"></div>
+              <div class="swiper-button-next"></div>
+            </div>
+          </div>
+        </div>
+        <div class="point-content_wrapper" data-tabs-target="panel" data-tab-name="video">
+          <div class="point-content">
+            <% if @point.video.empty? %>
+              <p>Il n'y a pas de contenu vidéo pour ce point d'interêt.</p>
+            <% else %>
+              <iframe width="100%" height="550" src="https://player.vimeo.com/video/<%=@point.video%>" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen=""></iframe>
+            <% end %>
+          </div>
+        </div>
+        <div class="point-content_wrapper" data-tabs-target="panel" data-tab-name="audio">
+          <div class="point-content">
+            <% if @point.audio.empty? %>
+              <p>Il n'y a pas de contenu audio pour ce point d'interêt.</p>
+            <% else %>
+              <%=  @point.audio.html_safe %>
+            <% end %>
+          </div>
+        </div>
       </div>
     </section>
   </div>
