@@ -69,6 +69,7 @@
 
     &:hover {
       background-color: $gray;
+
     }
   }
 
@@ -79,6 +80,7 @@
   &.active {
     background-color: $gray;
     color: $black;
+    font-weight: 500;
 
     i {
       display: block;
@@ -99,6 +101,10 @@
 .nav-link:hover {
   background-color: $gray;
   color: $black;
+
+  i {
+    display: block;
+  }
 }
 
 .nav-infos {
