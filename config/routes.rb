@@ -20,7 +20,11 @@ Rails.application.routes.draw do
 
   resources :sentiers
 
-  resources :points, except: [:index]
+  resources :points, except: [:index] do
+    member do
+      get :download_qr_code
+    end
+  end
   resources :generals, except: [:show, :index]
   resources :decouvertes, except: [:show]
   resources :engagements, except: [:show]

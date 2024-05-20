@@ -51,6 +51,8 @@ gem "font-awesome-sass", "~> 6.1"
 gem "simple_form", github: "heartcombo/simple_form"
 gem "sassc-rails"
 gem "cloudinary"
+gem "rqrcode", "~> 2.0"
+gem 'htmlentities', '~> 4.3', '>= 4.3.4'
 
 
 group :development, :test do

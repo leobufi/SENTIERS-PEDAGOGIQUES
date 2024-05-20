@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_05_11_122855) do
+ActiveRecord::Schema[7.1].define(version: 2024_05_20_080512) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -97,6 +97,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_11_122855) do
     t.text "image_9_commment"
     t.string "image_10"
     t.text "image_10_commment"
+    t.string "qr_code"
   end
 
   create_table "roads", force: :cascade do |t|
