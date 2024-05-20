@@ -1,0 +1,34 @@
+<div class="page-main">
+  <div class="page-padding">
+    <section class="dashboard">
+      <div class="dashboard-wrapper">
+        <div class="title-wrapper">
+          <h1 class="large">Mes QR Codes</h1>
+          <button>
+            <%= link_to 'Créer un nouveau QR Code', new_qrcode_path %>
+          </button>
+        </div>
+        <div class="content-wrapper">
+          <% @qr_codes.sort_by(&:name).each do |qrcode| %>
+            <div class="content">
+              <div class="content-title">
+                <h4 data-tabs-target="tab" data-action="click->tabs#activate" data-tab-name="<%= qrcode.name %>"><%= qrcode.name %></h4>
+              </div>
+              <div class="content-infos_wrapper" data-tabs-target="panel" data-tab-name="<%= qrcode.name %>">
+                <div class="content-infos">
+                  <span><h5>URL :</h5> <%= qrcode.url %></span>
+                </div>
+                <div class="content-links">
+                  <button>
+                    <%= link_to "Télécharger le QR code", download_qr_code_qrcode_path(qrcode)%>
+                  </button>
+                  <%= button_to "Supprimer le QR Code", qrcode_path(qrcode), method: :delete, data: {turbo_confirm: "Êtes-vous sûr ?"}%>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
