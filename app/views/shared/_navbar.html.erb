@@ -14,6 +14,8 @@
 <%= render "shared/navbars/navbar-dashboard" if params[:action] == 'edit' && params[:controller] == 'engagements' %>
 <%= render "shared/navbars/navbar-dashboard" if params[:action] == 'new' && params[:controller] == 'generals' %>
 <%= render "shared/navbars/navbar-dashboard" if params[:action] == 'edit' && params[:controller] == 'generals' %>
+<%= render "shared/navbars/navbar-dashboard" if params[:action] == 'index' && params[:controller] == 'dashboard/qrcodes' %>
+<%= render "shared/navbars/navbar-dashboard" if params[:action] == 'new' && params[:controller] == 'qrcodes' %>
 <%= render "shared/navbars/navbar-main" if params[:action] == 'home' && params[:controller] == 'pages' %>
 <%= render "shared/navbars/navbar-main" if params[:action] == 'index' && params[:controller] == 'sentiers' %>
 <%= render "shared/navbars/navbar-main" if params[:action] == 'themes' && params[:controller] == 'sentiers' %>

@@ -52,8 +52,9 @@
   &.active {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
+    align-items: space-between;
     column-gap: 3rem;
+    width: 100%;
   }
 }
 

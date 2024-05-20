@@ -1,0 +1,20 @@
+<div class="page-main">
+  <div class="page-padding">
+    <section class="dashboard">
+      <div class="dashboard-wrapper">
+        <h1 class="large">Créer un QR Code</h1>
+        <div class="form-wrapper">
+          <div class="form">
+            <%= simple_form_for(@qr_code) do |f| %>
+              <%= f.input :name, label: false, placeholder: 'Nom du QR Code' %>
+              <%= f.input :url, label: false, placeholder: 'URL du QR Code' %>
+              <button>
+                <%= f.button :submit, "Créer" %>
+              </button>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
