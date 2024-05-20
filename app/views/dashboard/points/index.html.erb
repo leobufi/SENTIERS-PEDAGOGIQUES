@@ -22,15 +22,18 @@
                   <% end %>
                 </div>
                 <div class="content-links">
+                  <% if point.qr_code? %>
+                  <button>
+                    <%= link_to "Télécharger le QR code", download_qr_code_point_path(point)%>
+                  </button>
+                  <% end %>
                   <button>
                     <%= link_to "Voir le point", point_path(point) %>
                   </button>
                   <button>
                     <%= link_to 'Modifier le point', edit_point_path(point) %>
                   </button>
-                  <button>
-                    <%= link_to "Supprimer le point", point_path(point), data: {turbo_method: :delete, turbo_confirm: "Êtes-vous sûr ?"}%>
-                  </button>
+                  <%= button_to "Supprimer le point", point_path(point), method: :delete, data: {turbo_confirm: "Êtes-vous sûr ?"}%>
                 </div>
               </div>
             </div>

@@ -13,7 +13,24 @@ class PointsController < ApplicationController
   def create
     @point = Point.new(point_params)
     @point.save
+    url = url_for(@point)
+    qrcode = RQRCode::QRCode.new(url)
+    svg = qrcode.as_svg(
+      color: "000",
+      shape_rendering: "crispEdges",
+      module_size: 11,
+      standalone: true,
+      use_path: true
+    )
+    encoded_svg = HTMLEntities.new.encode(svg)
+    @point.update(qr_code: encoded_svg)
     redirect_to point_path(@point)
+  end
+
+  def download_qr_code
+    @point = Point.find(params[:id])
+    decoded_svg = HTMLEntities.new.decode(@point.qr_code)
+    send_data(decoded_svg, filename: "#{@point.title}.qr_code.svg", type: "image/svg+xml")
   end
 
   def edit
@@ -29,7 +46,7 @@ class PointsController < ApplicationController
   def destroy
     @point = Point.find(params[:id])
     @point.destroy
-    redirect_to points_path, status: :see_other
+    redirect_to dashboard_points_path
   end
 
   private
