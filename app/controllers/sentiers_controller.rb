@@ -5,6 +5,15 @@ class SentiersController < ApplicationController
   def index
     @sentiers = Sentier.all
     @general = General.first
+    # @coordinates = @sentiers.map do |sentier|
+    #   coords = [
+    #     { lat: sentier.starting_point_lat.to_f, lng: sentier.starting_point_long.to_f, type:'departure'},
+    #     { lat: sentier.arrival_point_lat.to_f, lng: sentier.arrival_point_long.to_f, type: 'arrival' }
+    #   ]
+    #   coords += sentier.points.map do |point|
+    #     { lat: point.lat, lng: point.long, type: 'point' }
+    #   end
+    # end
   end
 
   def themes

@@ -25,7 +25,15 @@
                 <span class="large poppins-semibold">
                   Points d'interêt du sentier :
                 </span>
-                <%= f.association :points, collection: Point.all.order('title'), as: :check_boxes, label: false %>
+                <%= f.association :points,
+                                  collection: Point.all.order('title'),
+                                  as: :check_boxes,
+                                  label: false
+                                  %>
+                <%# <%= f.simple_fields_for :roads do |road_form| %>
+                  <%# <%= road_form.input :point_id, collection: Point.all, prompt: 'Select Point' %>
+                  <%# <%= road_form.input :position %>
+                <%# <% end %>
               </div>
               <div class="form-bloc">
                 <span class="large poppins-semibold">
