@@ -9,3 +9,5 @@ pin_all_from "app/javascript/controllers", under: "controllers"
 pin "jquery" # @2.2.4
 pin "swiper.js" # @1.0.0
 pin "swiper" # @11.1.3
+pin "mapbox-gl" # @3.1.2
+pin "process" # @2.0.1

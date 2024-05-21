@@ -2,7 +2,11 @@
   <div class="page-padding no-padding">
     <section class="dynamic-pages">
       <div class="dynamic-pages_wrapper">
-        <div class="map-canva">
+        <div class="map-canva"
+            data-controller="main-map"
+            data-main-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
+            data-main-map-sentier-coordinates-value="<%= sentier_coordinates_json(@sentiers) %>"
+        >
 
         </div>
         <div class="infos_wrapper">
@@ -53,3 +57,4 @@
     </section>
   </div>
 </div>
+<%= console %>
