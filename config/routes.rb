@@ -19,7 +19,9 @@ Rails.application.routes.draw do
 
   get 'themes', to: 'sentiers#themes', as: :themes_sentiers
 
-  resources :sentiers
+  resources :sentiers do
+    resources :roads, only: [:destroy], shallow: true
+  end
 
   resources :points, except: [:index] do
     member do

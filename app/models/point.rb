@@ -2,6 +2,7 @@ class Point < ApplicationRecord
 
   has_many :roads
   has_many :sentiers, through: :roads
+
   has_one_attached :image_1
   has_one_attached :image_2
   has_one_attached :image_3

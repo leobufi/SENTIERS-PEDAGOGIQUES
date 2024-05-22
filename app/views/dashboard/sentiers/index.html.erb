@@ -27,7 +27,9 @@
                   <button>
                     <%= link_to 'Modifier le sentier', edit_sentier_path(sentier) %>
                   </button>
-                  <%= button_to "Supprimer le sentier", sentier_path(sentier), method: :delete, data: {turbo_confirm: "Êtes-vous sûr ?"}%>
+                  <button>
+                    <%= link_to "Supprimer le sentier", sentier_path(sentier), remote: true, data: {turbo_confirm: "Êtes-vous sûr ?", turbo_method: :delete}%>
+                  </button>
                   </div>
               </div>
             </div>

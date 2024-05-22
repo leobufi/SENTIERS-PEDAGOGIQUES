@@ -27,18 +27,15 @@ class SentiersController < ApplicationController
 
   def new
     @sentier = Sentier.new
+    @sentier.roads.build
   end
 
   def create
     @sentier = Sentier.new(sentier_params)
-    points_params = params[:sentier][:point_ids]
-    points_params.delete("")
-    points = Point.find(points_params)
-    @sentier.points = points
     if @sentier.save
     redirect_to sentier_path(@sentier)
     else
-      redirect_to new_sentier_path, notice: "Le Sentier n'a pas pu être créé, réessayez ultérieurement"
+      redirect_to new_sentier_path, notice: "Le Sentier n'a pas pu être créé, réessayez ultérieurement ou contactez léo"
     end
   end
 
@@ -48,14 +45,10 @@ class SentiersController < ApplicationController
 
   def update
     @sentier = Sentier.find(params[:id])
-    points_params = params[:sentier][:point_ids]
-    points_params.delete("")
-    points = Point.find(points_params)
-    @sentier.points = points
     if @sentier.update(sentier_params)
     redirect_to sentier_path(@sentier)
     else
-      redirect_to edt_sentier_path(@sentier), notice: "Le Sentier n'a pas pu être modifier, réessayez ultérieurement"
+      redirect_to edit_sentier_path(@sentier), notice: "Le Sentier n'a pas pu être modifier, réessayez ultérieurement ou contactez léo"
     end
   end
 
@@ -67,8 +60,9 @@ class SentiersController < ApplicationController
 
   private
 
+
   def sentier_params
-    params.require(:sentier).permit(:title, :description, :image, :duration, :difficulty, :is_theme, :starting_point_lat, :starting_point_long, :arrival_point_lat, :arrival_point_long )
+    params.require(:sentier).permit(:title, :description, :image, :duration, :difficulty, :is_theme, :starting_point_lat, :starting_point_long, :arrival_point_lat, :arrival_point_long, roads_attributes: [:id, :point_id, :position, :_destroy] )
   end
 
   def require_admin

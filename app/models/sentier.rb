@@ -4,6 +4,8 @@ class Sentier < ApplicationRecord
   has_many :roads
   has_many :points, through: :roads
 
+  accepts_nested_attributes_for :roads, allow_destroy: true
+
   validates :title, presence: true
   validates :description, presence: true
   validates :difficulty, presence: true
