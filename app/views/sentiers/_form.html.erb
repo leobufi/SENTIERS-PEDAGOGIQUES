@@ -9,7 +9,8 @@
               <%= f.input :title, label: false, placeholder: 'Titre du sentier' %>
               <%= f.input :description, as: :text, label: false, placeholder: 'Description du sentier' %>
               <%= f.input :difficulty, label: false, placeholder: 'Dénivelé du sentier' %>
-              <%= f.input :image, as: :file, label: false, placeholder: 'Image principale du sentier' %>
+              <span class="large poppins-semibold">Image principale du sentier :</span>
+              <%= f.input :image, as: :file, label: false %>
               <div class="form-bloc">
                 <span class="large poppins-semibold">Durée :</span>
                 <%= f.input :duration, as: :time, label: false %>
@@ -25,15 +26,21 @@
                 <span class="large poppins-semibold">
                   Points d'interêt du sentier :
                 </span>
-                <%= f.association :points,
-                                  collection: Point.all.order('title'),
-                                  as: :check_boxes,
-                                  label: false
-                                  %>
-                <%# <%= f.simple_fields_for :roads do |road_form| %>
-                  <%# <%= road_form.input :point_id, collection: Point.all, prompt: 'Select Point' %>
-                  <%# <%= road_form.input :position %>
-                <%# <% end %>
+                <span class="poppins-light-italic">Choisir une position au point d'interêt dans la cellule de gauche.</span>
+                <%= f.simple_fields_for :roads do |road_form| %>
+                  <div class="form-field">
+                    <%= road_form.input :position, label: false, input_html: { class: 'form-input' } %>
+                    <%= road_form.input :point_id, collection: Point.all, label: false %>
+                    <%# <%= road_form.hidden_field :_destroy %>
+                    <%# <%= link_to_remove_association "Supprimmer un point", road_form, class: 'btn-secondary' %>
+                    <% if road_form.object != @sentier.roads.first%>
+                      <%= link_to "Supprimer le point", road_path(road_form.object), remote: true, data: {turbo_method: :delete}, class: "btn-secondary"%>
+                    <% end %>
+                  </div>
+                <% end %>
+                <div class="links">
+                  <%= link_to_add_association 'Ajouter un point', f, :roads, partial: 'road_fields', class: 'btn-secondary'%>
+                </div>
               </div>
               <div class="form-bloc">
                 <span class="large poppins-semibold">

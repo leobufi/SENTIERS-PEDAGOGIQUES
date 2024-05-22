@@ -1,0 +1,6 @@
+<div class="nested-fields form-field">
+  <%= f.input :position, label: false, input_html: { class: 'form-input' } %>
+  <%= f.input :point_id, collection: Point.all, label: false %>
+  <%= f.hidden_field :_destroy %>
+  <%= link_to_remove_association "Supprimer le point", f, class: 'btn-secondary' %>
+</div>

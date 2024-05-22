@@ -101,6 +101,16 @@ select {
   row-gap: 1rem;
 }
 
+.form-field {
+  display: flex;
+  column-gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.form-input {
+  width: 5rem;
+}
+
 .btn {
   color: $gray;
 }

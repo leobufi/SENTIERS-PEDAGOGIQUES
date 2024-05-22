@@ -33,7 +33,9 @@
                   <button>
                     <%= link_to 'Modifier le point', edit_point_path(point) %>
                   </button>
-                  <%= button_to "Supprimer le point", point_path(point), method: :delete, data: {turbo_confirm: "Êtes-vous sûr ?"}%>
+                  <button>
+                    <%= link_to "Supprimer le point", point_path(point), remote: true, data: {turbo_confirm: "Êtes-vous sûr ?", turbo_method: :delete}%>
+                  </button>
                 </div>
               </div>
             </div>

@@ -53,6 +53,7 @@ gem "sassc-rails"
 gem "cloudinary"
 gem "rqrcode", "~> 2.0"
 gem 'htmlentities', '~> 4.3', '>= 4.3.4'
+gem 'cocoon', '~> 1.2', '>= 1.2.15'
 
 
 group :development, :test do
