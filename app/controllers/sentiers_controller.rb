@@ -5,15 +5,16 @@ class SentiersController < ApplicationController
   def index
     @sentiers = Sentier.all
     @general = General.first
-    # @coordinates = @sentiers.map do |sentier|
-    #   coords = [
-    #     { lat: sentier.starting_point_lat.to_f, lng: sentier.starting_point_long.to_f, type:'departure'},
-    #     { lat: sentier.arrival_point_lat.to_f, lng: sentier.arrival_point_long.to_f, type: 'arrival' }
-    #   ]
-    #   coords += sentier.points.map do |point|
-    #     { lat: point.lat, lng: point.long, type: 'point' }
-    #   end
-    # end
+    @sentiers.each do |sentier|
+      @roads = sentier.roads.sort_by(&:position)
+      @points = @roads.map do |road|
+          {
+            lat: road.point.lat,
+            lng: road.point.long,
+            info_window_html: render_to_string(partial: "info_window", locals: {point: road.point})
+          }
+      end
+    end
   end
 
   def themes
@@ -62,7 +63,7 @@ class SentiersController < ApplicationController
 
 
   def sentier_params
-    params.require(:sentier).permit(:title, :description, :image, :duration, :difficulty, :is_theme, :starting_point_lat, :starting_point_long, :arrival_point_lat, :arrival_point_long, roads_attributes: [:id, :point_id, :position, :_destroy] )
+    params.require(:sentier).permit(:title, :description, :color, :image, :duration, :difficulty, :is_theme, :starting_point_lat, :starting_point_long, :arrival_point_lat, :arrival_point_long, roads_attributes: [:id, :point_id, :position, :_destroy] )
   end
 
   def require_admin

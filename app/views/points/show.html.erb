@@ -10,7 +10,9 @@
         </div>
         <div class="point-content_wrapper active" data-tabs-target="panel" data-tab-name="infos">
           <div class="point-image">
-            <%= cl_image_tag @point.image_1.key, crop: :fit %>
+            <% if @point.image_1.attached? %>
+              <%= cl_image_tag @point.image_1.key, crop: :fit %>
+            <% end %>
           </div>
           <div class="point-content">
             <% if @point.title.empty? && @point.infos.empty? %>

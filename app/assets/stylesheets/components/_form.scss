@@ -64,6 +64,12 @@ input {
   border: 1px solid black;
   border-radius: 20px;
 
+  &.color {
+    width: 50px;
+    height: 50px;
+    padding: unset;
+    border-radius: unset;
+  }
 }
 
 .check_boxes {

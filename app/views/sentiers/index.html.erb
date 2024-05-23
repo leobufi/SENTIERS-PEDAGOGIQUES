@@ -1,12 +1,13 @@
 <div class="page-main">
   <div class="page-padding no-padding">
     <section class="dynamic-pages">
-      <div class="dynamic-pages_wrapper">
-        <div class="map-canva"
-            data-controller="main-map"
-            data-main-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
-            data-main-map-sentier-coordinates-value="<%= sentier_coordinates_json(@sentiers) %>"
-        >
+      <div class="dynamic-pages_wrapper"
+          data-controller="main-map"
+          data-main-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
+          data-main-map-sentier-coordinates-value="<%= sentiers_coordinates_json(@sentiers) %>"
+          data-main-map-points-coordinates-value="<%= @points.to_json %>"
+      >
+        <div class="map-canva" data-main-map-target="canva">
 
         </div>
         <div class="infos_wrapper">
@@ -19,22 +20,24 @@
                   <span>Sentier thématique</span>
                   <% end %>
                 </div>
+                <div class="sentier-color" style="background-color:<%= sentier.color %>"></div>
                 <div class="sentier-title-arrow">
                   <i class="fa-solid fa-arrow-right"></i>
                 </div>
               </div>
             </div>
-            <div class="info_bloc">
-              <div class="sentier-infos" data-tabs-target="panel" data-tab-name="<%= sentier.title %>">
+            <div class="info_bloc" data-controller="infos-transit">
+              <div class="sentier-infos" data-infos-transit-target="data" data-main-map-target="infos" data-tabs-target="panel" data-tab-name="<%= sentier.title %>">
                 <h5><%= sentier.title %></h5>
                 <div class="sentier-tech-infos">
                     <div class="difficulty">
                       <i class="fa-solid fa-arrow-right rotated-top-right"></i>
                       <span><%= sentier.difficulty %></span>
                     </div>
-                    <div class="duration">
+                    <div class="duration" data-infos-transit-target="duration">
                       <i class="fa-regular fa-clock"></i>
-                      <span><%= sentier.duration.strftime("%H:%M") %></span>
+                    </div>
+                    <div class="lenght" data-infos-transit-target="lenght">
                     </div>
                   </div>
                   <p><%= sentier.description %></p>
@@ -57,4 +60,4 @@
     </section>
   </div>
 </div>
-<%= console %>
+<%# <%= console %>
