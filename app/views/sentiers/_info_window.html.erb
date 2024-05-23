@@ -1,0 +1,5 @@
+<h5><%= point.title %></h5>
+<p><%= sanitize("#{point.infos}".truncate(150)) %></p>
+<button class="btn-secondary">
+  <%= link_to "Voir le point d'interêt", point_path(point) %>
+</button>

@@ -11,10 +11,8 @@
               <%= f.input :difficulty, label: false, placeholder: 'Dénivelé du sentier' %>
               <span class="large poppins-semibold">Image principale du sentier :</span>
               <%= f.input :image, as: :file, label: false %>
-              <div class="form-bloc">
-                <span class="large poppins-semibold">Durée :</span>
-                <%= f.input :duration, as: :time, label: false %>
-              </div>
+              <span class="large poppins-semibold">Couleur du sentier :</span>
+              <%= f.input :color, as: :color, label: false %>
               <span class="large poppins-semibold">Coordonnées :</span>
               <div class="form-grid">
                 <%= f.input :starting_point_lat, label: false, placeholder: 'Latitude du point de départ du sentier' %>

@@ -1,9 +1,11 @@
 <div class="page-main">
   <div class="page-padding no-padding">
     <section class="dynamic-pages">
-      <div class="dynamic-pages_wrapper">
-        <div class="map-canva">
-
+      <div class="dynamic-pages_wrapper" data-controller="main-map"
+            data-main-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
+            data-main-map-sentier-coordinates-value="<%= sentiers_coordinates_json(@themes) %>"
+      >
+        <div class="map-canva" data-main-map-target="canva">
         </div>
         <div class="infos_wrapper">
           <% @themes.sort_by(&:title).each do |sentier| %>
