@@ -4,9 +4,11 @@
       <div class="dashboard-wrapper">
         <div class="title-wrapper">
           <h1 class="large">Généralités</h1>
+          <% if @generals.empty? %>
           <button>
             <%= link_to 'Créer', new_general_path %>
           </button>
+          <% end %>
         </div>
         <div class="content-wrapper">
           <div class="content">
@@ -22,9 +24,11 @@
                   <button>
                     <%= link_to 'Modifier les infos', edit_general_path(general) %>
                   </button>
+                  <% if @generals.count > 1 %>
                   <button>
                     <%= link_to "Supprimer", general_path(general), data: {turbo_method: :delete, turbo_confirm: "Êtes-vous sûr ?"}%>
                   </button>
+                  <% end %>
                 </div>
               <% end %>
             </div>

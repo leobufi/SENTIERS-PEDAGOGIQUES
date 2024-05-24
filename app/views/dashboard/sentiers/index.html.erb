@@ -17,8 +17,19 @@
               <div class="content-infos_wrapper" data-tabs-target="panel" data-tab-name="<%= sentier.title %>">
                 <div class="content-infos">
                   <p><%= sanitize("#{sentier.description}".truncate(150)) %></p>
-                  <p>Durée : <%=sentier.duration.strftime("%H:%M")%></p>
-                  <p>Dénivelé : <%=sentier.difficulty%></p>
+                  <%#Durée : <%=sentier.duration.strftime("%H:%M")%>
+                  <div>
+                    <span class="poppins-semibold">Dénivelé :</span>
+                    <p><%=sentier.difficulty%></p>
+                  </div>
+                  <div>
+                    <span class="poppins-semibold">Contient les points d'interêt :</span>
+                    <ul>
+                      <% sentier.points.each do |point| %>
+                        <li><%= point.title %></li>
+                      <% end %>
+                    </ul>
+                  </div>
                 </div>
                 <div class="content-links">
                   <button>

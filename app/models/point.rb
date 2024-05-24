@@ -1,6 +1,6 @@
 class Point < ApplicationRecord
 
-  has_many :roads
+  has_many :roads, dependent: :destroy
   has_many :sentiers, through: :roads
 
   has_one_attached :image_1

@@ -40,11 +40,6 @@ export default class extends Controller {
             .setLngLat([coord.lng, coord.lat])
             .addTo(this.map);
         }
-        // if (coord.type === 'point') {
-        //   new mapboxgl.Marker({ color: '#94B9D9' })
-        //     .setLngLat([coord.lng, coord.lat])
-        //     .addTo(this.map);
-        // }
       });
     })
 
@@ -94,7 +89,7 @@ export default class extends Controller {
               coordinates: coordinates
             }
           };
-          this.map.addSource('route', {
+          this.map.addSource(`${sentier[0].id}`, {
             type: 'geojson',
             data: {
               type: 'FeatureCollection',
@@ -102,9 +97,9 @@ export default class extends Controller {
             }
           });
           this.map.addLayer({
-            id: 'route',
+            id: `${sentier[0].id}` ,
             type: 'line',
-            source: 'route',
+            source: `${sentier[0].id}`,
             layout: {
               'line-join': 'round',
               'line-cap': 'round'
