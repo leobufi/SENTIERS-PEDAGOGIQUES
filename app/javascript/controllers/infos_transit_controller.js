@@ -6,19 +6,29 @@ export default class extends Controller {
 
   connect() {
     setTimeout(() => {
-      const distanceValue = this.dataTarget.getAttribute("data-distance");
-      const durationValue = this.dataTarget.getAttribute("data-duration");
+      this.dataTargets.forEach((data) => {
+        const distanceValue = data.getAttribute("data-distance");
+        const durationValue = data.getAttribute("data-duration");
 
-      const durationElement = document.createElement("span");
-      const duration = this.secondsInHours(durationValue);
-      durationElement.textContent = `${duration}`;
-      this.durationTarget.appendChild(durationElement);
+        const durationElement = document.createElement("span");
+        const duration = this.secondsInHours(durationValue);
+        durationElement.textContent = `${duration}`;
+        this.durationTargets.forEach((duration) => {
+          if (duration.dataset.name === data.dataset.tabName) {
+            duration.appendChild(durationElement);
+          }
+        })
 
-      const distanceElement = document.createElement("span");
-      const distanceInKm = distanceValue / 1000;
-      const distance = distanceInKm.toFixed(2);
-      distanceElement.textContent = `${distance} km`;
-      this.lenghtTarget.appendChild(distanceElement);
+        const distanceElement = document.createElement("span");
+        const distanceInKm = distanceValue / 1000;
+        const distance = distanceInKm.toFixed(2);
+        distanceElement.textContent = `${distance} km`;
+        this.lenghtTargets.forEach((distance) => {
+          if (distance.dataset.name === data.dataset.tabName) {
+            distance.appendChild(distanceElement);
+          }
+        });
+      })
     }, 500);
   }
 

@@ -4,9 +4,11 @@
       <div class="dashboard-wrapper">
         <div class="title-wrapper">
           <h1 class="large">Page Engagements</h1>
+          <% if @engagements.empty? %>
           <button>
             <%= link_to 'Créer', new_engagement_path %>
           </button>
+          <% end %>
         </div>
         <div class="content-wrapper">
           <div class="content">
@@ -28,9 +30,11 @@
                   <button>
                     <%= link_to 'Modifier les infos', edit_engagement_path(engagement) %>
                   </button>
+                  <% if @engagements.count > 1 %>
                   <button>
                     <%= link_to "Supprimer", engagement_path(engagement), data: {turbo_method: :delete, turbo_confirm: "Êtes-vous sûr ?"}%>
                   </button>
+                  <% end %>
                 </div>
               <% end %>
             </div>

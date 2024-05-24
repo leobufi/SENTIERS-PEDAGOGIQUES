@@ -7,7 +7,8 @@ module SentierHelper
         lng: sentier.starting_point_long,
         type: 'departure',
         title: sentier.title,
-        color: sentier.color
+        color: sentier.color,
+        id: sentier.id
       }
       arrival = {
         lat: sentier.arrival_point_lat,

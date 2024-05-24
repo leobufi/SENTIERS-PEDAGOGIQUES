@@ -5,15 +5,17 @@ class SentiersController < ApplicationController
   def index
     @sentiers = Sentier.all
     @general = General.first
+    @points = []
     @sentiers.each do |sentier|
-      @roads = sentier.roads.sort_by(&:position)
-      @points = @roads.map do |road|
+      @point = sentier.roads.map do |road|
           {
             lat: road.point.lat,
             lng: road.point.long,
+            color: road.sentier.color,
             info_window_html: render_to_string(partial: "info_window", locals: {point: road.point})
           }
-      end
+        end
+      @points.concat(@point)
     end
   end
 
@@ -63,7 +65,7 @@ class SentiersController < ApplicationController
 
 
   def sentier_params
-    params.require(:sentier).permit(:title, :description, :color, :image, :duration, :difficulty, :is_theme, :starting_point_lat, :starting_point_long, :arrival_point_lat, :arrival_point_long, roads_attributes: [:id, :point_id, :position, :_destroy] )
+    params.require(:sentier).permit(:title, :description, :color, :image, :difficulty, :is_theme, :starting_point_lat, :starting_point_long, :arrival_point_lat, :arrival_point_long, roads_attributes: [:id, :point_id, :position, :_destroy] )
   end
 
   def require_admin

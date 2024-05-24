@@ -17,6 +17,14 @@
               <div class="content-infos_wrapper" data-tabs-target="panel" data-tab-name="<%= point.title %>">
                 <div class="content-infos">
                   <p><%= sanitize("#{point.infos}".truncate(150)) %></p>
+                  <div>
+                    <span class="poppins-semibold">Appartient aux sentiers :</span>
+                    <ul>
+                      <% point.sentiers.each do |sentier| %>
+                      <li><%= sentier.title %></li>
+                      <% end %>
+                    </ul>
+                  </div>
                   <% if point.image_1.attached? %>
                     <%= cl_image_tag point.image_1.key, height: 150, width: 200, crop: :fill %>
                   <% end %>
