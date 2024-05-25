@@ -41,7 +41,7 @@
   align-items: center;
   padding: 1.5rem;
   border-bottom: 1px solid black;
-  background-color: $blue;
+  background-color: $gray;
   cursor: pointer;
 
   .sentier-title-arrow {
@@ -49,7 +49,7 @@
   }
 
   &.active {
-    background-color: $gray;
+    background-color: $blue;
 
     .sentier-title-arrow {
         display: block;

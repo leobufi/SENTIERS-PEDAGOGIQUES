@@ -4,7 +4,7 @@ import mapboxgl from 'mapbox-gl'
 
 // Connects to data-controller="main-map"
 export default class extends Controller {
-  static targets = ["canva", "infos"]
+  static targets = ["canva", "infos", "image", "tab"]
 
   static values = {
     apiKey: String,
@@ -24,7 +24,6 @@ export default class extends Controller {
     this.addMarkersToMap();
     this.fitMapToMarkers();
     this.addRoutesToMap();
-    this.activateInfos();
   }
 
   addMarkersToMap() {
@@ -73,33 +72,31 @@ export default class extends Controller {
           const route = data.routes[0];
           const distance = route.distance;
           const duration = route.duration;
-          this.infosTargets.forEach(infos => {
-            if (infos.dataset.tabName ===  sentier[0].title) {
-              infos.dataset.distance = distance;
-              infos.dataset.duration = duration;
-            }
-          });
-
+          const title = sentier[0].title;
+          const routeLayerId = `${sentier[0].id}`;
           const coordinates = route.geometry.coordinates;
+
           const line = {
             type: 'Feature',
-            properties: {},
+            properties: { id: sentier[0].id },
             geometry: {
               type: 'LineString',
               coordinates: coordinates
             }
           };
-          this.map.addSource(`${sentier[0].id}`, {
+
+          this.map.addSource(routeLayerId, {
             type: 'geojson',
             data: {
               type: 'FeatureCollection',
               features: [line]
             }
           });
+
           this.map.addLayer({
-            id: `${sentier[0].id}` ,
+            id: routeLayerId ,
             type: 'line',
-            source: `${sentier[0].id}`,
+            source: routeLayerId,
             layout: {
               'line-join': 'round',
               'line-cap': 'round'
@@ -109,11 +106,60 @@ export default class extends Controller {
               'line-width': 5
             }
           });
+
+          this.activateRoute(routeLayerId);
+          this.transferInfos(title, distance, duration);
+          this.activateInfos(routeLayerId, title);
         });
     });
   }
 
-  activateInfos() {
-    // console.log(this.map)
+  activateRoute(routeLayerId) {
+    this.map.on('mousemove', routeLayerId, (e) => {
+      this.map.getCanvas().style.cursor = 'pointer';
+      this.map.setPaintProperty(routeLayerId, 'line-width', 8);
+      this.map.moveLayer(routeLayerId);
+    });
+
+    this.map.on('mouseleave', routeLayerId, () => {
+      this.map.getCanvas().style.cursor = '';
+      this.map.setPaintProperty(routeLayerId, 'line-width', 5);
+      this.map.moveLayer(routeLayerId);
+    });
+  }
+
+  activateInfos(routeLayerId, title) {
+    this.map.on('mousemove', routeLayerId, (e) => {
+      this.tabTargets.forEach(tab => {
+        if (tab.dataset.tabName === title) {
+          tab.classList.add('active');
+        } else if (tab.dataset.tabName != title) {
+          tab.classList.remove('active');
+        }
+      })
+      this.infosTargets.forEach(infos => {
+        if (infos.dataset.tabName === title) {
+          infos.classList.add('active');
+        } else if (infos.dataset.tabName != title) {
+          infos.classList.remove('active');
+        }
+      });
+      this.imageTargets.forEach(image => {
+        if (image.dataset.tabName === title) {
+          image.classList.add('active');
+        } else if (image.dataset.tabName != title) {
+          image.classList.remove('active');
+        }
+      });
+    });
+  }
+
+  transferInfos(title, distance, duration) {
+    this.infosTargets.forEach(infos => {
+      if (infos.dataset.tabName === title) {
+        infos.dataset.distance = distance;
+        infos.dataset.duration = duration;
+      }
+    });
   }
 }

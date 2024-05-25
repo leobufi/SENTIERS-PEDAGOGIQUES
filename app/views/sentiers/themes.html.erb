@@ -1,35 +1,40 @@
 <div class="page-main">
   <div class="page-padding no-padding">
     <section class="dynamic-pages">
-      <div class="dynamic-pages_wrapper" data-controller="main-map"
-            data-main-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
-            data-main-map-sentier-coordinates-value="<%= sentiers_coordinates_json(@themes) %>"
-      >
+      <div class="dynamic-pages_wrapper"
+          data-controller="main-map"
+          data-main-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
+          data-main-map-sentier-coordinates-value="<%= sentiers_coordinates_json(@themes) %>"
+          data-main-map-points-coordinates-value="<%= @points.to_json %>" >
         <div class="map-canva" data-main-map-target="canva">
         </div>
         <div class="infos_wrapper">
-          <% @themes.sort_by(&:title).each do |sentier| %>
-            <div class="info_bloc">
-              <div class="sentier-title_bloc" data-tabs-target="tab" data-action="click->tabs#activate" data-tab-name="<%= sentier.title %>">
+          <div class="info_bloc">
+            <% @themes.sort_by(&:title).each do |sentier| %>
+              <div class="sentier-title_bloc" data-tabs-target="tab" data-main-map-target="tab" data-action="click->tabs#activate" data-tab-name="<%= sentier.title %>">
                 <div class="sentier-title">
                   <h5><%= sentier.title %></h5>
                 </div>
+                <div class="sentier-color" style="background-color:<%= sentier.color %>"></div>
                 <div class="sentier-title-arrow">
                   <i class="fa-solid fa-arrow-right"></i>
                 </div>
               </div>
-            </div>
-            <div class="info_bloc">
-              <div class="sentier-infos" data-tabs-target="panel" data-tab-name="<%= sentier.title %>">
+            <% end %>
+          </div>
+          <div class="info_bloc" data-controller="infos-transit">
+            <% @themes.sort_by(&:title).each do |sentier| %>
+              <div class="sentier-infos" data-infos-transit-target="data" data-main-map-target="infos" data-tabs-target="panel" data-tab-name="<%= sentier.title %>">
                 <h5><%= sentier.title %></h5>
                 <div class="sentier-tech-infos">
                     <div class="difficulty">
                       <i class="fa-solid fa-arrow-right rotated-top-right"></i>
                       <span><%= sentier.difficulty %></span>
                     </div>
-                    <div class="duration">
+                    <div class="duration" data-infos-transit-target="duration" data-name="<%= sentier.title %>">
                       <i class="fa-regular fa-clock"></i>
-                      <span><%= sentier.duration.strftime("%H:%M") %></span>
+                    </div>
+                    <div class="lenght" data-infos-transit-target="lenght" data-name="<%= sentier.title %>">
                     </div>
                   </div>
                   <p><%= sentier.description %></p>
@@ -40,13 +45,15 @@
                     </h5>
                   <% end %>
               </div>
-              </div>
-            <div class="info_bloc no-border">
-              <div class="sentier-image" data-tabs-target="image" data-tab-name="<%= sentier.title %>">
+            <% end %>
+          </div>
+          <div class="info_bloc no-border">
+            <% @themes.sort_by(&:title).each do |sentier| %>
+              <div class="sentier-image" data-tabs-target="image" data-main-map-target="image" data-tab-name="<%= sentier.title %>">
                 <%= cl_image_tag sentier.image.key, crop: :fill %>
               </div>
-            </div>
-          <% end %>
+            <% end %>
+          </div>
         </div>
       </div>
     </section>
