@@ -49,7 +49,8 @@
   }
 
   &.active {
-    background-color: $blue;
+    background-color: $black;
+    color: $gray;
 
     .sentier-title-arrow {
         display: block;
@@ -65,7 +66,12 @@
 }
 
 .sentier-title_bloc:hover {
-  background-color: $gray;
+  background-color: $blue;
+}
+
+.sentier-title_bloc.active:hover {
+  background-color: $black;
+  color: $gray;
 }
 
 .sentier-infos {
