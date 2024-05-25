@@ -152,6 +152,22 @@ export default class extends Controller {
         }
       });
     });
+
+    this.tabTargets.forEach(tab => {
+      tab.addEventListener('mousemove', (e) => {
+        if (tab.dataset.tabName === title) {
+          this.map.setPaintProperty(routeLayerId, 'line-width', 8);
+          this.map.moveLayer(routeLayerId);
+        }
+      })
+      tab.addEventListener('mouseleave', (e) => {
+        if (tab.dataset.tabName === title) {
+          this.map.setPaintProperty(routeLayerId, 'line-width', 5);
+          this.map.moveLayer(routeLayerId);
+        }
+      })
+
+    });
   }
 
   transferInfos(title, distance, duration) {
