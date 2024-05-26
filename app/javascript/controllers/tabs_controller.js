@@ -12,7 +12,7 @@ export default class extends Controller {
   activate(event) {
     event.preventDefault()
     const tab = event.target
-    // console.log(tab.dataset.tabName)
+
     this.tabTargets.forEach((tabTarget) => {
       if (tabTarget.dataset.tabName == tab.dataset.tabName) {
         // console.log(tabTarget.dataset.tabName)

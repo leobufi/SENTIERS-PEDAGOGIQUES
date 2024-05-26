@@ -38,6 +38,16 @@ class SentiersController < ApplicationController
 
   def show
     @sentier = Sentier.find(params[:id])
+    @points = []
+    @point = @sentier.roads.map do |road|
+        {
+          lat: road.point.lat,
+          lng: road.point.long,
+          color: road.sentier.color,
+          info_window_html: render_to_string(partial: "info_window", locals: {point: road.point})
+        }
+      end
+    @points.concat(@point)
   end
 
   def new

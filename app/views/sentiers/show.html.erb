@@ -1,12 +1,27 @@
 <div class="page-main">
   <div class="page-padding no-padding">
     <section class="dynamic-pages">
-      <div class="dynamic-pages_wrapper">
-        <div class="map-canva"
-            data-controller="main-map"
-            data-main-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
-            data-main-map-sentier-coordinates-value="<%= sentier_coordinates_json(@sentier) %>"
-        >
+      <div class="dynamic-pages_wrapper"
+            data-controller="show-map"
+            data-show-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
+            data-show-map-sentier-coordinates-value="<%= sentier_coordinates_json(@sentier) %>"
+            data-show-map-points-coordinates-value="<%= @points.to_json %>" >
+
+        <div  class="map-canva" data-show-map-target="canva">
+        </div>
+        <div class="sentier-infos-self_wrapper" data-controller="infos-transit">
+          <div class="sentier-infos-self poppins-light" data-infos-transit-target="data" data-show-map-target="infos" data-tab-name="<%= @sentier.title %>">
+            <div class="difficulty">
+              <i class="fa-solid fa-arrow-right rotated-top-right"></i>
+              <span><%= @sentier.difficulty %></span>
+            </div>
+            <div class="duration" data-infos-transit-target="duration" data-name="<%= @sentier.title %>">
+              <i class="fa-regular fa-clock"></i>
+            </div>
+            <div class="lenght" data-infos-transit-target="lenght" data-name="<%= @sentier.title %>">
+              <i class="fa-solid fa-arrows-left-right"></i>
+            </div>
+          </div>
         </div>
         <div class="infos_wrapper">
           <div class="info_bloc">
@@ -14,18 +29,17 @@
                 <h5>Points d'interêt</h5>
                 <i class="fa-solid fa-arrow-right rotated-down"></i>
             </div>
-            <ul class="points-list">
-              <% @sentier.points.each  do |point| %>
-                <li>
-                  <input type="checkbox" data-tabs-target="tab" data-action="click->tabs#activate" data-tab-name="<%= point.title %>"/>
-                  <label data-tabs-target="tab" data-action="click->tabs#activate" data-tab-name="<%= point.title %>"><%= point.title %></label>
-                </li>
-              <% end %>
-            </ul>
+            <div class="points-list">
+            <% @sentier.roads.sort_by(&:position).each  do |road| %>
+                <span class="poppins-light" data-tabs-target="tab" data-show-map-target="checkbox" data-action="click->tabs#activate" data-tab-name="<%= road.point.title %>">
+                  <%= road.position %> • <%= road.point.title %>
+                </span>
+            <% end %>
+            </div>
           </div>
           <div class="info_bloc">
             <% @sentier.points.each do |point| %>
-              <div class="point-infos" data-tabs-target="panel" data-tab-name="<%= point.title %>">
+              <div class="point-infos" data-tabs-target="panel" data-show-map-target="pointInfos" data-tab-name="<%= point.title %>">
                 <h5><%= point.title %></h5>
                 <p><%= point.infos %></p>
                 <%= link_to point_path(point) do %>
@@ -39,7 +53,7 @@
             </div>
           <div class="info_bloc no-border">
             <% @sentier.points.each do |point| %>
-              <div class="point-image" data-tabs-target="image" data-tab-name="<%= point.title %>">
+              <div class="point-image" data-tabs-target="image" data-show-map-target="image" data-tab-name="<%= point.title %>">
                 <% if point.image_1.attached? %>
                   <%= cl_image_tag point.image_1.key, crop: :fill %>
                 <% end %>
@@ -51,4 +65,3 @@
     </section>
   </div>
 </div>
-<%= console %>
