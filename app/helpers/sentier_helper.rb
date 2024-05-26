@@ -34,7 +34,10 @@ module SentierHelper
       departure = {
         lat: sentier.starting_point_lat,
         lng: sentier.starting_point_long,
-        type: 'departure'
+        type: 'departure',
+        title: sentier.title,
+        color: sentier.color,
+        id: sentier.id
       }
       arrival = {
         lat: sentier.arrival_point_lat,
@@ -51,7 +54,7 @@ module SentierHelper
         }
       end
     sentier_coordinates << departure
-    sentier_coordinates << @points_coordinates
+    sentier_coordinates.concat(@points_coordinates)
     sentier_coordinates << arrival
     sentier_coordinates.to_json
   end
