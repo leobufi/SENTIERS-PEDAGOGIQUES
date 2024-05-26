@@ -116,8 +116,8 @@ export default class extends Controller {
     popup.on('open', (e) => {
       this.checkboxTargets.forEach(checkbox => {
         if (checkbox.dataset.tabName === title) {
-          checkbox.classList.toggle("active");
-        } else {
+          checkbox.classList.add("active");
+        } else if (checkbox.dataset.tabName != title) {
           checkbox.classList.remove("active");
         }
       })

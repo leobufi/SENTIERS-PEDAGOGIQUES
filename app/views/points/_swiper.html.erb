@@ -1,0 +1,115 @@
+<div class="swiper">
+  <div class="swiper-wrapper">
+    <% if @point.image_1.attached? %>
+    <div class="swiper-slide">
+      <div class="point-image">
+        <%= cl_image_tag @point.image_1.key, crop: :fit %>
+      </div>
+      <div class="point-content">
+        <p><%= @point.image_1_commment %></p>
+      </div>
+    </div>
+    <% end %>
+    <% if @point.image_2.attached? %>
+    <div class="swiper-slide">
+      <div class="point-image">
+        <%= cl_image_tag @point.image_2.key, crop: :fit %>
+      </div>
+      <div class="point-content">
+        <p><%= @point.image_2_commment %></p>
+      </div>
+    </div>
+    <% end %>
+    <% if @point.image_3.attached? %>
+    <div class="swiper-slide">
+      <div class="point-image">
+        <%= cl_image_tag @point.image_3.key, crop: :fit %>
+      </div>
+      <div class="point-content">
+        <p><%= @point.image_3_commment %></p>
+      </div>
+    </div>
+    <% end %>
+    <% if @point.image_4.attached? %>
+    <div class="swiper-slide">
+      <div class="point-image">
+        <%= cl_image_tag @point.image_4.key, crop: :fit %>
+      </div>
+      <div class="point-content">
+        <p><%= @point.image_4_commment %></p>
+      </div>
+    </div>
+    <% end %>
+    <% if @point.image_5.attached? %>
+    <div class="swiper-slide">
+      <div class="point-image">
+        <%= cl_image_tag @point.image_5.key, crop: :fit %>
+      </div>
+      <div class="point-content">
+        <p><%= @point.image_5_commment %></p>
+      </div>
+    </div>
+    <% end %>
+    <% if @point.image_6.attached? %>
+    <div class="swiper-slide">
+      <div class="point-image">
+        <%= cl_image_tag @point.image_6.key, crop: :fit %>
+      </div>
+      <div class="point-content">
+        <p><%= @point.image_6_commment %></p>
+      </div>
+    </div>
+    <% end %>
+    <% if @point.image_7.attached? %>
+    <div class="swiper-slide">
+      <div class="point-image">
+        <%= cl_image_tag @point.image_7.key, crop: :fit %>
+      </div>
+      <div class="point-content">
+        <p><%= @point.image_7_commment %></p>
+      </div>
+    </div>
+    <% end %>
+    <% if @point.image_8.attached? %>
+    <div class="swiper-slide">
+      <div class="point-image">
+        <%= cl_image_tag @point.image_8.key, crop: :fit %>
+      </div>
+      <div class="point-content">
+        <p><%= @point.image_8_commment %></p>
+      </div>
+    </div>
+    <% end %>
+    <% if @point.image_9.attached? %>
+    <div class="swiper-slide">
+      <div class="point-image">
+        <%= cl_image_tag @point.image_9.key, crop: :fit %>
+      </div>
+      <div class="point-content">
+        <p><%= @point.image_9_commment %></p>
+      </div>
+    </div>
+    <% end %>
+    <% if @point.image_10.attached? %>
+    <div class="swiper-slide">
+      <div class="point-image">
+        <%= cl_image_tag @point.image_10.key, crop: :fit %>
+      </div>
+      <div class="point-content">
+        <p><%= @point.image_10_commment %></p>
+      </div>
+    </div>
+    <% else %>
+      <div class="point-content">
+        <p>Il n'y a pas d'images pour ce point d'interêt.</p>
+      </div>
+    <% end %>
+    <div class="swiper-pagination"></div>
+    <div class="swiper-button-prev">
+      <i class="fa-solid fa-arrow-right rotated-inversed"></i>
+    </div>
+    <div class="swiper-button-next">
+      <i class="fa-solid fa-arrow-right"></i>
+    </div>
+  </div>
+</div>

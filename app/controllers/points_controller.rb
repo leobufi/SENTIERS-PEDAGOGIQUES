@@ -4,6 +4,7 @@ class PointsController < ApplicationController
 
   def show
     @point = Point.find(params[:id])
+    @point_coordinates = [@point.lat, @point.long]
   end
 
   def new
