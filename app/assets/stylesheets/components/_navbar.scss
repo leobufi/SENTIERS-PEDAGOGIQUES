@@ -95,6 +95,10 @@
     line-height: 1.2
 
   }
+
+  &.small {
+    font-size: 0.9rem;
+  }
 }
 
 
@@ -130,6 +134,18 @@
     justify-content: flex-start;
     column-gap: 2rem;
   }
+
+  a {
+    color: $black;
+
+    span {
+      font-size: 0.9rem;
+    }
+  }
+
+  span:hover {
+    font-weight: 400;
+  }
 }
 
 .page-title {
@@ -151,7 +167,6 @@
   height: 20rem;
   border-top: 1px solid black;
   border-bottom: 1px solid black;
-  background-color: coral;
 }
 
 
