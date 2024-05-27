@@ -16,7 +16,7 @@
               </div>
               <div class="content-infos_wrapper" data-tabs-target="panel" data-tab-name="<%= sentier.title %>">
                 <div class="content-infos">
-                  <p><%= sanitize("#{sentier.description}".truncate(150)) %></p>
+                  <%= sanitize("#{sentier.description}".truncate(150)) %>
                   <%#Durée : <%=sentier.duration.strftime("%H:%M")%>
                   <div>
                     <span class="poppins-semibold">Dénivelé :</span>

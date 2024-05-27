@@ -36,6 +36,11 @@
     cursor: pointer;
   }
 
+  &.no-space-between {
+    justify-content: center;
+    column-gap: 1rem;
+  }
+
   .form-tab.active {
     background-color: $black;
     color: $blue;
@@ -58,6 +63,26 @@
 
 }
 
+.form-bloc_horizontal_wrapper {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 2rem;
+
+  .form-bloc {
+    align-items: center;
+  }
+}
+
+.form-arrival-coordinates {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
+
+  &.masked {
+    display: none;
+  }
+}
+
 input {
   width: 100%;
   padding: 0.5rem 1rem;
@@ -70,6 +95,7 @@ input {
     padding: unset;
     border-radius: unset;
   }
+
 }
 
 .check_boxes {
@@ -105,6 +131,11 @@ select {
   display: flex;
   flex-direction: column;
   row-gap: 1rem;
+
+  &.borders {
+    border-left: 1px solid $gray;
+    border-right: 1px solid $gray;
+  }
 }
 
 .form-field {
@@ -119,4 +150,43 @@ select {
 
 .btn {
   color: $gray;
+}
+
+// ACTION TEXT - TRIX
+
+.trix-button-group {
+  button {
+    padding: 0.5rem;
+    font-size: 0.8rem;
+
+    &.trix-button.trix-button--icon.trix-button--icon-attach {
+      display: none;
+    }
+  }
+}
+
+trix-editor {
+  width: 100%;
+  height: 25rem;
+  padding: 0.5rem 1rem;
+  border: 1px solid black;
+  border-radius: 20px;
+  overflow: auto;
+}
+
+trix-toolbar {
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.8rem;
+
+  .trix-dialog__link-fields {
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.8rem;
+
+    .trix-button-group {
+      display: flex;
+      column-gap: 1rem;
+    }
+  }
 }

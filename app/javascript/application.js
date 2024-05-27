@@ -3,3 +3,6 @@ import "controllers"
 import "jquery";
 import "cocoon";
 import "@hotwired/turbo-rails"
+
+import "trix"
+import "@rails/actiontext"

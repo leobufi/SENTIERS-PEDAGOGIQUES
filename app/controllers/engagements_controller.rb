@@ -12,7 +12,7 @@ class EngagementsController < ApplicationController
   def create
     @engagement = Engagement.new(engagement_params)
     @engagement.save
-    redirect_to dashboard_path
+    redirect_to dashboard_engagement_path
   end
 
   def edit
@@ -22,13 +22,13 @@ class EngagementsController < ApplicationController
   def update
     @engagement = Engagement.find(params[:id])
     @engagement.update(engagement_params)
-    redirect_to dashboard_path
+    redirect_to dashboard_engagement_path
   end
 
   def destroy
     @engagement = Engagement.find(params[:id])
     @engagement.destroy
-    redirect_to dashboard_path, status: :see_other
+    redirect_to dashboard_engagement_path, status: :see_other
   end
 
   private

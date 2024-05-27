@@ -14,6 +14,17 @@ class Point < ApplicationRecord
   has_one_attached :image_9
   has_one_attached :image_10
 
+  has_rich_text :image_1_commment
+  has_rich_text :image_2_commment
+  has_rich_text :image_3_commment
+  has_rich_text :image_4_commment
+  has_rich_text :image_5_commment
+  has_rich_text :image_6_commment
+  has_rich_text :image_7_commment
+  has_rich_text :image_8_commment
+  has_rich_text :image_9_commment
+  has_rich_text :image_10_commment
+
   validates :title, presence: true
   validates :infos, presence: true
   validates :lat, presence: true
