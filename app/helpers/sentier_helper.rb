@@ -8,11 +8,15 @@ module SentierHelper
         type: 'departure',
         title: sentier.title,
         color: sentier.color,
-        id: sentier.id
+        id: sentier.id,
+        address: sentier.depart_address
       }
       arrival = {
         lat: sentier.arrival_point_lat,
         lng: sentier.arrival_point_long,
+        title: sentier.title,
+        address: sentier.arrival_address,
+        boucle: sentier.is_boucle,
         type: 'arrival'
       }
     @roads = sentier.roads.sort_by(&:position)
@@ -37,11 +41,15 @@ module SentierHelper
         type: 'departure',
         title: sentier.title,
         color: sentier.color,
-        id: sentier.id
+        id: sentier.id,
+        address: sentier.depart_address
       }
       arrival = {
         lat: sentier.arrival_point_lat,
         lng: sentier.arrival_point_long,
+        title: sentier.title,
+        address: sentier.arrival_address,
+        boucle: sentier.is_boucle,
         type: 'arrival'
       }
     @roads = sentier.roads.sort_by(&:position)

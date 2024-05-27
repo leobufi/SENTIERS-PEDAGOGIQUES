@@ -28,13 +28,36 @@ export default class extends Controller {
   addMarkersToMap() {
     this.sentierCoordinatesValue.forEach((coord) => {
       if (coord.type === 'departure') {
+        const popup = new mapboxgl.Popup()
+          .setHTML(`
+            <h6>Départ du sentier ${coord.title} :</h6>
+            <h6>${coord.address}</h6>
+            `);
         new mapboxgl.Marker({ color: '#B9D994' })
           .setLngLat([coord.lng, coord.lat])
+          .setPopup(popup)
           .addTo(this.map);
       }
       if (coord.type === 'arrival') {
+        const popup = new mapboxgl.Popup()
+          .setHTML(`
+            <h6>Arrivée du sentier ${coord.title} :</h6>
+            <h6>${coord.address}</h6>
+            `);
         new mapboxgl.Marker({ color: '#D994B9' })
           .setLngLat([coord.lng, coord.lat])
+          .setPopup(popup)
+          .addTo(this.map);
+      }
+      if (coord.type === 'arrival' && coord.boucle === true) {
+        const popup = new mapboxgl.Popup()
+          .setHTML(`
+            <h6>Départ/Arrivée du sentier ${coord.title} :</h6>
+            <h6>${coord.address}</h6>
+            `);
+        new mapboxgl.Marker({ color: '#D994B9' })
+          .setLngLat([coord.lng, coord.lat])
+          .setPopup(popup)
           .addTo(this.map);
       }
     });

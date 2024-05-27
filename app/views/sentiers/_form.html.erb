@@ -43,12 +43,14 @@
                 <div class="form-grid">
                   <%= f.input :starting_point_lat, label: false, placeholder: 'Latitude du point de départ du sentier' %>
                   <%= f.input :starting_point_long, label: false, placeholder: 'Longitude du point de départ du sentier' %>
+                  <%= f.input :depart_address, label: false, placeholder: 'Adresse du point de départ' %>
                 </div>
                 <div class="form-arrival-coordinates" data-tabs-target="coordinates">
                   <span class="large poppins-semibold">Point d'arrivée :</span>
                   <div class="form-grid">
                     <%= f.input :arrival_point_lat, label: false, placeholder: 'Latitude du point darrivée du sentier' %>
                     <%= f.input :arrival_point_long, label: false, placeholder: 'Longitude du point darrivée du sentier' %>
+                    <%= f.input :arrival_address, label: false, placeholder: 'Adresse du point de darrivée' %>
                   </div>
                 </div>
                 <hr>
