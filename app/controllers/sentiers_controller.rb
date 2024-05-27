@@ -57,9 +57,10 @@ class SentiersController < ApplicationController
 
   def create
     @sentier = Sentier.new(sentier_params)
-    if sentier_params[:is_boucle] = true
-      @sentier.arrival_point_lat = sentier_params[:starting_point_lat]
-      @sentier.arrival_point_long = sentier_params[:starting_point_long]
+    if sentier_params[:is_boucle] == "true"
+      sentier_params[:arrival_point_lat].replace(sentier_params[:starting_point_lat])
+      sentier_params[:arrival_point_long].replace(sentier_params[:starting_point_long])
+      sentier_params[:arrival_address].replace(sentier_params[:depart_address])
     end
     if @sentier.save
       redirect_to sentier_path(@sentier)
@@ -74,9 +75,10 @@ class SentiersController < ApplicationController
 
   def update
     @sentier = Sentier.find(params[:id])
-    if sentier_params[:is_boucle] = true
-      @sentier.arrival_point_lat = sentier_params[:starting_point_lat]
-      @sentier.arrival_point_long = sentier_params[:starting_point_long]
+    if sentier_params[:is_boucle] == "true"
+      sentier_params[:arrival_point_lat].replace(sentier_params[:starting_point_lat])
+      sentier_params[:arrival_point_long].replace(sentier_params[:starting_point_long])
+      sentier_params[:arrival_address].replace(sentier_params[:depart_address])
     end
     if @sentier.update(sentier_params)
       redirect_to sentier_path(@sentier)
@@ -94,7 +96,22 @@ class SentiersController < ApplicationController
   private
 
   def sentier_params
-    params.require(:sentier).permit(:title, :description, :color, :image, :difficulty, :is_theme, :is_boucle, :starting_point_lat, :starting_point_long, :arrival_point_lat, :arrival_point_long, roads_attributes: [:id, :point_id, :position, :_destroy] )
+    params.require(:sentier).permit(
+      :title,
+      :description,
+      :color,
+      :image,
+      :difficulty,
+      :is_theme,
+      :is_boucle,
+      :starting_point_lat,
+      :starting_point_long,
+      :depart_address,
+      :arrival_point_lat,
+      :arrival_point_long,
+      :arrival_address,
+      roads_attributes: [:id, :point_id, :position, :_destroy]
+      )
   end
 
   def require_admin

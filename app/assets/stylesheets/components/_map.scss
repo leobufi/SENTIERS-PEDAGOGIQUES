@@ -1,5 +1,5 @@
 .mapboxgl-popup {
-  max-width: 250px;
+  max-width: 260px;
 }
 
 .mapboxgl-popup-content {
@@ -10,6 +10,10 @@
   padding: 1rem;
   border-radius: 20px;
   border: 1px solid black;
+
+  h6 {
+    padding-right: 2rem;
+  }
 }
 
 .mapboxgl-marker {
