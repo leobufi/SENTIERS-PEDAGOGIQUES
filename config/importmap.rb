@@ -13,3 +13,5 @@ pin "cocoon", preload: true # @0.1.1
 pin "jquery", to: "https://code.jquery.com/jquery-3.6.0.min.js", preload: true # @3.7.1
 pin "@hotwired/turbo-rails", to: "turbo.min.js"
 pin "@hotwired/stimulus", to: "@hotwired--stimulus.js" # @3.2.2
+pin "trix"
+pin "@rails/actiontext", to: "actiontext.esm.js"

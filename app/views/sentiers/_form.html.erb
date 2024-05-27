@@ -1,53 +1,81 @@
 <div class="page-main">
   <div class="page-padding">
-    <section class="dashboard">
+    <section class="dashboard" data-controller="tabs">
       <div class="dashboard-wrapper">
         <h1 class="large">Créer/modifier un sentier</h1>
         <div class="form-wrapper">
           <div class="form">
             <%= simple_form_for(@sentier) do |f| %>
-              <%= f.input :title, label: false, placeholder: 'Titre du sentier' %>
-              <%= f.input :description, as: :text, label: false, placeholder: 'Description du sentier' %>
-              <%= f.input :difficulty, label: false, placeholder: 'Dénivelé du sentier' %>
-              <span class="large poppins-semibold">Image principale du sentier :</span>
-              <%= f.input :image, as: :file, label: false %>
-              <span class="large poppins-semibold">Couleur du sentier :</span>
-              <%= f.input :color, as: :color, label: false %>
-              <span class="large poppins-semibold">Coordonnées :</span>
-              <div class="form-grid">
-                <%= f.input :starting_point_lat, label: false, placeholder: 'Latitude du point de départ du sentier' %>
-                <%= f.input :starting_point_long, label: false, placeholder: 'Longitude du point de départ du sentier' %>
-                <%= f.input :arrival_point_lat, label: false, placeholder: 'Latitude du point darrivée du sentier' %>
-                <%= f.input :arrival_point_long, label: false, placeholder: 'Longitude du point darrivée du sentier' %>
+              <div class="form-tabs_wrapper no-space-between">
+                <span class="form-tab active" data-tabs-target="tab" data-action="click->tabs#activate" data-tab-name="infos">Infos</span>
+                <span class="form-tab" data-tabs-target="tab" data-action="click->tabs#activate" data-tab-name="parcours">Parcours</span>
               </div>
-              <div class="form-bloc">
-                <span class="large poppins-semibold">
-                  Points d'interêt du sentier :
-                </span>
-                <span class="poppins-light-italic">Choisir une position au point d'interêt dans la cellule de gauche.</span>
-                <%= f.simple_fields_for :roads do |road_form| %>
-                  <div class="form-field">
-                    <%= road_form.input :position, label: false, input_html: { class: 'form-input' } %>
-                    <%= road_form.input :point_id, collection: Point.all, label: false %>
-                    <%# <%= road_form.hidden_field :_destroy %>
-                    <%# <%= link_to_remove_association "Supprimmer un point", road_form, class: 'btn-secondary' %>
-                    <% if road_form.object != @sentier.roads.first%>
-                      <%= link_to "Supprimer le point", road_path(road_form.object), remote: true, data: {turbo_method: :delete}, class: "btn-secondary"%>
-                    <% end %>
+              <hr>
+              <div class="form-bloc_wrapper active" data-tabs-target="panel" data-tab-name="infos">
+                <%= f.input :title, label: false, placeholder: 'Titre du sentier' %>
+                <%= f.rich_text_area :description, as: :text, label: false, placeholder: 'Description du sentier' %>
+                <div class="form-bloc_horizontal_wrapper">
+                  <div class="form-bloc">
+                    <span class="large poppins-semibold">Difficulté</span>
+                    <%= f.input :difficulty, as: :select, collection: ['facile', 'modéré', 'difficile'], label: false, placeholder: 'Dénivelé du sentier' %>
                   </div>
-                <% end %>
-                <div class="links">
-                  <%= link_to_add_association 'Ajouter un point', f, :roads, partial: 'road_fields', class: 'btn-secondary'%>
+                  <div class="form-bloc borders">
+                    <span class="large poppins-semibold">Couleur du sentier :</span>
+                    <%= f.input :color, as: :color, label: false %>
+                  </div>
+                  <div class="form-bloc">
+                    <span class="large poppins-semibold">Sentier Thématique ?</span>
+                    <%= f.input :is_theme, as: :boolean, as: :radio_buttons, collection: [['Oui', true], ['Non', false]], label: false %>
+                  </div>
+                </div>
+                <hr>
+                <div class="form-bloc">
+                  <span class="large poppins-semibold">Image principale du sentier :</span>
+                  <%= f.input :image, as: :file, label: false %>
                 </div>
               </div>
-              <div class="form-bloc">
-                <span class="large poppins-semibold">
-                  Sentier Thématique ?
-                </span>
-                <%= f.input :is_theme, as: :radio_buttons, collection: [['Oui', true], ['Non', false]], label: false %>
+              <div class="form-bloc_wrapper" data-tabs-target="panel" data-tab-name="parcours">
+                <div class="form-bloc">
+                  <span class="large poppins-semibold">Boucle ?</span>
+                  <%= f.input :is_boucle, as: :boolean, as: :radio_buttons, collection: [['Oui', true], ['Non', false]], label: false, input_html: { data: { tabs_target: 'check', action: "click->tabs#mask" } } %>
+                </div>
+                <span class="large poppins-semibold">Point de départ :</span>
+                <div class="form-grid">
+                  <%= f.input :starting_point_lat, label: false, placeholder: 'Latitude du point de départ du sentier' %>
+                  <%= f.input :starting_point_long, label: false, placeholder: 'Longitude du point de départ du sentier' %>
+                </div>
+                <div class="form-arrival-coordinates" data-tabs-target="coordinates">
+                  <span class="large poppins-semibold">Point d'arrivée :</span>
+                  <div class="form-grid">
+                    <%= f.input :arrival_point_lat, label: false, placeholder: 'Latitude du point darrivée du sentier' %>
+                    <%= f.input :arrival_point_long, label: false, placeholder: 'Longitude du point darrivée du sentier' %>
+                  </div>
+                </div>
+                <hr>
+                <div class="form-bloc">
+                  <span class="large poppins-semibold">
+                    Points d'interêt du sentier :
+                  </span>
+                  <span class="poppins-light-italic">Choisir une position au point d'interêt dans la cellule de gauche.</span>
+                  <%= f.simple_fields_for :roads do |road_form| %>
+                    <div class="form-field">
+                      <%= road_form.input :position, label: false, input_html: { class: 'form-input' } %>
+                      <%= road_form.input :point_id, collection: Point.all, label: false %>
+                      <%# <%= road_form.hidden_field :_destroy %>
+                      <%# <%= link_to_remove_association "Supprimmer un point", road_form, class: 'btn-secondary' %>
+                      <% if road_form.object != @sentier.roads.first%>
+                        <%= link_to "Supprimer le point", road_path(road_form.object), remote: true, data: {turbo_method: :delete}, class: "btn-secondary"%>
+                      <% end %>
+                    </div>
+                  <% end %>
+                  <div class="links">
+                    <%= link_to_add_association 'Ajouter un point', f, :roads, partial: 'road_fields', class: 'btn-secondary'%>
+                  </div>
+                </div>
               </div>
+              <hr>
               <button>
-                <%= f.button :submit, "Créer le sentier" %>
+                <%= f.button :submit, "Créer/modifier le sentier" %>
               </button>
             <% end %>
           </div>
