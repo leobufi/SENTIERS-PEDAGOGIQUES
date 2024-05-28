@@ -1,9 +1,13 @@
-<div class="navbar navbar-expand-sm">
+<div class="navbar navbar-expand-sm" data-controller="mobile-nav">
   <%= link_to root_path, class: "navbar-logo" do %>
     <%= image_tag "logo.png" %>
   <% end %>
-
-  <div class="collapse navbar-collapse">
+  <div class="mobile-nav-buttons_wrapper">
+    <i class="fa-solid fa-arrow-right" data-mobile-nav-target="burger" data-action="click->mobile-nav#activate" ></i>
+    <span class="poppins-semibold" data-action="click->mobile-nav#activate">Menu</span>
+    <i class="fa-solid fa-xmark" data-mobile-nav-target="cross" data-action="click->mobile-nav#activate"></i>
+  </div>
+  <div class="collapse navbar-collapse" data-mobile-nav-target="menu">
     <ul class="navbar-nav" data-controller="navbar">
       <li class="nav-item poppins-medium" data-action="mouseleave->navbar#removeDropright">
           <span class="nav-link gray" data-navbar-target="link" data-action="mouseover->navbar#dropright">

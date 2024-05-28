@@ -1,14 +1,18 @@
-<div class="navbar navbar-expand-sm">
+<div class="navbar navbar-expand-sm" data-controller="mobile-nav">
   <%= link_to root_path, class: "navbar-logo" do %>
     <%= image_tag "logo.png" %>
   <% end %>
-
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+  <div class="mobile-nav-buttons_wrapper">
+    <i class="fa-solid fa-arrow-right" data-mobile-nav-target="burger" data-action="click->mobile-nav#activate" ></i>
+    <span class="poppins-semibold" data-action="click->mobile-nav#activate">Infos & Menu</span>
+    <i class="fa-solid fa-xmark" data-mobile-nav-target="cross" data-action="click->mobile-nav#activate"></i>
+  </div>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent" data-mobile-nav-target="menu">
     <ul class="navbar-nav" data-controller="navbar">
       <li class="nav-item poppins-medium" data-action="mouseleave->navbar#removeDropright">
           <span class="nav-link gray" data-navbar-target="link" data-action="mouseover->navbar#dropright">
             <i class="fa-solid fa-arrow-right"></i>
-            Menu
+            Menu du site
           </span>
         <div class="nav-dropright-menu" data-navbar-target="dropright">
           <%= link_to "Itinéraires", sentiers_path, class:"nav-link" %>
@@ -23,7 +27,7 @@
       </li>
     </ul>
   </div>
-  <div class="nav-infos padding-top no-gap">
+  <div class="nav-infos padding-top no-gap no-height" data-mobile-nav-target="menu">
     <h1><%= @point.title %></h1>
     <% @point.sentiers.each do |sentier| %>
       <% if sentier.is_theme? %>
@@ -36,9 +40,10 @@
   <div class="nav-map"
       data-controller="point-map"
       data-point-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
-      data-point-map-point-coordinates-value="<%= @point_coordinates.to_json %>" >
+      data-point-map-point-coordinates-value="<%= @point_coordinates.to_json %>"
+      data-mobile-nav-target="menu" >
   </div>
-  <ul class="navbar-nav">
+  <ul class="navbar-nav bottom" data-mobile-nav-target="menu">
     <li class="nav-item">
     <% @point.roads.each do |road| %>
       <%= link_to sentier_path(road.sentier), class:"nav-link small" do %>

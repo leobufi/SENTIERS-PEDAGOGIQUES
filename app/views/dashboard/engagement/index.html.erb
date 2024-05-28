@@ -17,12 +17,16 @@
                 <div class="content-infos">
                     <h4>Sensibilisation</h4>
                     <%= sanitize("#{engagement.sensib}".truncate(250)) %>
+                    <hr>
                     <h4>Protection</h4>
                     <%= sanitize("#{engagement.protec}".truncate(250)) %>
+                    <hr>
                     <h4>Règles</h4>
                     <%= sanitize("#{engagement.rules}".truncate(250)) %>
+                    <hr>
                     <h4>Partenaires</h4>
                     <%= sanitize("#{engagement.partner}".truncate(250)) %>
+                    <hr>
                     <h4>Image de couverture</h4>
                     <%= cl_image_tag engagement.engagements_img.key, height: 150, width: 200, crop: :fill %>
                 </div>

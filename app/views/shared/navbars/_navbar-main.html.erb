@@ -1,12 +1,17 @@
-<div class="navbar navbar-expand-sm">
+<div class="navbar navbar-expand-sm" data-controller="mobile-nav">
   <%= link_to root_path, class: "navbar-logo" do %>
     <%= image_tag "logo.png" %>
   <% end %>
+  <div class="mobile-nav-buttons_wrapper">
+    <i class="fa-solid fa-arrow-right" data-mobile-nav-target="burger" data-action="click->mobile-nav#activate" ></i>
+    <span class="poppins-semibold" data-action="click->mobile-nav#activate">Menu</span>
+    <i class="fa-solid fa-xmark" data-mobile-nav-target="cross" data-action="click->mobile-nav#activate"></i>
+  </div>
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+  <div class="collapse navbar-collapse" id="navbarSupportedContent" data-mobile-nav-target="menu">
     <ul class="navbar-nav" data-controller="navbar">
       <li class="nav-item">
-        <div class="nav-link active gray">
+        <div class="nav-link active gray not-displayed">
           <i class="fa-solid fa-arrow-right rotated-down"></i>
           <span>Menu</span>
         </div>
@@ -42,7 +47,7 @@
     </ul>
   </div>
 
-  <div class="nav-infos no-gap">
+  <div class="nav-infos no-gap blacked" data-mobile-nav-target="menu">
       </p><%= @general.general_pres %><p>
   </div>
 </div>

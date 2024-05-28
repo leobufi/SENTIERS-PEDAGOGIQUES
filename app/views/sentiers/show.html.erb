@@ -24,7 +24,7 @@
           </div>
         </div>
         <div class="infos_wrapper">
-          <div class="info_bloc">
+          <div class="info_bloc mobile-no-border">
             <div class="points_bloc">
                 <h5>Points d'interêt</h5>
                 <i class="fa-solid fa-arrow-right rotated-down"></i>
@@ -51,7 +51,7 @@
               </div>
             <% end %>
             </div>
-          <div class="info_bloc no-border">
+          <div class="info_bloc no-border mobile-no-border">
             <% @sentier.points.each do |point| %>
               <div class="point-image" data-tabs-target="image" data-show-map-target="image" data-tab-name="<%= point.title %>">
                 <% if point.image_1.attached? %>
