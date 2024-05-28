@@ -17,6 +17,7 @@
                 <div class="content-infos">
                     <h4>Texte de présentation du projet</h4>
                     <p><%= sanitize("#{general.general_pres}".truncate(250)) %></p>
+                    <hr>
                     <h4>Image de de la page d'accueil</h4>
                     <%= cl_image_tag general.home_img.key, height: 200, width: 300, crop: :fill %>
                 </div>

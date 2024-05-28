@@ -1,0 +1,455 @@
+@media screen and (max-width: 1440px) {
+  .map-canva {
+    height: 68.9vh;
+  }
+
+  .infos_wrapper {
+    height: 31.1vh;
+
+    .info_bloc {
+      height: 100%;
+    }
+  }
+
+  .point-content_wrapper {
+
+    .point-image {
+      height: 50vh;
+    }
+  }
+
+  .nav-map {
+    height: 37.6vh;
+  }
+}
+
+@media screen and (max-width: 1280px) {
+
+  .navbar {
+    width: 15rem;
+
+    .navbar-logo img {
+      width: 13rem;
+    }
+  }
+
+  .pages-hero {
+    .page-main {
+      margin-left: 15rem;
+    }
+  }
+
+  .map-canva {
+    height: 60vh;
+  }
+
+  .infos_wrapper {
+    height: 40vh;
+
+    .info_bloc {
+      height: 100%;
+    }
+  }
+
+  .point-content_wrapper .swiper .swiper-pagination-bullets.swiper-pagination-horizontal {
+    bottom: 16.5rem;
+  }
+
+  .trix-button-group button {
+    font-size: 0.6rem;
+  }
+
+  .sentier-tech-infos {
+    font-size: 0.8rem;
+    column-gap: 1rem;
+  }
+}
+
+@media screen and (max-width: 1024px){
+
+  .map-canva {
+    height: 73.4vh;
+  }
+
+  .infos_wrapper {
+    height: 26.6vh;
+
+    .info_bloc {
+      height: 100%;
+    }
+  }
+
+  .sentier-title_bloc {
+    padding: 1rem;
+
+    h5 {
+      font-size: 1rem;
+    }
+    span {
+      font-size: 0.9rem;
+    }
+  }
+
+  .points-list {
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+  }
+
+  .point-content_wrapper .swiper .swiper-pagination-bullets.swiper-pagination-horizontal {
+    bottom: 20rem;
+  }
+
+  .form-bloc_horizontal_wrapper {
+    span {
+      text-align: center;
+    }
+  }
+}
+
+@media screen and (max-width: 821px){
+
+  .navbar {
+    bottom: unset;
+
+    .navbar-logo img {
+      width: 7rem;
+    }
+
+    .not-displayed {
+      display: none;
+    }
+
+    .mobile-nav-buttons_wrapper {
+      display: flex;
+      justify-content: flex-start;
+      column-gap: 2rem;
+      align-items: center;
+      padding: 1rem;
+      border-bottom: 1px solid black;
+      width: 100%;
+      font-size: 1.5rem;
+
+      span {
+        font-size: 1rem;
+      }
+
+      .fa-xmark {
+        display: none;
+
+        &.active  {
+          padding-left : 3.5rem;
+          cursor: pointer;
+          display: block;
+        }
+      }
+
+      .fa-arrow-right {
+
+        &.rotated-down {
+          cursor: pointer;
+          color: $blue;
+          transform: rotate(90deg);
+          transition: transform 0.3s;
+        }
+      }
+    }
+
+
+    .navbar-collapse {
+      display: none !important;
+
+      &.active {
+        display: flex !important;
+        opacity: 1;
+        transition: opacity 1s;
+      }
+    }
+
+    .nav-infos {
+      display: none;
+
+      &.active {
+        display: flex;
+        flex-direction: column;
+        border-bottom: 1px solid black;
+        font-size: 0.9rem;
+      }
+    }
+
+    .nav-map {
+      display: none;
+
+      &.active {
+        height: 25.6vh;
+        display: block;
+      }
+    }
+
+    .navbar-nav {
+      &.bottom {
+        display: none;
+
+        &.active {
+          display: block;
+        }
+      }
+    }
+
+  }
+
+  .pages-hero {
+    .page-main {
+      margin-left: unset;
+    }
+  }
+
+  .sentier-infos-self_wrapper {
+    position: absolute;
+    top: unset;
+    left: unset;
+    bottom: 24rem;
+    right: 3rem;
+  }
+
+  .point-tabs_wrapper {
+    margin-left: 15rem;
+  }
+
+  .dashboard {
+    margin-top: 10rem;
+  }
+
+  .point-tab {
+    height: 8.66vh;
+  }
+
+  .point-content {
+    iframe {
+      margin-top: 6rem;
+    }
+
+    .mobile-margin {
+      margin-top: 6rem;
+    }
+  }
+
+}
+
+@media screen and (max-width: 460px) {
+
+  .page-main {
+    .page-padding {
+      padding: 1.5rem;
+    }
+  }
+
+  // ROOT
+
+  .home-hero_wrapper .home-title_wrapper img {
+    width: 16rem;
+  }
+
+  //NAVBAR
+
+  .navbar {
+    width: 12rem;
+
+    .navbar-logo {
+      padding: 1rem;
+      img {
+        width: 5rem;
+      }
+    }
+
+    .mobile-nav-buttons_wrapper {
+
+      span {
+        font-size: 0.9rem;
+      }
+
+      .fa-xmark {
+        &.active {
+          padding-left: 0rem;
+        }
+
+      }
+    }
+
+    .nav-dropright-menu.active {
+      width: 10rem;
+      right: -10rem;
+    }
+
+    .navbar-collapse {
+      font-size: 0.8rem;
+    }
+
+    .nav-infos {
+      height: 50vh;
+
+      &.blacked {
+        background-color: $black;
+        color: $gray;
+      }
+
+      &.no-height {
+        height: auto;
+      }
+    }
+  }
+
+  // SENTIERS INDEX & SHOW
+
+  .map-canva {
+    height: 84.5vh;
+  }
+
+  .infos_wrapper {
+    height: auto;
+    flex-direction: column;
+
+    .info_bloc {
+      width: 100%;
+      border-right: none;
+
+      &.active {
+        border-bottom: 1px solid black;
+      }
+      .point-infos {
+
+        &.active {
+          border-bottom: 1px solid black;
+          border-top: 1px solid black;
+        }
+      }
+
+      &.mobile-no-border {
+        border-bottom: unset;
+      }
+    }
+
+    .sentier-title-arrow {
+      i {
+        rotate: 90deg;
+      }
+    }
+  }
+
+  .sentier-infos-self_wrapper {
+    bottom: unset;
+    top: 1rem;
+    right: 4rem;
+    font-size: 0.8rem;
+    background-color: $black;
+    color: $gray;
+  }
+
+  .mapboxgl-ctrl-top-right {
+    right: 0rem;
+    top: 2rem;
+  }
+
+  .points-list {
+    padding: 1rem 0.5rem;
+  }
+
+  // POINTS SHOW
+
+  .point-tabs_wrapper {
+    margin-left: unset;
+    position: fixed;
+    top: 0rem;
+    right: 0rem;
+    flex-direction: column;
+    width: 33%;
+    background-color: $gray;
+    border-left: 1px solid black;
+    z-index: 10;
+
+    .point-tab {
+      border-bottom: 1px solid black;
+      border-right: unset;
+      padding: 1rem;
+      width: 100%;
+      height: 5vh;
+      font-size: 0.9rem;
+    }
+
+  }
+
+  .point-content_wrapper {
+    .point-image {
+      height: 66vh;
+    }
+
+    .point-content {
+
+      iframe {
+        margin-top: 12rem;
+      }
+
+      .mobile-margin {
+        margin-top: 12rem;
+      }
+    }
+  }
+
+  .point-content_wrapper .swiper .swiper-pagination-bullets.swiper-pagination-horizontal {
+    bottom: 31rem;
+  }
+
+  // DASHBOARD
+
+  .dashboard-wrapper {
+    row-gap: 2rem;
+
+    h1 {
+      &.large {
+        font-size: 32px;
+      }
+    }
+
+    .content-infos_wrapper {
+      flex-direction: column;
+      row-gap: 2rem;
+
+      .content-links {
+        width: 100%;
+        align-items: unset;
+      }
+
+      .content-infos {
+        .infos {
+          flex-direction: column;
+          row-gap: 1.5rem;
+        }
+
+        span {
+          &.mobile-small {
+            font-size: 0.5rem;
+          }
+        }
+      }
+    }
+
+    trix-toolbar {
+      display: none;
+    }
+
+    .form-bloc_horizontal_wrapper {
+      grid-template-columns: repeat(2, 1fr);
+      grid-gap: 1rem;
+
+      .mobile-no-borders {
+        border-right: unset;
+        border-left: unset;
+      }
+    }
+
+    select {
+      width: 100%;
+    }
+  }
+
+}

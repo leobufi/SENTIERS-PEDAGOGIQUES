@@ -20,6 +20,7 @@
                       <%= cl_image_tag decouverte.circuit_acc_img.key, height: 150, width: 200, crop: :fill %>
                       <%= sanitize("#{decouverte.circuit_acc_text}".truncate(250)) %>
                     </div>
+                    <hr>
                     <h4>Animation Scolaire</h4>
                     <div class="infos">
                       <%= cl_image_tag decouverte.anim_scol_img.key, height: 150, width: 200, crop: :fill %>

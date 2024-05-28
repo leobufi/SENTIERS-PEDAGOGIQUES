@@ -16,7 +16,7 @@
           </div>
           <div class="point-content">
             <% if @point.title.empty? && @point.infos.empty? %>
-              <p>Il n'y a pas d'informations pour ce point d'interêt.</p>
+              <p class="mobile-margin">Il n'y a pas d'informations pour ce point d'interêt.</p>
             <% else %>
               <h2><%= @point.title %></h2>
               <p><%= @point.infos %></p>
@@ -29,7 +29,7 @@
         <div class="point-content_wrapper" data-tabs-target="panel" data-tab-name="video">
           <div class="point-content">
             <% if @point.video.empty? %>
-              <p>Il n'y a pas de contenu vidéo pour ce point d'interêt.</p>
+              <p class="mobile-margin">Il n'y a pas de contenu vidéo pour ce point d'interêt.</p>
             <% else %>
               <iframe width="100%" height="550" src="https://player.vimeo.com/video/<%=@point.video%>" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen=""></iframe>
             <% end %>
@@ -38,7 +38,7 @@
         <div class="point-content_wrapper" data-tabs-target="panel" data-tab-name="audio">
           <div class="point-content">
             <% if @point.audio.empty? %>
-              <p>Il n'y a pas de contenu audio pour ce point d'interêt.</p>
+              <p class="mobile-margin" >Il n'y a pas de contenu audio pour ce point d'interêt.</p>
             <% else %>
               <%=  @point.audio.html_safe %>
             <% end %>

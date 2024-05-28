@@ -23,6 +23,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  column-gap: 0.5rem;
 
   .form-tab {
     display: flex;
@@ -188,5 +189,20 @@ trix-toolbar {
       display: flex;
       column-gap: 1rem;
     }
+  }
+}
+
+.trix-button--icon-decrease-nesting-level {
+  display: none;
+}
+
+.trix-button--icon-increase-nesting-level {
+  display: none;
+}
+
+.trix-button-group {
+
+  &.trix-button-group--history-tools {
+    display: none;
   }
 }
