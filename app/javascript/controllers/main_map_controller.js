@@ -15,6 +15,8 @@ export default class extends Controller {
   connect() {
     mapboxgl.accessToken = this.apiKeyValue;
 
+    console.log(navigator);
+
     this.map = new mapboxgl.Map({
       container: this.canvaTarget,
       style: 'mapbox://styles/leobufi/clwg4fwi600h101ny4wooeivf',
@@ -24,6 +26,8 @@ export default class extends Controller {
     this.addMarkersToMap();
     this.fitMapToMarkers();
     this.addRoutesToMap();
+    this.addGeolocate();
+
   }
 
   addMarkersToMap() {
@@ -136,6 +140,19 @@ export default class extends Controller {
           this.activateInfos(routeLayerId, title);
         });
     });
+  }
+
+  addGeolocate() {
+    this.map.addControl(
+      new mapboxgl.GeolocateControl({
+        positionOptions: {
+          enableHighAccuracy: true,
+        },
+        trackUserLocation: true,
+        showUserHeading: true
+      })
+    );
+
   }
 
   activateRoute(routeLayerId) {
