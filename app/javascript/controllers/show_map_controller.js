@@ -23,6 +23,7 @@ export default class extends Controller {
     this.addMarkersToMap();
     this.fitMapToMarkers();
     this.addRoutesToMap();
+    this.addGeolocate();
   }
 
   addMarkersToMap() {
@@ -55,7 +56,7 @@ export default class extends Controller {
             <h6>Départ/Arrivée du sentier ${coord.title} :</h6>
             <h6>${coord.address}</h6>
             `);
-        new mapboxgl.Marker({ color: '#D994B9' })
+        new mapboxgl.Marker({ color: '#B9D994' })
           .setLngLat([coord.lng, coord.lat])
           .setPopup(popup)
           .addTo(this.map);
@@ -133,6 +134,18 @@ export default class extends Controller {
 
         this.transferInfos(title, distance, duration);
       });
+  }
+
+  addGeolocate() {
+    this.map.addControl(
+      new mapboxgl.GeolocateControl({
+        positionOptions: {
+          enableHighAccuracy: true,
+        },
+        trackUserLocation: true,
+        showUserHeading: true
+      })
+    );
   }
 
   activateInfos(popup, title) {

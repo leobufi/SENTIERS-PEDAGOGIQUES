@@ -25,6 +25,11 @@
   </div>
   <div class="nav-infos padding-top">
     <h1><%= @sentier.title %></h1>
+    <div>
+      <span class="poppins-light-italic">Départ : <%= @sentier.depart_address %></span>
+      <br>
+      <span class="poppins-light-italic">Arrivée : <%= @sentier.arrival_address %></span>
+    </div>
     <%= @sentier.description %>
   </div>
 </div>
