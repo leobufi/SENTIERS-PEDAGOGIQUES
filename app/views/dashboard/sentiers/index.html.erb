@@ -14,7 +14,7 @@
               <div class="content-title">
                 <h4 data-tabs-target="tab" data-action="click->tabs#activate" data-tab-name="<%= sentier.title %>"><%= sentier.title %></h4>
               </div>
-              <div class="content-infos_wrapper" data-tabs-target="panel" data-tab-name="<%= sentier.title %>">
+              <div class="content-infos_wrapper" data-tabs-target="toggledPanel" data-tab-name="<%= sentier.title %>">
                 <div class="content-infos">
                   <%= sanitize("#{sentier.description}".truncate(150)) %>
                   <%#Durée : <%=sentier.duration.strftime("%H:%M")%>

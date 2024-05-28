@@ -15,8 +15,6 @@ export default class extends Controller {
   connect() {
     mapboxgl.accessToken = this.apiKeyValue;
 
-    console.log(navigator);
-
     this.map = new mapboxgl.Map({
       container: this.canvaTarget,
       style: 'mapbox://styles/leobufi/clwg4fwi600h101ny4wooeivf',
@@ -152,7 +150,6 @@ export default class extends Controller {
         showUserHeading: true
       })
     );
-
   }
 
   activateRoute(routeLayerId) {

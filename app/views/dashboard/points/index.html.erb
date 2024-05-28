@@ -14,7 +14,7 @@
               <div class="content-title">
                 <h4 data-tabs-target="tab" data-action="click->tabs#activate" data-tab-name="<%= point.title %>"><%= point.title %></h4>
               </div>
-              <div class="content-infos_wrapper" data-tabs-target="panel" data-tab-name="<%= point.title %>">
+              <div class="content-infos_wrapper" data-tabs-target="toggledPanel" data-tab-name="<%= point.title %>">
                 <div class="content-infos">
                   <p><%= sanitize("#{point.infos}".truncate(150)) %></p>
                   <div>

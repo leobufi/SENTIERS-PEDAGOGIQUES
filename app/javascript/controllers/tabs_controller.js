@@ -2,10 +2,10 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="tabs"
 export default class extends Controller {
-  static targets = ["tab", "panel", "image", "check", "coordinates"]
+  static targets = ["tab", "toggledPanel", "panel", "image", "check", "coordinates"]
 
   connect() {
- this.mask();
+    this.mask();
   }
 
 
@@ -37,6 +37,15 @@ export default class extends Controller {
         image.classList.add("active")
       } else if (image.dataset.tabName != tab.dataset.tabName) {
         image.classList.remove("active")
+      }
+    })
+
+    this.toggledPanelTargets.forEach((tabTarget) => {
+      if (tabTarget.dataset.tabName == tab.dataset.tabName) {
+        console.log(tabTarget.dataset.tabName)
+        tabTarget.classList.toggle("active")
+      } else if (tabTarget.dataset.tabName != tab.dataset.tabName) {
+        tabTarget.classList.remove("active")
       }
     })
 
