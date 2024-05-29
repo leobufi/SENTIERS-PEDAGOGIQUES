@@ -5,7 +5,6 @@ export default class extends Controller {
   static targets = ["menu", "cross", "burger"]
 
   connect() {
-    console.log('hi from mobile nav')
   }
 
   activate() {
