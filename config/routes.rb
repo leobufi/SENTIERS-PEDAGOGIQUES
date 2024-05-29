@@ -11,15 +11,16 @@ Rails.application.routes.draw do
 
   get 'dashboard', to: 'dashboard/dashboard#index', as: :dashboard
   get 'dashboard/generals', to: 'dashboard/generals#index', as: :dashboard_generals
-  get 'dashboard/sentiers', to: 'dashboard/sentiers#index', as: :dashboard_sentiers
+  get 'dashboard/itineraires', to: 'dashboard/sentiers#index', as: :dashboard_sentiers
   get 'dashboard/points', to: 'dashboard/points#index', as: :dashboard_points
   get 'dashboard/decouverte', to: 'dashboard/decouverte#index', as: :dashboard_decouverte
   get 'dashboard/engagements', to: 'dashboard/engagement#index', as: :dashboard_engagement
   get 'dashboard/qrcodes', to: 'dashboard/qrcodes#index', as: :dashboard_qr_codes
 
   get 'themes', to: 'sentiers#themes', as: :themes_sentiers
+  get 'itineraires', to: 'sentiers#index', as: :sentiers
 
-  resources :sentiers do
+  resources :sentiers, except: [:index] do
     resources :roads, only: [:destroy], shallow: true
   end
 
