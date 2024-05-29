@@ -35,10 +35,12 @@ export default class extends Controller {
   activeUrl() {
     const url = window.location.href;
     const id = url.replace(/.com\/.+/, ".com/");
+    console.log(url);
+    console.log(id);
 
     this.titleTargets.forEach((title) => {
       if (id.includes(title.id)) {
-        // console.log(title)
+        console.log(title.id)
         title.classList.add("active-black");
       }
     });
