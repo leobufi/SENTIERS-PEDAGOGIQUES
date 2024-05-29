@@ -34,15 +34,22 @@ export default class extends Controller {
 
   activeUrl() {
     const url = window.location.href;
-    const id = url.replace(/.com\/.+/, ".com/");
-    console.log(url);
-    console.log(id);
 
-    this.titleTargets.forEach((title) => {
-      if (id.includes(title.id)) {
-        console.log(title.id)
-        title.classList.add("active-black");
-      }
-    });
+    if (url.includes('localhost:3000')) {
+      const id = url.split('3000/')[1];
+      this.titleTargets.forEach((title) => {
+        if (id.includes(title.id)) {
+          title.classList.add("active-black");
+        }
+      });
+    } else if (url.includes('pedagogiques')) {
+      const id = url.split('pedagogiques')[1];
+      this.titleTargets.forEach((title) => {
+        if (id.includes(title.id)) {
+          title.classList.add("active-black");
+        }
+      });
+    }
+
   }
 }
