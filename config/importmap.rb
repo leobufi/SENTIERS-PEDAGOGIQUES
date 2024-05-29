@@ -15,3 +15,4 @@ pin "@hotwired/turbo-rails", to: "turbo.min.js"
 pin "@hotwired/stimulus", to: "@hotwired--stimulus.js" # @3.2.2
 pin "trix"
 pin "@rails/actiontext", to: "actiontext.esm.js"
+pin "@nathanvda/cocoon", to: "@nathanvda--cocoon.js" # @1.2.14
