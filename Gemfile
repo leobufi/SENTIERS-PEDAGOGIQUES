@@ -55,7 +55,6 @@ gem "rqrcode", "~> 2.0"
 gem 'htmlentities', '~> 4.3', '>= 4.3.4'
 gem 'cocoon', '~> 1.2', '>= 1.2.15'
 
-
 group :development, :test do
   gem "dotenv-rails"
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
