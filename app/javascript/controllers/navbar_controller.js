@@ -5,12 +5,7 @@ export default class extends Controller {
   static targets = ["link", "dropright", "title"]
 
   connect() {
-    this.titleTargets.forEach((title) => {
-      if (window.location.href.includes(title.id)) {
-        // console.log(title)
-        title.classList.add("active-black");
-      }
-    });
+    this.activeUrl();
   }
 
   dropright(event) {
@@ -35,5 +30,17 @@ export default class extends Controller {
     this.droprightTargets.forEach((dropright) => {
       dropright.classList.remove("active")
     })
+  }
+
+  activeUrl() {
+    const url = window.location.href;
+    const id = url.replace(/.com\/.+/, ".com/");
+
+    this.titleTargets.forEach((title) => {
+      if (id.includes(title.id)) {
+        // console.log(title)
+        title.classList.add("active-black");
+      }
+    });
   }
 }
