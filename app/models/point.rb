@@ -30,4 +30,8 @@ class Point < ApplicationRecord
   validates :lat, presence: true
   validates :long, presence: true
 
+  def to_param
+    "#{id}-#{title.parameterize}"
+  end
+
 end

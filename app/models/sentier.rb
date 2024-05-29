@@ -19,4 +19,8 @@ class Sentier < ApplicationRecord
   validates :arrival_point_lat, presence: true
   validates :arrival_point_long, presence: true
 
+  def to_param
+    "#{id}-#{title.parameterize}"
+  end
+
 end
