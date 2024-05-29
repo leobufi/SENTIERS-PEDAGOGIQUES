@@ -29,7 +29,6 @@ export default class extends Controller {
   }
 
   addMarkersToMap() {
-    console.log(this.sentierCoordinatesValue);
     this.sentierCoordinatesValue.forEach((sentier) => {
       sentier.forEach((coord) => {
         if (coord.type === 'departure') {
