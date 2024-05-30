@@ -19,7 +19,7 @@
           <%= link_to "Thèmes", themes_sentiers_path, class:"nav-link" %>
           <%= link_to "Engagements", engagements_path, class:"nav-link" %>
           <%= link_to "Découverte", decouvertes_path, class:"nav-link" %>
-          <%= link_to "Contact", "#", class:"nav-link" %>
+          <%= link_to "Contact", new_contact_path, class:"nav-link" %>
           <% if user_signed_in? && current_user.admin?%>
             <%= link_to "Tableau de bord", dashboard_path, class: "nav-link" %>
           <% else %>

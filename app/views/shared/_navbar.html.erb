@@ -19,6 +19,7 @@
 <%= render "shared/navbars/navbar-main" if params[:action] == 'home' && params[:controller] == 'pages' %>
 <%= render "shared/navbars/navbar-main" if params[:action] == 'index' && params[:controller] == 'sentiers' %>
 <%= render "shared/navbars/navbar-main" if params[:action] == 'themes' && params[:controller] == 'sentiers' %>
+<%= render "shared/navbars/navbar-main" if params[:action] == 'new' && params[:controller] == 'contacts' %>
 <%= render "shared/navbars/navbar-sentier" if params[:action] == 'show' && params[:controller] == 'sentiers' %>
 <%= render "shared/navbars/navbar-point" if params[:action] == 'show' && params[:controller] == 'points' %>
 <%= render "shared/navbars/navbar-decouverte" if params[:action] == 'index' && params[:controller] == 'decouvertes' %>

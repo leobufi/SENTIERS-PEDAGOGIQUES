@@ -28,13 +28,18 @@ Rails.application.routes.draw do
       get :download_qr_code
     end
   end
+
   resources :generals, except: [:show, :index]
   resources :decouvertes, except: [:show]
   resources :engagements, except: [:show]
+  resources :contacts, only: [:new, :create]
+
   resources :qrcodes, only: [:new, :create, :destroy] do
     member do
       get :download_qr_code
     end
   end
+
+
 
 end
