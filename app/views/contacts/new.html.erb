@@ -1,0 +1,21 @@
+<div class="page-main">
+  <div class="page-padding">
+    <div class="form mobile-margin">
+      <div class="simple_form">
+      <h1>Pour plus de renseignements sur les Sentiers Pédagogiques, contactez-nous :</h1>
+      <%= simple_form_for(@contact) do |f| %>
+        <%= f.input :name, placeholder: "Votre nom & prénom", label: false %>
+        <%= f.input :email, placeholder: "Votre email", label: false %>
+        <%= f.input :message, placeholder: "Votre message", label: false, :as => :text, :input_html => { :rows => 7 , :style => 'width: 100%'} %>
+        <div class= "d-none">
+          <%= f.input :nickname, :hint => 'Leave this field blank!' %>
+        </div>
+        <button>
+          <%= f.button :submit, 'Envoyer' %>
+        </button>
+      <% end %>
+      </div>
+    </div>
+
+  </div>
+</div>

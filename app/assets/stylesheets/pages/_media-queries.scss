@@ -234,6 +234,12 @@
     }
   }
 
+  .form {
+    &.mobile-margin {
+      margin-top: 10rem;
+    }
+  }
+
 }
 
 @media screen and (max-width: 460px) {

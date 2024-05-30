@@ -54,6 +54,7 @@ gem "cloudinary"
 gem "rqrcode", "~> 2.0"
 gem 'htmlentities', '~> 4.3', '>= 4.3.4'
 gem 'cocoon', '~> 1.2', '>= 1.2.15'
+gem 'mail_form'
 
 group :development, :test do
   gem "dotenv-rails"
