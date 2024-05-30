@@ -12,45 +12,45 @@
               </div>
               <hr>
               <div class="form-bloc_wrapper active" data-tabs-target="panel" data-tab-name="infos">
-                <%= f.input :title, label: false, placeholder: 'Titre du sentier' %>
-                <%= f.rich_text_area :description, as: :text, label: false, placeholder: 'Description du sentier' %>
+                <%= f.input :title, label: false, required: true, placeholder: 'Titre du sentier' %>
+                <%= f.rich_text_area :description, as: :text, label: false, required: true, placeholder: 'Description du sentier' %>
                 <div class="form-bloc_horizontal_wrapper">
                   <div class="form-bloc">
                     <span class="large poppins-semibold">Difficulté</span>
-                    <%= f.input :difficulty, as: :select, collection: ['facile', 'modéré', 'difficile'], label: false, placeholder: 'Dénivelé du sentier' %>
+                    <%= f.input :difficulty, as: :select, required: true, collection: ['facile', 'modéré', 'difficile'], label: false, placeholder: 'Dénivelé du sentier' %>
                   </div>
                   <div class="form-bloc borders mobile-no-borders">
                     <span class="large poppins-semibold">Couleur du sentier :</span>
-                    <%= f.input :color, as: :color, label: false %>
+                    <%= f.input :color, as: :color, required: true, label: false %>
                   </div>
                   <div class="form-bloc">
                     <span class="large poppins-semibold">Sentier Thématique ?</span>
-                    <%= f.input :is_theme, as: :boolean, as: :radio_buttons, collection: [['Oui', true], ['Non', false]], label: false %>
+                    <%= f.input :is_theme, as: :boolean, as: :radio_buttons, required: true, collection: [['Oui', true], ['Non', false]], label: false %>
                   </div>
                 </div>
                 <hr>
                 <div class="form-bloc">
                   <span class="large poppins-semibold">Image principale du sentier :</span>
-                  <%= f.input :image, as: :file, label: false %>
+                  <%= f.input :image, as: :file, required: true, label: false %>
                 </div>
               </div>
               <div class="form-bloc_wrapper" data-tabs-target="panel" data-tab-name="parcours">
                 <div class="form-bloc">
                   <span class="large poppins-semibold">Boucle ?</span>
-                  <%= f.input :is_boucle, as: :boolean, as: :radio_buttons, collection: [['Oui', true], ['Non', false]], label: false, input_html: { data: { tabs_target: 'check', action: "click->tabs#mask" } } %>
+                  <%= f.input :is_boucle, as: :boolean, as: :radio_buttons, required: true, collection: [['Oui', true], ['Non', false]], label: false, input_html: { data: { tabs_target: 'check', action: "click->tabs#mask" } } %>
                 </div>
                 <span class="large poppins-semibold">Point de départ :</span>
                 <div class="form-grid">
-                  <%= f.input :starting_point_lat, label: false, placeholder: 'Latitude du point de départ du sentier' %>
-                  <%= f.input :starting_point_long, label: false, placeholder: 'Longitude du point de départ du sentier' %>
-                  <%= f.input :depart_address, label: false, placeholder: 'Adresse du point de départ' %>
+                  <%= f.input :starting_point_lat, label: false, required: true, placeholder: 'Latitude du point de départ du sentier' %>
+                  <%= f.input :starting_point_long, label: false, required: true, placeholder: 'Longitude du point de départ du sentier' %>
+                  <%= f.input :depart_address, label: false,  required: true, placeholder: 'Adresse du point de départ' %>
                 </div>
                 <div class="form-arrival-coordinates" data-tabs-target="coordinates">
                   <span class="large poppins-semibold">Point d'arrivée :</span>
                   <div class="form-grid">
-                    <%= f.input :arrival_point_lat, label: false, placeholder: 'Latitude du point darrivée du sentier' %>
-                    <%= f.input :arrival_point_long, label: false, placeholder: 'Longitude du point darrivée du sentier' %>
-                    <%= f.input :arrival_address, label: false, placeholder: 'Adresse du point de darrivée' %>
+                    <%= f.input :arrival_point_lat, label: false, required: true, placeholder: 'Latitude du point darrivée du sentier' %>
+                    <%= f.input :arrival_point_long, label: false, required: true, placeholder: 'Longitude du point darrivée du sentier' %>
+                    <%= f.input :arrival_address, label: false, required: true, placeholder: 'Adresse du point de darrivée' %>
                   </div>
                 </div>
                 <hr>

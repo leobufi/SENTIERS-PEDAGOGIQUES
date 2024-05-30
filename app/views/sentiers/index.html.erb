@@ -54,7 +54,9 @@
           <div class="info_bloc no-border mobile-no-border">
             <% @sentiers.sort_by(&:title).each do |sentier| %>
               <div class="sentier-image" data-tabs-target="image" data-main-map-target="image" data-tab-name="<%= sentier.title %>">
-                <%= cl_image_tag sentier.image.key, crop: :fill %>
+                <% if sentier.image.attached? %>
+                  <%= cl_image_tag sentier.image.key, crop: :fill %>
+                <% end %>
               </div>
             <% end %>
           </div>

@@ -10,35 +10,35 @@
                 <span class="large poppins-semibold">
                   Texte Sensibilisation
                 </span>
-                <%= f.rich_text_area :sensib, as: :text, label: false %>
+                <%= f.rich_text_area :sensib, as: :text, required: true, label: false %>
               </div>
               <hr>
               <div class="form-bloc">
                 <span class="large poppins-semibold">
                   Texte Protection
                 </span>
-                <%= f.rich_text_area :protec, as: :text, label: false %>
+                <%= f.rich_text_area :protec, as: :text, required: true, label: false %>
               </div>
               <hr>
               <div class="form-bloc">
                 <span class="large poppins-semibold">
                   Texte Règles
                 </span>
-                <%= f.rich_text_area :rules, as: :text, label: false %>
+                <%= f.rich_text_area :rules, as: :text, required: true, label: false %>
               </div>
               <hr>
               <div class="form-bloc">
                 <span class="large poppins-semibold">
                   Texte Partenaires
                 </span>
-                <%= f.rich_text_area :partner, as: :text, label: false %>
+                <%= f.rich_text_area :partner, as: :text, required: true, label: false %>
               </div>
               <hr>
               <div class="form-bloc">
                 <span class="large poppins-semibold">
                   Image de couverture
                 </span>
-              <%= f.input :engagements_img, as: :file, label: false %>
+              <%= f.input :engagements_img, as: :file, required: true, label: false %>
               </div>
               <hr>
               <button>

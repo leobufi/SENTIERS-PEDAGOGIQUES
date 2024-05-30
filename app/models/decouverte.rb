@@ -4,4 +4,10 @@ class Decouverte < ApplicationRecord
 
     has_rich_text :circuit_acc_text
     has_rich_text :anim_scol_text
+
+    validates :circuit_acc_img, presence: true
+    validates :circuit_acc_text, presence: true
+    validates :anim_scol_img, presence: true
+    validates :anim_scol_text, presence: true
+
 end
