@@ -13,10 +13,10 @@
             <% @themes.sort_by(&:title).each do |sentier| %>
               <div class="sentier-title_bloc" data-tabs-target="tab" data-main-map-target="tab" data-action="click->tabs#activate" data-tab-name="<%= sentier.title %>">
                 <div class="sentier-title">
-                  <h5><%= sentier.title %></h5>
+                  <h5 data-action="click->tabs#activate" data-tab-name="<%= sentier.title %>"><%= sentier.title %></h5>
                 </div>
-                <div class="sentier-color" style="background-color:<%= sentier.color %>"></div>
-                <div class="sentier-title-arrow">
+                <div class="sentier-color" style="background-color:<%= sentier.color %>" data-action="click->tabs#activate" data-tab-name="<%= sentier.title %>"></div>
+                <div class="sentier-title-arrow" >
                   <i class="fa-solid fa-arrow-right"></i>
                 </div>
               </div>
