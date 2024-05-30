@@ -6,8 +6,8 @@
         <div class="form-wrapper">
           <div class="form">
             <%= simple_form_for(@qr_code) do |f| %>
-              <%= f.input :name, label: false, placeholder: 'Nom du QR Code' %>
-              <%= f.input :url, label: false, placeholder: 'URL du QR Code' %>
+              <%= f.input :name, label: false, required: true, placeholder: 'Nom du QR Code' %>
+              <%= f.input :url, label: false, required: true, placeholder: 'URL du QR Code' %>
               <button>
                 <%= f.button :submit, "Créer" %>
               </button>

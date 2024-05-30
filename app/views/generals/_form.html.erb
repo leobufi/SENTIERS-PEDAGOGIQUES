@@ -10,13 +10,13 @@
                 <span class="large poppins-semibold">
                   Texte de présentation
                 </span>
-                <%= f.input :general_pres, as: :text, label: false %>
+                <%= f.input :general_pres, as: :text, required: true, label: false %>
               </div>
               <div class="form-bloc">
                 <span class="large poppins-semibold">
                   Image de couverture de la page daccueil
                 </span>
-                <%= f.input :home_img, as: :file, label:false %>
+                <%= f.input :home_img, as: :file, required: true, label:false %>
               </div>
               <button>
                 <%= f.button :submit, "Créer/Modifier" %>

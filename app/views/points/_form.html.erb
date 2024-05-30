@@ -14,12 +14,12 @@
               </div>
               <hr>
               <div class="form-bloc_wrapper active" data-tabs-target="panel" data-tab-name="infos">
-                <%= f.input :title, label: false, placeholder: 'Titre du point dinterêt' %>
-                <%= f.input :infos, as: :text, label: false, placeholder: 'Description du point dinterêt' %>
+                <%= f.input :title, label: false, required: true, placeholder: 'Titre du point dinterêt' %>
+                <%= f.input :infos, as: :text, label: false, required: true, placeholder: 'Description du point dinterêt' %>
                 <span class="large poppins-semibold">Coordonnées :</span>
                 <div class="form-grid">
-                  <%= f.input :lat, label: false, placeholder: 'Latitude du point dinterêt' %>
-                  <%= f.input :long, label: false, placeholder: 'Longitude du point dinterêt'%>
+                  <%= f.input :lat, label: false, required: true, placeholder: 'Latitude du point dinterêt' %>
+                  <%= f.input :long, label: false, required: true, placeholder: 'Longitude du point dinterêt'%>
                 </div>
               </div>
               <div class="form-bloc_wrapper" data-tabs-target="panel" data-tab-name="images">

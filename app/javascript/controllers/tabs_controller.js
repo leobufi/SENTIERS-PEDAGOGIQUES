@@ -42,7 +42,7 @@ export default class extends Controller {
 
     this.toggledPanelTargets.forEach((tabTarget) => {
       if (tabTarget.dataset.tabName == tab.dataset.tabName) {
-        console.log(tabTarget.dataset.tabName)
+        // console.log(tabTarget.dataset.tabName)
         tabTarget.classList.toggle("active")
       } else if (tabTarget.dataset.tabName != tab.dataset.tabName) {
         tabTarget.classList.remove("active")

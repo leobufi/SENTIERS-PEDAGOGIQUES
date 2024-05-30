@@ -12,12 +12,15 @@ class Sentier < ApplicationRecord
   validates :description, presence: true
   validates :color, presence: true
   validates :difficulty, presence: true
+  validates :image, presence: true
   validates :is_theme, presence: true, inclusion: [true, false], allow_blank: true
   validates :is_boucle, presence: true, inclusion: [true, false], allow_blank: true
   validates :starting_point_lat, presence: true
   validates :starting_point_long, presence: true
+  validates :depart_address, presence: true
   validates :arrival_point_lat, presence: true
   validates :arrival_point_long, presence: true
+  validates :arrival_address, presence: true
 
   def to_param
     "#{id}-#{title.parameterize}"

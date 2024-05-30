@@ -10,28 +10,28 @@
                 <span class="large poppins-semibold">
                   Texte Circuits accompagnés
                 </span>
-                <%= f.rich_text_area :circuit_acc_text, as: :text, label: false %>
+                <%= f.rich_text_area :circuit_acc_text, as: :text, label: false, required: true %>
               </div>
               <hr>
               <div class="form-bloc">
                 <span class="large poppins-semibold">
                   Image Circuits accompagnés
                 </span>
-                <%= f.input :circuit_acc_img, as: :file, label: false %>
+                <%= f.input :circuit_acc_img, as: :file, label: false, required: true %>
               </div>
               <hr>
               <div class="form-bloc">
                 <span class="large poppins-semibold">
                   Texte Animation Scolaire
                 </span>
-                <%= f.rich_text_area :anim_scol_text, as: :text, label: false %>
+                <%= f.rich_text_area :anim_scol_text, as: :text, label: false, required: true %>
               </div>
               <hr>
               <div class="form-bloc">
                 <span class="large poppins-semibold">
                   Image Animation Scolaire
                 </span>
-                <%= f.input :anim_scol_img, as: :file, label: false %>
+                <%= f.input :anim_scol_img, as: :file, label: false  required: true %>
               </div>
               <button>
                 <%= f.button :submit, "Créer/Modifier" %>
