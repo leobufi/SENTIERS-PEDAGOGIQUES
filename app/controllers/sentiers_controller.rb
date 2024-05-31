@@ -1,5 +1,5 @@
 class SentiersController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index, :show]
+  skip_before_action :authenticate_user!, only: [:index, :show, :themes]
   before_action :require_admin, only: [:new, :create, :edit, :update, :destroy]
 
   def index
