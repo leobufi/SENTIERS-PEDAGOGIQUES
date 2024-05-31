@@ -109,6 +109,13 @@
 
 @media screen and (max-width: 821px){
 
+  .page-main {
+    .page-padding {
+      &.large-padding {
+        padding: 5rem;
+      }
+    }
+  }
   .navbar {
     bottom: unset;
 
@@ -247,6 +254,10 @@
   .page-main {
     .page-padding {
       padding: 1.5rem;
+
+      &.large-padding {
+        padding: 3rem 2rem;
+      }
     }
   }
 
