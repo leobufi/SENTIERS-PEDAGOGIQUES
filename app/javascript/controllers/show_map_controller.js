@@ -80,7 +80,11 @@ export default class extends Controller {
     const bounds = new mapboxgl.LngLatBounds()
     this.sentierCoordinatesValue.forEach((marker) => {
       bounds.extend([marker.lng, marker.lat]);
-      this.map.fitBounds(bounds, { padding: 70, maxZoom: 13.5, duration: 0 });
+      if (window.innerWidth > 460) {
+        this.map.fitBounds(bounds, { padding: { top: 70, bottom: 70, left: 70, right: 70 }, maxZoom: 13, duration: 0 })
+      } else {
+        this.map.fitBounds(bounds, { padding: { top: 160, bottom: 70, left: 70, right: 70 }, maxZoom: 13, duration: 0 })
+      }
     });
   }
 
