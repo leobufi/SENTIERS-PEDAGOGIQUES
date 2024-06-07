@@ -12,10 +12,10 @@ class DecouvertesController < ApplicationController
 
   def create
     @decouverte = Decouverte.new(decouverte_params)
-    if @decouverte.save(decouverte_params)
-      redirect_to dashboard_decouvertes_path
+    if @decouverte.save
+      redirect_to dashboard_decouverte_path
     else
-      render :new
+      redirect_to dashboard_decouverte_path, notice: "L'instance n'a pas pu être créée, réessayez ultérieurement ou contactez léo"
     end
   end
 
@@ -28,15 +28,17 @@ class DecouvertesController < ApplicationController
     if @decouverte.update(decouverte_params)
       redirect_to dashboard_decouverte_path
     else
-      flash[:alert] = "Échec de la modification."
-      redirect_to root_path
+      redirect_to dashboard_decouverte_path, notice: "L'instance n'a pas pu être modifiée, réessayez ultérieurement ou contactez léo"
     end
   end
 
   def destroy
     @decouverte = Decouverte.find(params[:id])
-    @decouverte.destroy
-    redirect_to dashboard_path
+    if @decouverte.destroy
+      redirect_to dashboard_decouverte_path
+    else
+      redirect_to dashboard_decouverte_path, notice: "L'instance n'a pas pu être supprimée, réessayez ultérieurement ou contactez léo"
+    end
   end
 
   private

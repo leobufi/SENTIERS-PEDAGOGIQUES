@@ -12,8 +12,11 @@ class EngagementsController < ApplicationController
 
   def create
     @engagement = Engagement.new(engagement_params)
-    @engagement.save
-    redirect_to dashboard_engagement_path
+    if @engagement.save
+      redirect_to dashboard_engagement_path
+    else
+      redirect_to dashboard_engagement_path, notice: "L'instance n'a pas pu être créée, réessayez ultérieurement ou contactez léo"
+    end
   end
 
   def edit
@@ -22,14 +25,20 @@ class EngagementsController < ApplicationController
 
   def update
     @engagement = Engagement.find(params[:id])
-    @engagement.update(engagement_params)
-    redirect_to dashboard_engagement_path
+    if  @engagement.update(engagement_params)
+      redirect_to dashboard_engagement_path
+    else
+      redirect_to dashboard_engagement_path, notice: "L'instance n'a pas pu être modifiée, réessayez ultérieurement ou contactez léo"
+    end
   end
 
   def destroy
     @engagement = Engagement.find(params[:id])
-    @engagement.destroy
-    redirect_to dashboard_engagement_path, status: :see_other
+    if @engagement.destroy
+      redirect_to dashboard_engagement_path, status: :see_other
+    else
+      redirect_to dashboard_engagement_path, notice: "L'instance n'a pas pu être supprimée, réessayez ultérieurement ou contactez léo"
+    end
   end
 
   private

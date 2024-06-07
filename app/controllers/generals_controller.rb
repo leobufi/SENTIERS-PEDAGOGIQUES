@@ -7,8 +7,11 @@ class GeneralsController < ApplicationController
 
   def create
     @general = General.new(general_params)
-    @general.save
-    redirect_to dashboard_path
+    if @general.save
+      redirect_to dashboard_generals_path
+    else
+      redirect_to dashboard_generals_path, notice: "L'instance n'a pas pu être créée, réessayez ultérieurement ou contactez léo"
+    end
   end
 
   def edit
@@ -17,14 +20,20 @@ class GeneralsController < ApplicationController
 
   def update
     @general = General.find(params[:id])
-    @general.update(general_params)
-    redirect_to dashboard_path
+    if @general.update(general_params)
+      redirect_to dashboard_path
+    else
+      redirect_to dashboard_generals_path, notice: "L'instance n'a pas pu être modifiée, réessayez ultérieurement ou contactez léo"
+    end
   end
 
   def destroy
     @general = General.find(params[:id])
-    @general.destroy
-    redirect_to dashboard_path, status: :see_other
+    if @general.destroy
+      redirect_to dashboard_path, status: :see_other
+    else
+      redirect_to dashboard_generals_path, notice: "L'instance n'a pas pu être supprimée, réessayez ultérieurement ou contactez léo"
+    end
   end
 
   private

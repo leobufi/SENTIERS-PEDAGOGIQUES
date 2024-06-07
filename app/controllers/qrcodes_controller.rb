@@ -7,8 +7,11 @@ class QrcodesController < ApplicationController
 
   def create
     @qr_code = Qrcode.new(qr_code_params)
-    @qr_code.save
-    redirect_to dashboard_qr_codes_path
+    if @qr_code.save
+      redirect_to dashboard_qr_codes_path
+    else
+      redirect_to dashboard_qr_codes_path, notice: "L'instance n'a pas pu être créée, réessayez ultérieurement ou contactez léo"
+    end
   end
 
   def download_qr_code
@@ -26,8 +29,11 @@ class QrcodesController < ApplicationController
 
   def destroy
     @qr_code = Qrcode.find(params[:id])
-    @qr_code.destroy
-    redirect_to dashboard_qr_codes_path
+    if @qr_code.destroy
+      redirect_to dashboard_qr_codes_path
+    else
+      redirect_to dashboard_qrcodes_path, notice: "L'instance n'a pas pu être supprimée, réessayez ultérieurement ou contactez léo"
+    end
   end
 
     private
