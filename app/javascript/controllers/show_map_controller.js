@@ -20,10 +20,13 @@ export default class extends Controller {
       style: 'mapbox://styles/leobufi/clwg4fwi600h101ny4wooeivf',
     });
 
-    this.addMarkersToMap();
-    this.fitMapToMarkers();
-    this.addRoutesToMap();
-    this.addGeolocate();
+    this.map.on('load', () => {
+      this.addMarkersToMap();
+      this.fitMapToMarkers();
+      this.addRoutesToMap();
+      this.addGeolocate();
+    });
+
   }
 
   addMarkersToMap() {
