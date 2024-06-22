@@ -14,7 +14,6 @@ export default class extends Controller {
 
   connect() {
     mapboxgl.accessToken = this.apiKeyValue;
-    console.log(window.innerWidth);
 
     this.map = new mapboxgl.Map({
       container: this.canvaTarget,
@@ -22,10 +21,12 @@ export default class extends Controller {
       zoom: 11.5,
     });
 
-    this.addMarkersToMap();
-    this.fitMapToMarkers();
-    this.addRoutesToMap();
-    this.addGeolocate();
+    this.map.on('load', () => {
+      this.addMarkersToMap();
+      this.fitMapToMarkers();
+      this.addRoutesToMap();
+      this.addGeolocate();
+    });
 
   }
 
