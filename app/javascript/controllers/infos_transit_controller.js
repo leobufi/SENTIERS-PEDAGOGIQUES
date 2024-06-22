@@ -29,7 +29,7 @@ export default class extends Controller {
           }
         });
       })
-    }, 500);
+    }, 750);
   }
 
   secondsInHours(element) {
