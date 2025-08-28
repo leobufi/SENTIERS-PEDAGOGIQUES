@@ -14,7 +14,7 @@ class PointsController < ApplicationController
   def create
     @point = Point.new(point_params)
     if @point.save
-      url = url_for(@point)
+      url = point_url(@point)
       qrcode = RQRCode::QRCode.new(url)
       svg = qrcode.as_svg(
         color: "000",
