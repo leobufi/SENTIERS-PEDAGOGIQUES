@@ -43,10 +43,31 @@ class PointsController < ApplicationController
 
   def update
     @point = Point.find(params[:id])
-    if @point.update(point_params)
-      redirect_to point_path(@point)
+
+    image_keys = (1..10).map { |i| :"image_#{i}" }
+
+    permitted       = point_params
+    file_params     = permitted.slice(*image_keys)
+    non_file_params = permitted.except(*image_keys)
+
+    if @point.update(non_file_params)
+
+      if params[:remove_images].present?
+        params[:remove_images].each do |name|
+          if /\Aimage_(?:[1-9]|10)\z/.match?(name.to_s)
+            @point.send(name).purge
+          end
+        end
+      end
+
+      image_keys.each do |k|
+        file = file_params[k]
+        @point.send(k).attach(file) if file.present?
+      end
+
+      redirect_to point_path(@point), notice: "Point mis à jour avec succès"
     else
-      redirect_to dashboard_points_path, notice: "L'instance n'a pas pu être modifiée, réessayez ultérieurement ou contactez léo"
+      render :edit, status: :unprocessable_entity
     end
   end
 
@@ -70,25 +91,25 @@ class PointsController < ApplicationController
       :video,
       :audio,
       :image_1,
-      :image_1_commment,
+      :image_1_comment,
       :image_2,
-      :image_2_commment,
+      :image_2_comment,
       :image_3,
-      :image_3_commment,
+      :image_3_comment,
       :image_4,
-      :image_4_commment,
+      :image_4_comment,
       :image_5,
-      :image_5_commment,
+      :image_5_comment,
       :image_6,
-      :image_6_commment,
+      :image_6_comment,
       :image_7,
-      :image_7_commment,
+      :image_7_comment,
       :image_8,
-      :image_8_commment,
+      :image_8_comment,
       :image_9,
-      :image_9_commment,
+      :image_9_comment,
       :image_10,
-      :image_10_commment
+      :image_10_comment
     )
   end
 

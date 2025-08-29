@@ -23,66 +23,31 @@
                 </div>
               </div>
               <div class="form-bloc_wrapper" data-tabs-target="panel" data-tab-name="images">
+              <% (1..10).each do |i| %>
                 <span class="large poppins-semibold">
-                  Image 1
+                  Image <%= i %>
                 </span>
-                <%= f.input :image_1, as: :file, label: false, placeholder: 'Image 1' %>
-                <%= f.rich_text_area :image_1_commment, as: :text, label: false, placeholder: 'Commentaire Image 1' %>
-                <hr>
-                <span class="large poppins-semibold">
-                  Image 2
-                </span>
-                <%= f.input :image_2, as: :file, label: false, placeholder: 'Image 2' %>
-                <%= f.rich_text_area :image_2_commment, as: :text, label: false, placeholder: 'Commentaire Image 2' %>
-                <hr>
-                <span class="large poppins-semibold">
-                  Image 3
-                </span>
-                <%= f.input :image_3, as: :file, label: false, placeholder: 'Image 3' %>
-                <%= f.rich_text_area :image_3_commment, as: :text, label: false, placeholder: 'Commentaire Image 3' %>
-                <hr>
-                <span class="large poppins-semibold">
-                  Image 4
-                </span>
-                <%= f.input :image_4, as: :file, label: false, placeholder: 'Image 4' %>
-                <%= f.rich_text_area :image_4_commment, as: :text, label: false, placeholder: 'Commentaire Image 4' %>
-                <hr>
-                <span class="large poppins-semibold">
-                  Image 5
-                </span>
-                <%= f.input :image_5, as: :file, label: false, placeholder: 'Image 5' %>
-                <%= f.rich_text_area :image_5_commment, as: :text, label: false, placeholder: 'Commentaire Image 5' %>
-                <hr>
-                <span class="large poppins-semibold">
-                  Image 6
-                </span>
-                <%= f.input :image_6, as: :file, label: false, placeholder: 'Image 6' %>
-                <%= f.rich_text_area :image_6_commment, as: :text, label: false, placeholder: 'Commentaire Image 6' %>
-                <hr>
-                <span class="large poppins-semibold">
-                  Image 7
-                </span>
-                <%= f.input :image_7, as: :file, label: false, placeholder: 'Image 7' %>
-                <%= f.rich_text_area :image_7_commment, as: :text, label: false, placeholder: 'Commentaire Image 7' %>
-                <hr>
-                <span class="large poppins-semibold">
-                  Image 8
-                </span>
-                <%= f.input :image_8, as: :file, label: false, placeholder: 'Image 8' %>
-                <%= f.rich_text_area :image_8_commment, as: :text, label: false, placeholder: 'Commentaire Image 8' %>
-                <hr>
-                <span class="large poppins-semibold">
-                  Image 9
-                </span>
-                <%= f.input :image_9, as: :file, label: false, placeholder: 'Image 9' %>
-                <%= f.rich_text_area :image_9_commment, as: :text, label: false, placeholder: 'Commentaire Image 9' %>
-                <hr>
-                <span class="large poppins-semibold">
-                  Image 10
-                </span>
-                <%= f.input :image_10, as: :file, label: false, placeholder: 'Image 10' %>
-                <%= f.rich_text_area :image_10_commment, as: :text, label: false, placeholder: 'Commentaire Image 10' %>
-              </div>
+
+                <% image_key = :"image_#{i}" %>
+                <% comment_key = :"image_#{i}_comment" %>
+
+                <% if @point.send(image_key).attached? %>
+                  <div class="image-delete">
+                    <%= image_tag @point.send(image_key), width: 250 %>
+                    <div class="image-delete-checkbox">
+                      <%= check_box_tag "remove_images[]", image_key %> Supprimer cette image
+                    </div>
+                  </div>
+                <% end %>
+
+                <%= f.input image_key, as: :file, label: false, placeholder: "Image #{i}" %>
+                <%= f.rich_text_area comment_key, as: :text, label: false, placeholder: "Commentaire Image #{i}" %>
+
+                <% unless i == 10 %>
+                  <hr>
+                <% end %>
+              <% end %>
+            </div>
               <div class="form-bloc_wrapper" data-tabs-target="panel" data-tab-name="video">
                 <span class="large poppins-semibold">
                   Vidéo
