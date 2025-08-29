@@ -1,115 +1,30 @@
 <div class="swiper">
   <div class="swiper-wrapper">
-    <% if @point.image_1.attached? %>
-    <div class="swiper-slide">
-      <div class="point-image">
-        <%= cl_image_tag @point.image_1.key, crop: :fit %>
-      </div>
-      <div class="point-content">
-        <%= @point.image_1_comment %>
-      </div>
-    </div>
-    <% end %>
-    <% if @point.image_2.attached? %>
-    <div class="swiper-slide">
-      <div class="point-image">
-        <%= cl_image_tag @point.image_2.key, crop: :fit %>
-      </div>
-      <div class="point-content">
-        <%= @point.image_2_comment %>
-      </div>
-    </div>
-    <% end %>
-    <% if @point.image_3.attached? %>
-    <div class="swiper-slide">
-      <div class="point-image">
-        <%= cl_image_tag @point.image_3.key, crop: :fit %>
-      </div>
-      <div class="point-content">
-        <%= @point.image_3_comment %>
-      </div>
-    </div>
-    <% end %>
-    <% if @point.image_4.attached? %>
-    <div class="swiper-slide">
-      <div class="point-image">
-        <%= cl_image_tag @point.image_4.key, crop: :fit %>
-      </div>
-      <div class="point-content">
-        <%= @point.image_4_comment %>
-      </div>
-    </div>
-    <% end %>
-    <% if @point.image_5.attached? %>
-    <div class="swiper-slide">
-      <div class="point-image">
-        <%= cl_image_tag @point.image_5.key, crop: :fit %>
-      </div>
-      <div class="point-content">
-        <%= @point.image_5_comment %>
-      </div>
-    </div>
-    <% end %>
-    <% if @point.image_6.attached? %>
-    <div class="swiper-slide">
-      <div class="point-image">
-        <%= cl_image_tag @point.image_6.key, crop: :fit %>
-      </div>
-      <div class="point-content">
-        <%= @point.image_6_comment %>
-      </div>
-    </div>
-    <% end %>
-    <% if @point.image_7.attached? %>
-    <div class="swiper-slide">
-      <div class="point-image">
-        <%= cl_image_tag @point.image_7.key, crop: :fit %>
-      </div>
-      <div class="point-content">
-        <%= @point.image_7_comment %>
-      </div>
-    </div>
-    <% end %>
-    <% if @point.image_8.attached? %>
-    <div class="swiper-slide">
-      <div class="point-image">
-        <%= cl_image_tag @point.image_8.key, crop: :fit %>
-      </div>
-      <div class="point-content">
-        <%= @point.image_8_comment %>
-      </div>
-    </div>
-    <% end %>
-    <% if @point.image_9.attached? %>
-    <div class="swiper-slide">
-      <div class="point-image">
-        <%= cl_image_tag @point.image_9.key, crop: :fit %>
-      </div>
-      <div class="point-content">
-        <%= @point.image_9_comment %>
-      </div>
-    </div>
-    <% end %>
-    <% if @point.image_10.attached? %>
-    <div class="swiper-slide">
-      <div class="point-image">
-        <%= cl_image_tag @point.image_10.key, crop: :fit %>
-      </div>
-      <div class="point-content">
-        <%= @point.image_10_comment %>
-      </div>
-    </div>
+    <% images = (1..10).select { |i| @point.send("image_#{i}").attached? } %>
+
+    <% if images.any? %>
+      <% images.each do |i| %>
+        <div class="swiper-slide">
+          <div class="point-image">
+            <%= cl_image_tag @point.send("image_#{i}").key, crop: :fit %>
+          </div>
+          <div class="point-content">
+            <%= @point.send("image_#{i}_comment") %>
+          </div>
+        </div>
+      <% end %>
     <% else %>
       <div class="point-content">
-        <p class="mobile-margin">Il n'y a pas d'images pour ce point d'interêt.</p>
+        <p class="mobile-margin">Il n'y a pas d'images pour ce point d'intérêt.</p>
       </div>
     <% end %>
-    <div class="swiper-pagination"></div>
-    <div class="swiper-button-prev">
-      <i class="fa-solid fa-arrow-right rotated-inversed"></i>
-    </div>
-    <div class="swiper-button-next">
-      <i class="fa-solid fa-arrow-right"></i>
-    </div>
+  </div>
+
+  <div class="swiper-pagination"></div>
+  <div class="swiper-button-prev">
+    <i class="fa-solid fa-arrow-right rotated-inversed"></i>
+  </div>
+  <div class="swiper-button-next">
+    <i class="fa-solid fa-arrow-right"></i>
   </div>
 </div>
