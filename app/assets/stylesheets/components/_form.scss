@@ -62,6 +62,27 @@
     row-gap: 1.5rem;
   }
 
+  img {
+    border-radius: 20px;
+    border: 1px solid black;
+  }
+
+  .image-delete {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .image-delete-checkbox {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    column-gap: 1rem;;
+
+    input {
+      width: unset;
+    }
+  }
 }
 
 .form-bloc_horizontal_wrapper {
