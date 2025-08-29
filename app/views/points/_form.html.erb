@@ -29,11 +29,11 @@
                 </span>
 
                 <% image_key = :"image_#{i}" %>
-                <% comment_key = :"image_#{i}_comment" %>
+                <% comment_key = :"image_#{i}_commment" %>
 
                 <% if @point.send(image_key).attached? %>
                   <div class="image-delete">
-                    <%= image_tag @point.send(image_key), width: 250 %>
+                    <%= cl_image_tag @point.send(image_key).key, width: 250 %>
                     <div class="image-delete-checkbox">
                       <%= check_box_tag "remove_images[]", image_key %> Supprimer cette image
                     </div>

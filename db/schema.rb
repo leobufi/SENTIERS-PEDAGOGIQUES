@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_08_29_122234) do
+ActiveRecord::Schema[7.1].define(version: 2025_08_29_131917) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -88,25 +88,25 @@ ActiveRecord::Schema[7.1].define(version: 2025_08_29_122234) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "image_1"
-    t.text "image_1_comment"
+    t.text "image_1_commment"
     t.string "image_2"
-    t.text "image_2_comment"
+    t.text "image_2_commment"
     t.string "image_3"
-    t.text "image_3_comment"
+    t.text "image_3_commment"
     t.string "image_4"
-    t.text "image_4_comment"
+    t.text "image_4_commment"
     t.string "image_5"
-    t.text "image_5_comment"
+    t.text "image_5_commment"
     t.string "image_6"
-    t.text "image_6_comment"
+    t.text "image_6_commment"
     t.string "image_7"
-    t.text "image_7_comment"
+    t.text "image_7_commment"
     t.string "image_8"
-    t.text "image_8_comment"
+    t.text "image_8_commment"
     t.string "image_9"
-    t.text "image_9_comment"
+    t.text "image_9_commment"
     t.string "image_10"
-    t.text "image_10_comment"
+    t.text "image_10_commment"
     t.string "qr_code"
   end
 
