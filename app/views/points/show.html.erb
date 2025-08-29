@@ -3,12 +3,12 @@
     <section class="dynamic-pages" data-controller="swiper">
       <div class="dynamic-pages_wrapper">
         <div class="point-tabs_wrapper">
-          <span class="point-tab active" data-tabs-target="tab" data-action="click->tabs#activate" data-tab-name="infos">Informations</span>
-          <span class="point-tab" data-tabs-target="tab" data-action="click->tabs#activate" data-tab-name="images">Images</span>
+          <span class="point-tab active" data-tabs-target="tab" data-action="click->tabs#activate" data-tab-name="infos">Généralités</span>
+          <span class="point-tab" data-tabs-target="tab" data-action="click->tabs#activate" data-tab-name="images">Détails</span>
           <span class="point-tab" data-tabs-target="tab" data-action="click->tabs#activate" data-tab-name="video">Vidéo</span>
           <span class="point-tab no-border" data-tabs-target="tab" data-action="click->tabs#activate" data-tab-name="audio">Audio</span>
         </div>
-        <div class="point-content_wrapper active" data-tabs-target="panel" data-tab-name="infos">
+        <div class="point-content_wrapper infos active" data-tabs-target="panel" data-tab-name="infos">
           <div class="point-image">
             <% if @point.image_1.attached? %>
               <%= cl_image_tag @point.image_1.key, crop: :fit %>
@@ -23,7 +23,7 @@
             <% end %>
           </div>
         </div>
-        <div class="point-content_wrapper" data-tabs-target="panel" data-tab-name="images">
+        <div class="point-content_wrapper images" data-tabs-target="panel" data-tab-name="images">
           <%= render "swiper" %>
         </div>
         <div class="point-content_wrapper" data-tabs-target="panel" data-tab-name="video">

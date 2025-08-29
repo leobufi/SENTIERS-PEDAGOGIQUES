@@ -396,6 +396,24 @@
   }
 
   .point-content_wrapper {
+
+    &.images .swiper-slide {
+      display: flex;
+      flex-direction: column-reverse;
+      row-gap: 3rem;
+
+      .point-content {
+        margin-top: 22vh;
+        height: 40vh;
+      }
+
+      .point-image {
+        height: unset;
+        border-top: 1px solid black;
+        border-bottom: none;
+      }
+    }
+
     .point-image {
       height: 66vh;
     }
@@ -413,7 +431,15 @@
   }
 
   .point-content_wrapper .swiper .swiper-pagination-bullets.swiper-pagination-horizontal {
-    bottom: 31rem;
+    bottom: 28.5rem;
+  }
+  .point-content_wrapper .swiper .swiper-button-prev {
+    top: 28rem;
+    padding-left: 1rem;
+  }
+  .point-content_wrapper .swiper .swiper-button-next {
+    top: 28rem;
+    padding-right: 1rem;
   }
 
   // DASHBOARD
