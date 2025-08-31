@@ -10,7 +10,7 @@ class Contact < MailForm::Base
   def headers
     {
       subject: "Sentiers pédagogiques - Vous avez reçu un message de #{name}",
-      to: "bufi.leo@gmail.com",
+      to: "corsini@unice.fr",
       from: "#{name} - <#{email}>"
     }
   end
