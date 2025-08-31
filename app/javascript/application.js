@@ -7,3 +7,14 @@ import "@hotwired/turbo-rails"
 
 import "trix"
 import "@rails/actiontext"
+
+document.addEventListener("turbo:load", () => {
+  const el = document.querySelector(".cf-turnstile");
+  if (el) {
+    el.innerHTML = "";
+
+    turnstile.render(el, {
+      sitekey: "0x4AAAAAABwylfQ9a4Haclv7",
+    });
+  }
+});
