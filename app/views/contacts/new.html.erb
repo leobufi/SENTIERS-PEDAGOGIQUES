@@ -10,6 +10,7 @@
         <div class= "d-none">
           <%= f.input :nickname, :hint => 'Leave this field blank!' %>
         </div>
+        <div class="cf-turnstile" data-sitekey="<%= ENV['TURNSTILE_SITE_KEY'] %>"></div>
         <button>
           <%= f.button :submit, 'Envoyer' %>
         </button>
