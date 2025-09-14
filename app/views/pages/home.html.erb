@@ -1,7 +1,9 @@
 <div class="page-main">
   <div class="page-padding no-padding">
-    <section class="home-hero"
-            style="background-image: url('<%= cl_image_path @general.home_img.key %>')">
+    <section class="home-hero">
+      <div class="home-hero_overlay">
+        <%= image_tag cl_image_path @general.home_img.key %>
+      </div>
       <div class="home-hero_wrapper">
         <div class="home-title_wrapper">
           <%= image_tag "logo.png" %>
