@@ -53,6 +53,7 @@ class SentiersController < ApplicationController
   def new
     @sentier = Sentier.new
     @sentier.roads.build
+    @sentier.waypoints.build
   end
 
   def create
@@ -110,7 +111,8 @@ class SentiersController < ApplicationController
       :arrival_point_lat,
       :arrival_point_long,
       :arrival_address,
-      roads_attributes: [:id, :point_id, :position, :_destroy]
+      roads_attributes: [:id, :point_id, :position, :_destroy],
+      waypoints_attributes: [:id, :lat, :lng, :position, :_destroy]
       )
   end
 
