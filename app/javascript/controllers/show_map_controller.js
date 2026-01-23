@@ -178,6 +178,9 @@ export default class extends Controller {
           image.classList.remove('active');
         }
       });
+
+      // Sur mobile : placer le bloc d'infos du point juste sous le point cliqué
+      this.repositionMobilePointInfos(title);
     });
   }
 
@@ -188,5 +191,38 @@ export default class extends Controller {
         infos.dataset.duration = duration;
       }
     });
+  }
+
+  repositionMobilePointInfos(title) {
+    // Comportement uniquement sur mobile
+    if (window.innerWidth > 460) return
+
+    // Conteneur d'origine des blocs .point-infos (colonne centrale)
+    const firstPointInfos = document.querySelector(".infos_wrapper .point-infos")
+    if (!firstPointInfos) return
+    const contentBloc = firstPointInfos.parentElement
+
+    // Remettre tous les panneaux dans le bloc de contenu (état neutre)
+    this.pointInfosTargets.forEach((panel) => {
+      if (!contentBloc.contains(panel)) {
+        contentBloc.appendChild(panel)
+      }
+    })
+
+    // Trouver le span de la liste correspondant au point
+    const activeCheckbox = this.checkboxTargets.find(
+      (checkbox) => checkbox.dataset.tabName === title
+    )
+    if (!activeCheckbox) return
+
+    // Trouver le panneau d'infos correspondant
+    const activePanel = this.pointInfosTargets.find(
+      (panel) => panel.dataset.tabName === title
+    )
+
+    // Le placer juste après le span dans la colonne de gauche
+    if (activePanel) {
+      activeCheckbox.insertAdjacentElement("afterend", activePanel)
+    }
   }
 }

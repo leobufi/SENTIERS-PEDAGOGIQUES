@@ -9,7 +9,7 @@
         <div class="map-canva" data-main-map-target="canva">
         </div>
         <div class="infos_wrapper">
-          <div class="info_bloc mobile-no-border">
+          <div class="info_bloc title-bloc mobile-no-border">
             <% @sentiers.sort_by(&:title).each do |sentier| %>
               <div class="sentier-title_bloc" data-tabs-target="tab" data-main-map-target="tab" data-action="click->tabs#activate" data-tab-name="<%= sentier.title %>">
                 <div class="sentier-title">
@@ -25,7 +25,7 @@
               </div>
             <% end %>
           </div>
-          <div class="info_bloc" data-controller="infos-transit">
+          <div class="info_bloc content-bloc" data-controller="infos-transit">
             <% @sentiers.sort_by(&:title).each do |sentier| %>
               <div class="sentier-infos" data-infos-transit-target="data" data-main-map-target="infos" data-tabs-target="panel" data-tab-name="<%= sentier.title %>">
                 <h5><%= sentier.title %></h5>

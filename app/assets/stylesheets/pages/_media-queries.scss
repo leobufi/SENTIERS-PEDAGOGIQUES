@@ -232,9 +232,6 @@
   }
 
   .point-content {
-    iframe {
-      margin-top: 6rem;
-    }
 
     .mobile-margin {
       margin-top: 6rem;
@@ -326,6 +323,22 @@
     height: 67vh;
   }
 
+  .sentier-title_bloc {
+    flex-wrap: wrap;
+    align-items: flex-start;
+    border-bottom: 1px solid black;
+  }
+
+  // Bloc d'infos déplacé juste après le titre (mobile)
+  .sentier-title_bloc,
+  .sentier-infos {
+    flex-basis: 100%;
+  }
+
+  .sentier-infos {
+    border-bottom: 1px solid black;
+  }
+
   .infos_wrapper {
     height: auto;
     flex-direction: column;
@@ -340,8 +353,8 @@
       .point-infos {
 
         &.active {
-          border-bottom: 1px solid black;
-          border-top: 1px solid black;
+          border-bottom: unset;
+          border-top: unset;
         }
       }
 
@@ -373,6 +386,17 @@
 
   .points-list {
     padding: 1rem 0.5rem;
+  }
+
+  // POINTS LIST (sentier show) : bloc d'infos déplacé sous le point (mobile)
+  .points-list span {
+    flex-wrap: wrap;
+    align-items: flex-start;
+  }
+
+  .points-list span,
+  .point-infos {
+    flex-basis: 100%;
   }
 
   // POINTS SHOW
@@ -423,10 +447,6 @@
     }
 
     .point-content {
-
-      iframe {
-        margin-top: 12rem;
-      }
 
       .mobile-margin {
         margin-top: 12rem;
