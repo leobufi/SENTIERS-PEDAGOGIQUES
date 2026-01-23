@@ -25,13 +25,31 @@ class Point < ApplicationRecord
   has_rich_text :image_9_commment
   has_rich_text :image_10_commment
 
+  has_rich_text :bibliography
+  has_one_attached :pdf
+
   validates :title, presence: true
   validates :infos, presence: true
   validates :lat, presence: true
   validates :long, presence: true
+  validate :pdf_validation
 
   def to_param
     "#{id}-#{title.parameterize}"
+  end
+
+  private
+  
+  def pdf_validation
+    return unless pdf.attached?
+    
+    if pdf.byte_size > 10.megabytes
+      errors.add(:pdf, 'est trop volumineux (max 10 MB)')
+    end
+    
+    unless pdf.content_type == 'application/pdf'
+      errors.add(:pdf, 'doit être un PDF')
+    end
   end
 
 end

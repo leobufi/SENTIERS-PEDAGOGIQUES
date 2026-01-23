@@ -109,8 +109,10 @@ class PointsController < ApplicationController
       :image_9,
       :image_9_commment,
       :image_10,
-      :image_10_commment
-    )
+      :image_10_commment,
+      :bibliography,
+      :pdf
+      )
   end
 
   def require_admin

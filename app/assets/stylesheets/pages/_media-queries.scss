@@ -1,4 +1,4 @@
-@media screen and (max-width: 1440px) {
+@media screen and (min-width: 1280px) {
   .map-canva {
     height: 68.9vh;
   }
@@ -245,6 +245,10 @@
     &.mobile-margin {
       margin-top: 10rem;
     }
+  }
+
+  .mapboxgl-popup {
+    max-width: 250px !important;
   }
 
 }
