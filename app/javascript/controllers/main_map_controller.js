@@ -194,6 +194,9 @@ export default class extends Controller {
           image.classList.remove('active');
         }
       });
+
+      // Sur mobile : placer le bloc d'infos du sentier juste sous son titre
+      this.repositionMobileSentierInfosFromMap(title);
     });
 
     this.tabTargets.forEach(tab => {
@@ -220,5 +223,42 @@ export default class extends Controller {
         infos.dataset.duration = duration;
       }
     });
+  }
+
+  repositionMobileSentierInfosFromMap(title) {
+    // Comportement uniquement sur mobile (même breakpoint que tabs_controller)
+    if (window.innerWidth > 460) return
+
+    // On ne souhaite appliquer ce comportement que sur la page sentiers index / thèmes
+    const contentBloc = document.querySelector(".infos_wrapper .info_bloc.content-bloc")
+    if (!contentBloc) return
+
+    // Remettre tous les panneaux dans le bloc de contenu (état neutre)
+    const panels = document.querySelectorAll(".sentier-infos[data-tab-name]")
+    panels.forEach((panel) => {
+      if (!contentBloc.contains(panel)) {
+        contentBloc.appendChild(panel)
+      }
+    })
+
+    // Placer le panneau actif juste sous le titre correspondant
+    let activeTitleBloc = null
+    document.querySelectorAll(".sentier-title_bloc").forEach((bloc) => {
+      if (bloc.dataset.tabName === title) {
+        activeTitleBloc = bloc
+      }
+    })
+    if (!activeTitleBloc) return
+
+    let activePanel = null
+    panels.forEach((panel) => {
+      if (panel.dataset.tabName === title) {
+        activePanel = panel
+      }
+    })
+
+    if (activePanel) {
+      activeTitleBloc.insertAdjacentElement("afterend", activePanel)
+    }
   }
 }
