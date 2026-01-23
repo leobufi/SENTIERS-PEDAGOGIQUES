@@ -74,6 +74,19 @@
                     <%= link_to_add_association 'Ajouter un point', f, :roads, partial: 'road_fields', class: 'btn-secondary', data: { association_insertion_method: 'before' } %>
                   </div>
                 </div>
+                <hr>
+                <div class="form-bloc">
+                  <span class="large poppins-semibold">
+                    Points de passage (waypoints) :
+                  </span>
+                  <span class="poppins-light-italic">Ajoutez des points de passage pour créer une boucle ou guider le parcours. Ces points ne s'affichent pas sur la carte mais influencent le tracé du sentier. Utilisez des positions décimales (ex: 1.5, 2.5) pour placer un waypoint entre deux points d'intérêt.</span>
+                  <%= f.simple_fields_for :waypoints do |waypoint_form| %>
+                    <%= render 'waypoint_fields', f: waypoint_form %>
+                  <% end %>
+                  <div class="links">
+                    <%= link_to_add_association 'Ajouter un point de passage', f, :waypoints, partial: 'waypoint_fields', class: 'btn-secondary', data: { association_insertion_method: 'before' } %>
+                  </div>
+                </div>
               </div>
               <hr>
               <button>

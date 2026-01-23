@@ -1,0 +1,8 @@
+<div class="nested-fields form-field">
+  <%= f.input :position, label: false, input_html: { class: 'form-input', placeholder: 'Position' }, hint: 'Position (ex: 1.5 pour entre position 1 et 2)' %>
+  <%= f.input :lat, label: false, input_html: { class: 'form-input waypoints-coords', placeholder: 'Latitude' } %>
+  <%= f.input :lng, label: false, input_html: { class: 'form-input waypoints-coords', placeholder: 'Longitude' } %>
+  <%= f.hidden_field :_destroy %>
+  <%= link_to_remove_association "Supprimer le point de passage", f, class: 'btn-secondary' %>
+</div>
+

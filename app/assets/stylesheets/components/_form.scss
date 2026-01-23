@@ -164,10 +164,18 @@ select {
   display: flex;
   column-gap: 1.5rem;
   margin-bottom: 1.5rem;
+
+  .sentier_waypoints_position .hint {
+    padding-left: 1rem;
+  }
 }
 
 .form-input {
   width: 5rem;
+
+  &.waypoints-coords {
+    width: 10rem;
+  }
 }
 
 .btn {

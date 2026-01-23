@@ -3,10 +3,12 @@ class Sentier < ApplicationRecord
 
   has_many :roads, dependent: :destroy
   has_many :points, through: :roads
+  has_many :waypoints, dependent: :destroy
 
   has_rich_text :description
 
   accepts_nested_attributes_for :roads, allow_destroy: true
+  accepts_nested_attributes_for :waypoints, allow_destroy: true
 
   validates :title, presence: true
   validates :description, presence: true
