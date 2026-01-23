@@ -10,7 +10,7 @@
                 <span class="form-tab active" data-tabs-target="tab" data-action="click->tabs#activate" data-tab-name="infos">Infos</span>
                 <span class="form-tab" data-tabs-target="tab" data-action="click->tabs#activate" data-tab-name="images">Images</span>
                 <span class="form-tab" data-tabs-target="tab" data-action="click->tabs#activate" data-tab-name="video">Vidéo</span>
-                <span class="form-tab" data-tabs-target="tab" data-action="click->tabs#activate" data-tab-name="audio">Audio</span>
+                <span class="form-tab" data-tabs-target="tab" data-action="click->tabs#activate" data-tab-name="ressources">Ressources</span>
               </div>
               <hr>
               <div class="form-bloc_wrapper active" data-tabs-target="panel" data-tab-name="infos">
@@ -54,11 +54,19 @@
                 </span>
                 <%= f.input :video, label: false, placeholder: 'Id Vimeo uniquement' %>
               </div>
-              <div class="form-bloc_wrapper" data-tabs-target="panel" data-tab-name="audio">
+              <div class="form-bloc_wrapper" data-tabs-target="panel" data-tab-name="ressources">
                 <span class="large poppins-semibold">
                   Audio
                 </span>
                 <%= f.input :audio, label: false, placeholder: 'Placez une balise iframe / embed' %>
+                <span class="large poppins-semibold">
+                  Bibliographie & liens
+                </span>
+                <%= f.rich_text_area :bibliography, as: :text, label: false, placeholder: 'Biliographie, liens et informations complémentaires' %>
+                <span class="large poppins-semibold">
+                  PDF
+                </span>
+                <%= f.input :pdf, as: :file, label: false, placeholder: 'Télécharger un PDF (max 10MB)', input_html: { accept: 'application/pdf' } %>
               </div>
               <hr>
               <button>
