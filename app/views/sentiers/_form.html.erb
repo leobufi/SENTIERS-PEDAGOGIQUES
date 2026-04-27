@@ -28,6 +28,10 @@
                     <%= f.input :is_theme, as: :boolean, as: :radio_buttons, required: true, collection: [['Oui', true], ['Non', false]], label: false %>
                   </div>
                 </div>
+                <div class="form-grid">
+                  <%= f.input :manual_duration, label: false, placeholder: "Durée (manuel) ex: 2h 15min" %>
+                  <%= f.input :manual_distance, label: false, placeholder: "Distance (manuel) ex: 5.40 km" %>
+                </div>
                 <hr>
                 <div class="form-bloc">
                   <span class="large poppins-semibold">Image principale du sentier :</span>

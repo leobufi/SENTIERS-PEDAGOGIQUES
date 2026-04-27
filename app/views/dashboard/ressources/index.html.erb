@@ -1,0 +1,36 @@
+<div class="page-main">
+  <div class="page-padding">
+    <section class="dashboard">
+      <div class="dashboard-wrapper">
+        <div class="title-wrapper">
+          <h1 class="large">Page Ressources</h1>
+          <% if @ressources.empty? %>
+            <button>
+              <%= link_to "Créer", new_ressource_path %>
+            </button>
+          <% end %>
+        </div>
+        <div class="content-wrapper">
+          <div class="content">
+            <div class="content-infos_wrapper active">
+              <% @ressources.each do |ressource| %>
+                <div class="content-infos">
+                  <h4>Contenu</h4>
+                  <div class="infos">
+                    <%= cl_image_tag ressource.image.key, height: 150, width: 200, crop: :fill %>
+                    <%= sanitize("#{ressource.content}".truncate(250)) %>
+                  </div>
+                </div>
+                <div class="content-links">
+                  <button>
+                    <%= link_to "Modifier les infos", edit_ressource_path(ressource) %>
+                  </button>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>

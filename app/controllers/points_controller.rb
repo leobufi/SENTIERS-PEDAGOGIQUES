@@ -8,7 +8,8 @@ class PointsController < ApplicationController
   end
 
   def new
-    @point = Point.new
+    @point ||= Point.new
+    @point.point_bibliographies.build if @point.point_bibliographies.empty?
   end
 
   def create
@@ -38,7 +39,8 @@ class PointsController < ApplicationController
   end
 
   def edit
-    @point = Point.find(params[:id])
+    @point ||= Point.find(params[:id])
+    @point.point_bibliographies.build if @point.point_bibliographies.empty?
   end
 
   def update
@@ -57,6 +59,13 @@ class PointsController < ApplicationController
           if /\Aimage_(?:[1-9]|10)\z/.match?(name.to_s)
             @point.send(name).purge
           end
+        end
+      end
+
+      if params[:remove_pdfs].present?
+        params[:remove_pdfs].each do |blob_id|
+          attachment = @point.pdfs_attachments.find_by(blob_id: blob_id)
+          attachment&.purge
         end
       end
 
@@ -111,7 +120,8 @@ class PointsController < ApplicationController
       :image_10,
       :image_10_commment,
       :bibliography,
-      :pdf
+      { pdfs: [] },
+      point_bibliographies_attributes: [:id, :ouvrage, :image, :_destroy]
       )
   end
 
@@ -121,4 +131,5 @@ class PointsController < ApplicationController
       redirect_to root_path
     end
   end
+
 end

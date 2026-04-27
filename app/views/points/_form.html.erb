@@ -60,13 +60,58 @@
                 </span>
                 <%= f.input :audio, label: false, placeholder: 'Placez une balise iframe / embed' %>
                 <span class="large poppins-semibold">
-                  Bibliographie & liens
+                  Ouvrages bibliographiques
                 </span>
-                <%= f.rich_text_area :bibliography, as: :text, label: false, placeholder: 'Biliographie, liens et informations complémentaires' %>
+                <div id="bibliography-items">
+                  <%= f.simple_fields_for :point_bibliographies do |b| %>
+                    <div class="bibliography-item">
+                      <%= b.input :ouvrage, label: false, placeholder: "Détails de l'ouvrage (titre, auteur, infos...)", input_html: { class: "biblio-ouvrage-input" } %>
+                      <div class="bibliography-thumbnail-wrapper">
+                        <% if b.object.image.attached? %>
+                          <%= cl_image_tag b.object.image.key, class: "bibliography-thumbnail" %>
+                        <% end %>
+                        <%= b.input :image, as: :file, label: false %>
+                      </div>
+                      <div class="bibliography-destroy-row">
+                        <%= b.check_box :_destroy %>
+                        <%= b.label :_destroy, "Supprimer cet ouvrage" %>
+                      </div>
+                      <hr>
+                    </div>
+                  <% end %>
+                </div>
+
+                <template id="bibliography-template">
+                  <%= f.simple_fields_for :point_bibliographies, PointBibliography.new, child_index: "NEW_RECORD" do |b| %>
+                    <div class="bibliography-item">
+                      <%= b.input :ouvrage, label: false, placeholder: "Détails de l'ouvrage (titre, auteur, infos...)", input_html: { class: "biblio-ouvrage-input" } %>
+                      <div class="bibliography-thumbnail-wrapper">
+                        <%= b.input :image, as: :file, label: false %>
+                      </div>
+                      <div class="bibliography-destroy-row">
+                        <%= b.check_box :_destroy %>
+                        <%= b.label :_destroy, "Supprimer cet ouvrage" %>
+                      </div>
+                      <hr>
+                    </div>
+                  <% end %>
+                </template>
+                <button type="button" id="add-bibliography-item">
+                  Ajouter un ouvrage
+                </button>
                 <span class="large poppins-semibold">
-                  PDF
+                  PDFs
                 </span>
-                <%= f.input :pdf, as: :file, label: false, placeholder: 'Télécharger un PDF (max 10MB)', input_html: { accept: 'application/pdf' } %>
+                <% if @point.pdfs.attached? %>
+                  <% @point.pdfs.each do |pdf| %>
+                    <div class="image-delete-checkbox">
+                      <%= check_box_tag "remove_pdfs[]", pdf.blob_id %>
+                      Supprimer <%= pdf.filename.to_s %>
+                    </div>
+                  <% end %>
+                <% end %>
+                <%= f.input :pdfs, as: :file, label: false, input_html: { multiple: true, accept: "application/pdf" } %>
+                <small>Vous pouvez ajouter plusieurs PDFs (10 MB max chacun).</small>
               </div>
               <hr>
               <button>
@@ -79,3 +124,17 @@
     </section>
   </div>
 </div>
+
+<script>
+  (() => {
+    const addButton = document.getElementById("add-bibliography-item");
+    const itemsContainer = document.getElementById("bibliography-items");
+    const template = document.getElementById("bibliography-template");
+    if (!addButton || !itemsContainer || !template) return;
+
+    addButton.addEventListener("click", () => {
+      const content = template.innerHTML.replace(/NEW_RECORD/g, Date.now().toString());
+      itemsContainer.insertAdjacentHTML("beforeend", content);
+    });
+  })();
+</script>

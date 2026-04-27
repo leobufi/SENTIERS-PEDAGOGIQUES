@@ -14,6 +14,8 @@ export default class extends Controller {
 
   connect() {
     mapboxgl.accessToken = this.apiKeyValue;
+    this.pointMarkersByTitle = {};
+    this.activePointPopup = null;
 
     this.map = new mapboxgl.Map({
       container: this.canvaTarget,
@@ -22,6 +24,7 @@ export default class extends Controller {
 
     this.map.on('load', () => {
       this.addMarkersToMap();
+      this.bindListToMapMarkers();
       this.fitMapToMarkers();
       this.addRoutesToMap();
       this.addGeolocate();
@@ -68,15 +71,44 @@ export default class extends Controller {
 
     this.pointsCoordinatesValue.forEach((point) => {
       const popup = new mapboxgl.Popup().setHTML(point.info_window_html);
-      this.marker = new mapboxgl.Marker({ color: '#94B9D9' })
+      const marker = new mapboxgl.Marker({ color: '#94B9D9' })
         .setLngLat([point.lng, point.lat])
         .setPopup(popup)
         .addTo(this.map);
 
-      const title = this.marker._popup._content.firstChild.innerHTML;
+      const title = marker._popup._content.firstChild.innerHTML;
+      this.pointMarkersByTitle[title] = marker;
 
       this.activateInfos(popup, title);
     })
+  }
+
+  bindListToMapMarkers() {
+    this.checkboxTargets.forEach((checkbox) => {
+      if (checkbox.dataset.mapBound === "true") return;
+      checkbox.dataset.mapBound = "true";
+
+      checkbox.addEventListener("click", () => {
+        const title = checkbox.dataset.tabName;
+        const marker = this.pointMarkersByTitle[title];
+        if (!marker) return;
+        const popup = marker.getPopup();
+
+        const lngLat = marker.getLngLat();
+        this.map.flyTo({
+          center: [lngLat.lng, lngLat.lat],
+          essential: true,
+        });
+
+        this.closeOtherPointPopups(popup);
+
+        if (!popup.isOpen()) {
+          popup.addTo(this.map);
+        }
+
+        this.activePointPopup = popup;
+      });
+    });
   }
 
   fitMapToMarkers() {
@@ -157,6 +189,9 @@ export default class extends Controller {
 
   activateInfos(popup, title) {
     popup.on('open', (e) => {
+      this.closeOtherPointPopups(popup);
+      this.activePointPopup = popup;
+
       this.checkboxTargets.forEach(checkbox => {
         if (checkbox.dataset.tabName === title) {
           checkbox.classList.add("active");
@@ -181,6 +216,14 @@ export default class extends Controller {
 
       // Sur mobile : placer le bloc d'infos du point juste sous le point cliqué
       this.repositionMobilePointInfos(title);
+    });
+  }
+
+  closeOtherPointPopups(currentPopup) {
+    Object.values(this.pointMarkersByTitle).forEach((marker) => {
+      const markerPopup = marker.getPopup();
+      if (!markerPopup || markerPopup === currentPopup) return;
+      if (markerPopup.isOpen()) markerPopup.remove();
     });
   }
 

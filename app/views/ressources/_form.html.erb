@@ -1,0 +1,31 @@
+<div class="page-main">
+  <div class="page-padding">
+    <section class="dashboard">
+      <div class="dashboard-wrapper">
+        <h1 class="large">Modifier la page Ressources</h1>
+        <div class="form-wrapper">
+          <div class="form">
+            <%= simple_form_for(@ressource) do |f| %>
+              <div class="form-bloc">
+                <span class="large poppins-semibold">
+                  Texte Ressources
+                </span>
+                <%= f.rich_text_area :content, label: false, required: true %>
+              </div>
+              <hr>
+              <div class="form-bloc">
+                <span class="large poppins-semibold">
+                  Image Ressources
+                </span>
+                <%= f.input :image, as: :file, label: false, required: true %>
+              </div>
+              <button>
+                <%= f.button :submit, "Créer/Modifier" %>
+              </button>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>

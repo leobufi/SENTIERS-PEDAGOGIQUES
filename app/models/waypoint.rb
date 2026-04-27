@@ -6,3 +6,4 @@ class Waypoint < ApplicationRecord
   validates :position, presence: true
 end
 
+
