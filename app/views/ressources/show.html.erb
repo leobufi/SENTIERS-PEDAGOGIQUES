@@ -1,0 +1,17 @@
+<div class="page-main">
+  <div class="page-padding no-padding">
+    <section class="static-pages">
+      <div class="static-pages_wrapper">
+        <div class="static_wrapper active">
+          <div class="static-image">
+            <%= cl_image_tag @ressource.image.key, crop: :fit %>
+          </div>
+          <div class="static-infos">
+            <h4>Ressources</h4>
+            <%= @ressource.content %>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>

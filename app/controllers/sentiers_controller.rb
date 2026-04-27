@@ -103,6 +103,8 @@ class SentiersController < ApplicationController
       :color,
       :image,
       :difficulty,
+      :manual_duration,
+      :manual_distance,
       :is_theme,
       :is_boucle,
       :starting_point_lat,

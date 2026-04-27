@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   get 'dashboard/points', to: 'dashboard/points#index', as: :dashboard_points
   get 'dashboard/decouverte', to: 'dashboard/decouverte#index', as: :dashboard_decouverte
   get 'dashboard/engagements', to: 'dashboard/engagement#index', as: :dashboard_engagement
+  get 'dashboard/ressources', to: 'dashboard/ressources#index', as: :dashboard_ressources
   get 'dashboard/qrcodes', to: 'dashboard/qrcodes#index', as: :dashboard_qr_codes
 
   get 'themes', to: 'sentiers#themes', as: :themes_sentiers
@@ -32,6 +33,8 @@ Rails.application.routes.draw do
   resources :generals, except: [:show, :index]
   resources :decouvertes, except: [:show]
   resources :engagements, except: [:show]
+  get "ressources", to: "ressources#show_current", as: :ressources
+  resources :ressources, except: [:index, :destroy]
   resources :contacts, only: [:new, :create]
 
   resources :qrcodes, only: [:new, :create, :destroy] do

@@ -19,6 +19,7 @@
           <%= link_to "Thèmes", themes_sentiers_path, class:"nav-link" %>
           <%= link_to "Engagements", engagements_path, class:"nav-link" %>
           <%= link_to "Découverte", decouvertes_path, class:"nav-link" %>
+          <%= link_to "Ressources", ressources_path, class:"nav-link" %>
           <%= link_to "Contact", new_contact_path, class:"nav-link" %>
           <% if user_signed_in? && current_user.admin?%>
             <%= link_to "Tableau de bord", dashboard_path, class: "nav-link" %>
@@ -52,6 +53,13 @@
         <%= link_to dashboard_engagement_path do %>
           <span class="nav-link" data-navbar-target="title" id="engagements">
             Page Engagements
+          </span>
+        <% end %>
+      </li>
+      <li class="nav-item">
+        <%= link_to dashboard_ressources_path do %>
+          <span class="nav-link" data-navbar-target="title" id="ressources">
+            Page Ressources
           </span>
         <% end %>
       </li>

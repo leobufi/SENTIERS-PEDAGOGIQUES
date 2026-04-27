@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2026_01_23_121112) do
+ActiveRecord::Schema[7.1].define(version: 2026_04_27_100500) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -78,6 +78,14 @@ ActiveRecord::Schema[7.1].define(version: 2026_01_23_121112) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "point_bibliographies", force: :cascade do |t|
+    t.bigint "point_id", null: false
+    t.text "ouvrage"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["point_id"], name: "index_point_bibliographies_on_point_id"
+  end
+
   create_table "points", force: :cascade do |t|
     t.string "title"
     t.text "infos"
@@ -119,6 +127,11 @@ ActiveRecord::Schema[7.1].define(version: 2026_01_23_121112) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "ressources", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "roads", force: :cascade do |t|
     t.bigint "sentier_id", null: false
     t.bigint "point_id", null: false
@@ -145,6 +158,8 @@ ActiveRecord::Schema[7.1].define(version: 2026_01_23_121112) do
     t.boolean "is_boucle", default: false, null: false
     t.string "depart_address", default: "", null: false
     t.string "arrival_address", default: "", null: false
+    t.string "manual_duration"
+    t.string "manual_distance"
   end
 
   create_table "users", force: :cascade do |t|
@@ -172,6 +187,7 @@ ActiveRecord::Schema[7.1].define(version: 2026_01_23_121112) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "point_bibliographies", "points"
   add_foreign_key "roads", "points"
   add_foreign_key "roads", "sentiers"
   add_foreign_key "waypoints", "sentiers"

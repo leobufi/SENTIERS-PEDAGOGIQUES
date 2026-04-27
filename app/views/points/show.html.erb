@@ -37,11 +37,20 @@
         </div>
         <div class="point-content_wrapper ressources" data-tabs-target="panel" data-tab-name="ressources">
           <div class="point-content">
-            <h2 class="mobile-margin">Bibliographie, liens et informations complémentaires</h2>
-            <% if @point.bibliography.empty? %>
-              <p>Il n'y a pas d'informations complémentaires pour ce point d'interêt.</p>
+            <h2 class="mobile-margin">Ouvrages bibliographiques</h2>
+            <% if @point.point_bibliographies.empty? %>
+              <p>Il n'y a pas d'ouvrage bibliographique pour ce point d'interêt.</p>
             <% else %>
-              <%=  @point.bibliography %>
+              <div class="bibliography-grid">
+                <% @point.point_bibliographies.each do |ouvrage| %>
+                  <div class="bibliography-card">
+                    <% if ouvrage.image.attached? %>
+                      <%= cl_image_tag ouvrage.image.key, class: "bibliography-card-image", crop: :fill %>
+                    <% end %>
+                    <p class="bibliography-card-title"><%= ouvrage.ouvrage %></p>
+                  </div>
+                <% end %>
+              </div>
             <% end %>
             <h2>Audio</h2>
             <% if @point.audio.empty? %>
@@ -49,12 +58,16 @@
             <% else %>
               <%=  @point.audio.html_safe %>
             <% end %>
-            <h2>PDF</h2>
-            <% if @point.pdf.attached? %>
-             <%= link_to "Télécharger le PDF pour #{@point.title}", rails_blob_path(@point.pdf, disposition: "attachment"), target: "_blank" %>
-              <% else %>
-              <p>Il n'y a pas de pdf à télécharger pour ce point d'interêt.</p>
+            <h2>PDFs</h2>
+            <% if @point.pdfs.attached? %>
+              <% @point.pdfs.each do |pdf| %>
+                <%= link_to "Télécharger #{pdf.filename}", rails_blob_path(pdf, disposition: "attachment"), target: "_blank" %>
+              <% end %>
+            <% else %>
+              <p>Il n'y a pas de PDF à télécharger pour ce point d'interêt.</p>
             <% end %>
+            <hr>
+            <p><%= link_to "Voir les ressources générales", ressources_path %></p>
           </div>
         </div>
       </div>

@@ -2,6 +2,8 @@ class Point < ApplicationRecord
 
   has_many :roads, dependent: :destroy
   has_many :sentiers, through: :roads
+  has_many :point_bibliographies, dependent: :destroy
+  accepts_nested_attributes_for :point_bibliographies, allow_destroy: true, reject_if: :all_blank
 
   has_one_attached :image_1
   has_one_attached :image_2
@@ -26,13 +28,13 @@ class Point < ApplicationRecord
   has_rich_text :image_10_commment
 
   has_rich_text :bibliography
-  has_one_attached :pdf
+  has_many_attached :pdfs
 
   validates :title, presence: true
   validates :infos, presence: true
   validates :lat, presence: true
   validates :long, presence: true
-  validate :pdf_validation
+  validate :pdfs_validation
 
   def to_param
     "#{id}-#{title.parameterize}"
@@ -40,15 +42,17 @@ class Point < ApplicationRecord
 
   private
   
-  def pdf_validation
-    return unless pdf.attached?
-    
-    if pdf.byte_size > 10.megabytes
-      errors.add(:pdf, 'est trop volumineux (max 10 MB)')
-    end
-    
-    unless pdf.content_type == 'application/pdf'
-      errors.add(:pdf, 'doit être un PDF')
+  def pdfs_validation
+    return unless pdfs.attached?
+
+    pdfs.each do |pdf|
+      if pdf.byte_size > 10.megabytes
+        errors.add(:pdfs, "contient un fichier trop volumineux (max 10 MB)")
+      end
+
+      unless pdf.content_type == "application/pdf"
+        errors.add(:pdfs, "contient un fichier qui n'est pas un PDF")
+      end
     end
   end
 

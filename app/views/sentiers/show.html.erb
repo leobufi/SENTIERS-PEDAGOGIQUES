@@ -17,9 +17,15 @@
             </div>
             <div class="duration" data-infos-transit-target="duration" data-name="<%= @sentier.title %>">
               <i class="fa-regular fa-clock"></i>
+              <% if @sentier.manual_duration.present? %>
+                <span><%= @sentier.manual_duration %></span>
+              <% end %>
             </div>
             <div class="lenght" data-infos-transit-target="lenght" data-name="<%= @sentier.title %>">
               <i class="fa-solid fa-arrows-left-right"></i>
+              <% if @sentier.manual_distance.present? %>
+                <span><%= @sentier.manual_distance %></span>
+              <% end %>
             </div>
           </div>
         </div>
